@@ -24,7 +24,7 @@ const Main = () => {
   ]
   return (
     <>
-      <h1 style={{ textAlign: "center", marginTop: "5rem", color: "red", fontWeight: "500" }}>Find your Special Someone</h1>
+      <h1 style={{ textAlign: "center", marginTop: "5rem", color: "#FFA500", fontWeight: "500" }}>Find your Special Someone</h1>
       <Selection>
         {array.map((ele) => {
           return (
@@ -80,7 +80,7 @@ const Title = styled.p`
   > a {
     text-decoration:none;
     text-align:center;
-    color: #00bcd5;
+    color:red;
     font-size: 24px;
     font-weight: 400;
   }`

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 const Steptwo = () => {
   return (
@@ -28,10 +29,7 @@ const Steptwo = () => {
          </Form>
         </Card>
     </CreateSection>
-    <Footer>
-        <h1>© 1996-2022 TruShaadi.com, The World's Leading Matchmaking Service™</h1>
-        <h1>Created By Sumit Jambharkar</h1>
-    </Footer>
+    <Footer/>
     </>
   )
 }
@@ -45,7 +43,7 @@ margin:12px;
     font-family:romon
 }`
 const CreateSection = styled.div`
-background-color:aqua;
+background-color:#E8E8E8;
 display:flex;
 justify-content:center;
 padding-top:24px;`
@@ -71,30 +69,27 @@ flex-direction:column;
 >input {
     margin-bottom:8px;
     padding:5px;
+    border:1px solid #FFA500;
+}
+> input:focus {
+    outline:none;
 }
 >select {
     margin-bottom:8px;
     padding:5px;
+    border:1px solid #FFA500;
+    outline:none;
 }
 >button {
     margin-top:8px;
     height:40px;
-    background-color:aqua;
-    border:1px solid aqua;
+    background-color:#FFA500;
+    border:1px solid #FFA500;
     color:white;
     font-weight:700;
 
 }
 >button a {
     text-decoration:none;
-    color:white;
-}`
-const Footer = styled.div`
-background-color:gray;
-display:flex;
-justify-content:space-around;
-> h1 {
-    font-size:16px;
-    padding:24px 24px;
     color:white;
 }`

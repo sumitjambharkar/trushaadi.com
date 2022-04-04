@@ -5,23 +5,96 @@ const Footer = () => {
   return (
     <>
     <FooterSection>
+          <FirstDiv>
+           <h2>TruShaadi.com</h2>
+           
+           <hr/>
+          </FirstDiv>
+          <SecandDiv>
+          <h2>About Us</h2>
+          <hr/>
+          <p>About Trushaddi.com »</p>
+          <p>Contact Us »</p>
+          <p>Sitemap »</p>
+          </SecandDiv>
+          <ThirdDiv>
+          <h2>Information</h2>
+          <hr/>
+          <p>Terms of Use »</p>
+          <p>Privacy Policy »</p>
+          <p>Help »</p>
+          <p>Contact Us »</p>
+
+          </ThirdDiv>
+      </FooterSection>
+       <FooterDiv>
         <h1>
           © 1996-2022 TruShaadi.com, The World's Leading Matchmaking Service™
         </h1>
         <h1>Created By Sumit Jambharkar</h1>
-      </FooterSection>
+        </FooterDiv>
     </>
   )
 }
 
 export default Footer;
 const FooterSection = styled.div`
-  background-color:#00004F;
+  background-color:#2e2e2e;
   display: flex;
-  justify-content: space-around;
-  > h1 {
+  justify-content:space-around;
+  flex-wrap:wrap;
+`;
+const FooterDiv = styled.div`
+background-color:#2a2424;
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+> h1 {
     font-size: 16px;
     padding: 24px 24px;
     color: white;
   }
-`;
+  `
+const FirstDiv = styled.div`
+padding-top:20px;
+color:white;
+  > h2 {
+    font-size: 24px;
+    font-family: inherit;
+    font-weight: 400;
+  }
+  >p {
+    color:white;
+    padding-bottom: 10px;
+    display: block;
+    transition: all 0.3s ease-in-out;
+  }`
+const SecandDiv = styled.div`
+padding-top:20px;
+color:white;
+> h2 {
+    font-size: 24px;
+    font-family: inherit;
+    font-weight: 400;
+  }
+  >p {
+    color:#FFA500;
+    padding-bottom:6px;
+    display: block;
+    transition: all 0.3s ease-in-out;
+  }`
+const ThirdDiv = styled.div`
+padding-top:20px;
+color:white;
+> h2 {
+    font-size: 24px;
+    font-family: inherit;
+    font-weight: 400;
+  }
+  >p {
+    
+    color:#FFA500;
+    padding-bottom:6px;
+    display: block;
+    transition: all 0.3s ease-in-out;
+  }`

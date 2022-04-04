@@ -26,6 +26,7 @@ const Login = () => {
       setEmail("")
       setPassword("")
 
+
     }
   };
   return (
@@ -34,7 +35,7 @@ const Login = () => {
         <Form>
           <FormCard>
             <FormC>
-              <form  onSubmit={handalSubmit}>
+              <form >
                 <MainDiv>
                   <div style={{ marginLeft: "256px" }}>
                     <Link to="/">X</Link>
@@ -78,7 +79,7 @@ const Login = () => {
                     </Div>
                   </Forgot>
                   <Div>
-                    <button type="submit" className="button">
+                    <button onClick={handalSubmit} type="submit" className="button">
                       Login
                     </button>
                   </Div>
@@ -162,7 +163,12 @@ const Input = styled.div`
   > input {
     width: 270px;
     height: 40px;
+    border: 1px solid #FFA500;
+    border-radius: 2px;
   }
+  > input:focus {
+  outline:none;
+}
 `;
 const Forgot = styled.div`
   display: flex;
@@ -181,12 +187,13 @@ const Div = styled.div`
     width: 270px;
     height: 40px;
     margin-top: 8px;
-    background-color: aqua;
-    border: 1px solid aqua;
+    background-color:#FFA500;
+    border: 1px solid #FFA500;
     border-radius: 4px;
+    color:white;
   }
   .button > a {
     text-decoration: none;
-    color: black;
+    color:white;
   }
 `;

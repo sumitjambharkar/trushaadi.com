@@ -91,6 +91,16 @@ app.post("/patener-details", (req, res) => {
 
 })
 
+app.post("/profile/:_id",async(req,res)=>{
+  const {id:_id} = req.params
+    const profile =await User.create(req.body)
+    res.json({
+      profile
+    })
+  
+})
+
+
 app.listen(Port, () => {
   console.log(`http://localhost:${Port}`);
 })

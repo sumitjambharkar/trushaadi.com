@@ -18,7 +18,7 @@ const Signup = () => {
   })
   const handalSubmit=async(e)=>{
     e.preventDefault()  
-    const respone = await axios.post('http://localhost:3001/register',{data})
+    const respone = await axios.post('http://localhost:3001/register',data)
     console.log(data);
     if(respone){
       history.push("/")
@@ -40,7 +40,7 @@ const Signup = () => {
       <SignupContainer>
       <Form>
         <FormCard>
-          <form onSubmit={handalSubmit}>
+          <form >
           <FormC>
             <MainDiv>
               <div
@@ -84,7 +84,7 @@ const Signup = () => {
                 <input name="password" type="password" required autoComplete="off" value={data.password} onChange={handalChange}  />
               </Input>
               <Div>
-                <button type="submit" className="button">Register</button>
+                <button onClick={handalSubmit} type="submit" className="button">Register</button>
               </Div>
               <Forgot>
                     <Div>
@@ -123,7 +123,7 @@ const FormC = styled.div`
   display: flex;
   justify-content: center;
   width: 360px;
-  height: 100%;
+  height:90%;
   background-color: white;
   padding:1rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -147,7 +147,12 @@ const Input = styled.div`
   > input {
     width: 270px;
     height: 40px;
+    border: 1px solid #FFA500;
+    border-radius: 2px;
   }
+  > input:focus {
+  outline:none;
+}
 `;
 const Forgot = styled.div`
   display: flex;
@@ -162,8 +167,9 @@ const Div = styled.div`
     width: 270px;
     height: 40px;
     margin-top: 8px;
-    background-color: aqua;
-    border: 1px solid aqua;
+    background-color:#FFA500;
+    border: 1px solid #FFA500;
     border-radius: 4px;
+    color:white;
   }
 `;

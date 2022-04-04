@@ -61,7 +61,7 @@ const Title = styled.div`
     text-align:center;
     margin-top:70px;
     margin-bottom:70px;
-    color:red;
+    color:#FFA500;
 
 }
 `
@@ -87,6 +87,7 @@ const StoryDetails = styled.div`
     font-size: 22px;
     line-height: 22px;
     text-align:center;
+    color:#FFA500;
   }
    >p{
     font-size: 15px;
@@ -101,7 +102,7 @@ const StoryDetails = styled.div`
    }`
 
    const SectionButton = styled.div`
-   background-color:red;
+   background-color:#FFA500;
    display:flex;
    justify-content:center;
    justify-items:center;

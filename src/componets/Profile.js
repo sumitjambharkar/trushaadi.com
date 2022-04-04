@@ -1,9 +1,32 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import Footer from './Footer';
 
 
 const Profile = () => {
+    const height = [4.0,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5.0,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6.0,6.1,
+                   6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,6.0,7.0,7.1 ]
+    const city = ['Mumbai','Delhi','Chennai','Bangalore','Hyderabad','Pune','Kochi','Kolkata']
+    const [data, setData] = useState({
+        city: "",
+        family : "",
+        maritalStatus: "",
+        diet : "",
+        height : ""
+
+    })
+    let name, value
+    const handalChange =(e)=>{
+        name = e.target.name
+        value = e.target.value
+        setData({...data,[name]:value})
+
+    }
+    const submitForm =(e)=>{
+        e.preventDefault()
+        console.log(data);
+    }
   return (
     <>
     <Header>
@@ -14,33 +37,45 @@ const Profile = () => {
          <Form>
              <h1>Let's Create Your Profile Now</h1>
              <label>City you live in *</label>
-             <input placeholder='Enter the city you live in' type="text" />
+             <select autoComplete='off' required name='city'  onChange={handalChange} value={data.city}>
+                 <option >Select</option>
+                 {city.map((ele)=>{
+                     return <option >{ele}</option>
+                 })}
+             </select>
              <label>you live with your family</label>
-             <select>
-                 <option value="">Yes</option>
-                 <option value="">No</option>
+             <select autoComplete='off' required name='family'  onChange={handalChange} value={data.family}>
+                 <option >Select</option>
+                 <option >Yes</option>
+                 <option >No</option>
              </select>
              <label>your Marital Status</label>
-             <select>
-                 <option value="">Neverd</option>
+             <select autoComplete='off' required name='maritalStatus'  onChange={handalChange} value={data.maritalStatus}>
+             <option >Select</option>
+                 <option>Neverd</option>
+                 <option>Married</option>
              </select>
              <label>your diet</label>
-             <select>
-                 <option value="">veg</option>
+             <select autoComplete='off' required name='diet'  onChange={handalChange} value={data.diet}>
+             <option >Select</option>
+                 <option >Veg</option>
+                 <option >No-Veg</option>
+                 <option >Jain</option>
+                 <option >Veg & No-Veg</option>
              </select>
              <label>your height</label>
-             <select>
-                 <option value="">your height</option>
+             <select autoComplete='off' required name='height' onChange={handalChange} value={data.height}>
+             <option >Select</option>
+                {height.map((ele)=>{
+                    return  <option >{ele}</option>
+                })}
              </select>
-             <button><Link to="/profile/step/2">Continue</Link></button>
+             <button type='submit' onClick={submitForm}><Link to="/profile/step/2">Continue</Link></button>
              
          </Form>
         </Card>
     </CreateSection>
-    <Footer>
-        <h1>© 1996-2022 TruShaadi.com, The World's Leading Matchmaking Service™</h1>
-        <h1>Created By Sumit Jambharkar</h1>
-    </Footer>
+    <Footer/>
     </>
   )
 }
@@ -54,7 +89,7 @@ margin:12px;
     font-family:romon
 }`
 const CreateSection = styled.div`
-background-color:aqua;
+background-color:#E8E8E8;
 display:flex;
 justify-content:center;
 padding-top:24px;`
@@ -79,30 +114,28 @@ flex-direction:column;
 >input {
     margin-bottom:8px;
     padding:5px;
+    border:1px solid #FFA500;
+    
+}
+> input:focus {
+    outline:none;
 }
 >select {
     margin-bottom:8px;
     padding:5px;
+    border:1px solid #FFA500;
+    outline:none;
 }
 >button {
     margin-top:8px;
     height:40px;
-    background-color:aqua;
-    border:1px solid aqua;
+    background-color: #FFA500;
+    border:1px solid #FFA500;
     color:white;
     font-weight:700;
 
 }
 >button a {
     text-decoration:none;
-    color:white;
-}`
-const Footer = styled.div`
-background-color:gray;
-display:flex;
-justify-content:space-around;
-> h1 {
-    font-size:16px;
-    padding:24px 24px;
     color:white;
 }`

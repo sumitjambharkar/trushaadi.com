@@ -263,7 +263,7 @@ const Heading = styled.div`
   text-align: center;
   margin-top: 260px;
   position: relative;
-  color: black; ;
+  color: black; 
 `;
 const Nav = styled.div`
   position: relative;
@@ -271,7 +271,7 @@ const Nav = styled.div`
   justify-content: center;
   justify-items: center;
   flex-wrap: wrap;
-  background-color: #000000;
+  background-color:black;
   padding: 4px;
   padding-bottom: 30px;
   margin: 58px 90px 18px 100px;
@@ -431,13 +431,13 @@ const Let = styled.div`
   }
   > a > button {
     width: 150px;
-    background-color: aqua;
+    background-color:#FFA500;
     position: relative;
     overflow: hidden;
-    border: 1px solid #ccc;
+    border: 1px solid #FFA500;
     border-radius: 2px;
     box-sizing: border-box;
-    color: #333;
+    color:white;
     cursor: default;
     outline: none;
     padding: 5px 5px 5px 5px;
