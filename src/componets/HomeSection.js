@@ -2,8 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import Footer from './Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import {logout} from './userSlice';
+import { auth } from './firebase';
+import { useHistory } from 'react-router-dom';
+import {selectUser} from './userSlice';
+
 
 const HomeSection = () => {
+  const user = useSelector(selectUser)
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const handalLogout =() => {
+    dispatch(logout());
+    auth.signOut()
+    history.push('/')
+  }
   return (
     <>
     <Header>
@@ -18,7 +32,8 @@ const HomeSection = () => {
         <Link to="">HELP</Link>
         </Nav>
         <Avtar>
-        <Link to="">Welcome Sumit Jambharkar</Link>
+        <Link to="">{user.email}</Link>
+        <button onClick={handalLogout}>Logout</button>
         </Avtar>
       </NavBar>
       <h3 style={{textAlign:"center",padding:"40px",backgroundColor:" #ebdcdc"}}>Members Looking For Me 418</h3>

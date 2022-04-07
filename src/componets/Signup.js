@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import Theme from "../image/theme.png";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { auth ,createUserCollecton} from "./firebase";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Signup = () => {
-  const history = useHistory()
   const [data, setData ] = useState({
     name:"",
     email:"",
@@ -18,15 +20,30 @@ const Signup = () => {
   })
   const handalSubmit=async(e)=>{
     e.preventDefault()  
-    const respone = await axios.post('http://localhost:3001/register',data)
-    console.log(data);
-    if(respone){
-      history.push("/")
-      setData("")
-    }else{
-      alert("err")
+    const {email,name,birth,number,password} = data
+    try{
+      const {user} = await auth.createUserWithEmailAndPassword(email,password);
+      // await result.user.updateProfile({
+      //   displayName:name,
+      //   phoneNumber:number,
+      //   photoURL:photo
+      // })
+      console.log(user);
+      await createUserCollecton(user,{name,birth,number});
+      toast.success('🦄 Wow so easy!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme:"colored"
+        });
+    }catch(err){
+      console.log(err);
     }
-      
+    setData("")
   }
   let name, value
   const handalChange=(e)=>{
@@ -40,7 +57,7 @@ const Signup = () => {
       <SignupContainer>
       <Form>
         <FormCard>
-          <form >
+          <form method="post"  onSubmit={handalSubmit}>
           <FormC>
             <MainDiv>
               <div
@@ -84,7 +101,7 @@ const Signup = () => {
                 <input name="password" type="password" required autoComplete="off" value={data.password} onChange={handalChange}  />
               </Input>
               <Div>
-                <button onClick={handalSubmit} type="submit" className="button">Register</button>
+                <button type="submit" className="button">Register</button>
               </Div>
               <Forgot>
                     <Div>
@@ -97,6 +114,7 @@ const Signup = () => {
         </FormCard>
       </Form>
       </SignupContainer>
+      <ToastContainer/>
     </>
   );
 };

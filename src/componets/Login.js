@@ -4,39 +4,65 @@ import styled from "styled-components";
 import Theme from "../image/theme.png";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+import { auth } from "./firebase";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from "react-redux";
+import {login} from './userSlice'
+
+
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({
+    email: "",
+    password : ""
+  });
+  const dispatch = useDispatch()
   const history = useHistory();
+  let name, value
+  const handalChange=(e)=>{
+    name= e.target.name
+    value = e.target.value
+    setUser({...user,[name]:value})
+  }
 
   const handalSubmit = async (e) => {
     e.preventDefault();
-    const data  = {email,password}
-  const respone =await axios.post('http://localhost:3001/login',data)
-    console.log(respone);
-    if(respone){
-      alert("success")
-      history.push("/profile");
-      setEmail("")
-      setPassword("")
-    }
-    else {
-      alert("error")
-      history.push("/login");
-      setEmail("")
-      setPassword("")
-
-
-    }
-  };
+    const {email,password} = user
+    if(email && password){
+      try{
+        const {result } = await auth.signInWithEmailAndPassword(email,password)
+        dispatch(login({
+          email:email,
+          password:password,
+          displayName:displayName,
+        }))
+        console.log(result);
+        toast.success('🦄 Wow so easy!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme:"colored"
+        });
+        history.push('/home/dashbord')
+      }
+      catch(err){
+        console.log(err);
+      }
+    }  
+    setUser("")
+  }
   return (
     <>
       <LoginContainer>
         <Form>
           <FormCard>
             <FormC>
-              <form >
+              <form onSubmit={handalSubmit}>
                 <MainDiv>
                   <div style={{ marginLeft: "256px" }}>
                     <Link to="/">X</Link>
@@ -52,10 +78,12 @@ const Login = () => {
                   </Label>
                   <Input>
                     <input
+                      name="email"
                       required
                       autoComplete="off"
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={handalChange}
                       type="email"
+                      value={user.email}
                     />
                   </Input>
                   <Label>
@@ -64,10 +92,12 @@ const Login = () => {
                   <div></div>
                   <Input>
                     <input
+                      name="password"
                       required
                       autoComplete="off"
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={handalChange}
                       type="password"
+                      value={user.password}
                     />
                   </Input>
                   <Forgot>
@@ -80,7 +110,7 @@ const Login = () => {
                     </Div>
                   </Forgot>
                   <Div>
-                    <button onClick={handalSubmit} type="submit" className="button">
+                    <button type="submit" className="button">
                       Login
                     </button>
                   </Div>
@@ -102,6 +132,7 @@ const Login = () => {
                 </MainDiv>
               </form>
             </FormC>
+            <ToastContainer/>
           </FormCard>
         </Form>
       </LoginContainer>
