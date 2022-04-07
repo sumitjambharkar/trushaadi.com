@@ -13,7 +13,8 @@ const Login = () => {
   const handalSubmit = async (e) => {
     e.preventDefault();
     const data  = {email,password}
-    const respone =await axios.post('http://localhost:3001/login',data)
+  const respone =await axios.post('http://localhost:3001/login',data)
+    console.log(respone);
     if(respone){
       alert("success")
       history.push("/profile");

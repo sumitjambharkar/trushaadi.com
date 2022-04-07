@@ -12,6 +12,7 @@ import Steptwo from './componets/Steptwo';
 import Topmatch from './componets/Topmatch';
 import About from './componets/About';
 import HomeSection from './componets/HomeSection';
+import View from './componets/View';
 
 
 function App() {
@@ -51,6 +52,9 @@ function App() {
           </Route>
           <Route exact path="/home/dashbord">
             <HomeSection/>
+          </Route>
+          <Route exact path="/home/dashbord/view">
+            <View/>
           </Route>
         </Switch>
     </Router>
