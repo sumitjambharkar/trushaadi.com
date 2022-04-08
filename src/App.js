@@ -45,9 +45,15 @@ function App() {
         <Route exact path="/">
           <Home/>
         </Route> :
+        <>
         <Route exact path="/home/dashbord">
           <HomeSection/>
-        </Route> }
+        </Route>
+        <Route exact path="/home/dashbord/view">
+        <View/>
+      </Route>
+        </>
+         }
           <Route exact path="/signup">
             <Signup />
           </Route>
@@ -76,9 +82,7 @@ function App() {
           <Route exact path="/about">
             <About/>
           </Route>
-          <Route exact path="/home/dashbord/view">
-            <View/>
-          </Route>
+          
         </Switch>
     </Router>
     </>

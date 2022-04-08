@@ -35,7 +35,6 @@ const Login = () => {
         dispatch(login({
           email:email,
           password:password,
-          displayName:displayName,
         }))
         console.log(result);
         toast.success('🦄 Wow so easy!', {

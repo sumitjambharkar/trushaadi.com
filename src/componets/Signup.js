@@ -7,11 +7,15 @@ import { useHistory } from "react-router-dom";
 import { auth ,createUserCollecton} from "./firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from "react-redux";
+
 
 
 const Signup = () => {
+  const dispatch = useDispatch()
+  const history = useHistory()
   const [data, setData ] = useState({
-    name:"",
+    displayName:"",
     email:"",
     number:"",
     birth:"",
@@ -20,17 +24,12 @@ const Signup = () => {
   })
   const handalSubmit=async(e)=>{
     e.preventDefault()  
-    const {email,name,birth,number,password} = data
+    const {email,displayName,birth,number,password} = data;
     try{
-      const {user} = await auth.createUserWithEmailAndPassword(email,password);
-      // await result.user.updateProfile({
-      //   displayName:name,
-      //   phoneNumber:number,
-      //   photoURL:photo
-      // })
+      const {user} = await auth.createUserWithEmailAndPassword(email,password,{displayName});
       console.log(user);
-      await createUserCollecton(user,{name,birth,number});
-      toast.success('🦄 Wow so easy!', {
+      await createUserCollecton(user,{displayName,birth,number});
+      toast.success(`welcome ${user.email} !`, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -40,6 +39,7 @@ const Signup = () => {
         progress: undefined,
         theme:"colored"
         });
+        history.push('/profile')
     }catch(err){
       console.log(err);
     }
@@ -73,7 +73,7 @@ const Signup = () => {
                 <label>Full Name</label>
               </Label>
               <Input>
-                <input name="name" type="name" required autoComplete="off" value={data.name} onChange={handalChange} />
+                <input name="displayName" type="name" required autoComplete="off" value={data.displayName} onChange={handalChange} />
               </Input>
               <Label>
                 <label>Birth Date</label>

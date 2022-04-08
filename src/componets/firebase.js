@@ -24,17 +24,27 @@ export const createUserCollecton =async(user,additionalData)=>{
   const snapshot = await userRef.get();
   if (!snapshot.exists){
     const {email} = user;
-    const {name} = additionalData;
+    const {displayName} = additionalData;
     const {number} = additionalData;
     const {birth} = additionalData;
+    // const {city} = additionalData;
+    // const {family} = additionalData;
+    // const {maritalStatus} = additionalData;
+    // const {diet} = additionalData;
+    // const {height} = additionalData;
+
     try{
       userRef.set({
         email,
-        name,
+        displayName,
         birth,
         number,
-        createdAt :new Date()
-
+        createdAt :new Date(),
+        // city,
+        // family,
+        // maritalStatus,
+        // diet,
+        // height,
       })
     }
     catch(err){

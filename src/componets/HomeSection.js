@@ -27,12 +27,12 @@ const HomeSection = () => {
     <NavBar>
         <Nav>
         <Link to="/home/dashbord">MY ACCOUNT</Link>
-        <Link to="">MY MATCHES</Link>
-        <Link to="">MESSAGE</Link>
-        <Link to="">HELP</Link>
+        <Link>MY MATCHES</Link>
+        <Link>MESSAGE</Link>
+        <Link>HELP</Link>
         </Nav>
         <Avtar>
-        <Link to="">{user.email}</Link>
+        <Link>{user.email}</Link>
         <button onClick={handalLogout}>Logout</button>
         </Avtar>
       </NavBar>

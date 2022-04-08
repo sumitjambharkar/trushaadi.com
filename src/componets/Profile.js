@@ -2,12 +2,16 @@ import React,{useState} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import Footer from './Footer';
+import { db ,auth} from './firebase';
+
+
 
 
 const Profile = () => {
     const height = [4.0,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5.0,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6.0,6.1,
                    6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,6.0,7.0,7.1 ]
     const city = ['Mumbai','Delhi','Chennai','Bangalore','Hyderabad','Pune','Kochi','Kolkata']
+
     const [data, setData] = useState({
         city: "",
         family : "",
@@ -23,9 +27,24 @@ const Profile = () => {
         setData({...data,[name]:value})
 
     }
-    const submitForm =(e)=>{
+    const submitForm =async(e)=>{
         e.preventDefault()
-        console.log(data);
+        const {city,family,maritalStatus,diet,height} = data
+        try {
+            auth.onAuthStateChanged(user => {
+                if (user) {
+                 db.collection("users").doc(user.uid).get({
+                    city,family,maritalStatus,diet,height
+                 })
+                } else {
+                 console.log(err);
+                }
+               })
+           
+        }
+        catch(err){
+            console.log(err);
+        }
     }
   return (
     <>
@@ -37,20 +56,20 @@ const Profile = () => {
          <Form>
              <h1>Let's Create Your Profile Now</h1>
              <label>City you live in *</label>
-             <select autoComplete='off' required name='city'  onChange={handalChange} value={data.city}>
+             <select autoComplete='off' required name='city'   onChange={handalChange} value={data.city}>
                  <option >Select</option>
                  {city.map((ele)=>{
                      return <option >{ele}</option>
                  })}
              </select>
              <label>you live with your family</label>
-             <select autoComplete='off' required name='family'  onChange={handalChange} value={data.family}>
+             <select autoComplete='off' required name='family'   onChange={handalChange} value={data.family}>
                  <option >Select</option>
                  <option >Yes</option>
                  <option >No</option>
              </select>
              <label>your Marital Status</label>
-             <select autoComplete='off' required name='maritalStatus'  onChange={handalChange} value={data.maritalStatus}>
+             <select autoComplete='off' required name='maritalStatus'   onChange={handalChange} value={data.maritalStatus}>
              <option >Select</option>
                  <option>Neverd</option>
                  <option>Married</option>
