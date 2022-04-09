@@ -1,54 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-
-
-
 const Story = () => {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            const respone = await fetch("http://localhost:3001/profile")
+            const result = await respone.json()
+            setData(result.profile)
+        }
+        getData()
+    }, [])
+
     return (
         <>
             <Title>
                 <h2>Matrimony Service with Millions of Success Stories</h2>
             </Title>
             <StorySection>
-                <StoryDiv>
-                    <StoryImage>
-                        <img alt='img' style={{width:"320px",height:"250px"}} src="https://img.shaadi.com/success-story/2SH09514809-hSH27371565-big.jpg" />
-                    </StoryImage>
-                    <StoryDetails>
-                        <h3>VAIBHAV AND ALKA</h3>
-                        <p>
-                            {" "}<Link to="couple">...Read more</Link>
-                        </p>
-                    </StoryDetails>
-                </StoryDiv>
-                <StoryDiv>
-                    <StoryImage>
-                        <img alt='img' style={{width:"320px",height:"250px"}} src="https://img.shaadi.com/success-story/2SH09514809-hSH27371565-big.jpg" />
-                    </StoryImage>
-                    <StoryDetails>
-                        <h3>VAIBHAV AND ALKA</h3>
-                        <p>
-                            {" "}<Link to="couple">...Read more</Link>
-                        </p>
-                    </StoryDetails>
-                </StoryDiv>
-                <StoryDiv>
-                    <StoryImage>
-                        <img alt='img' style={{width:"320px",height:"250px"}} src="https://img.shaadi.com/success-story/2SH09514809-hSH27371565-big.jpg" />
-                    </StoryImage>
-                    <StoryDetails>
-                        <h3>VAIBHAV AND ALKA</h3>
-                        <p>
-                            {" "}<Link to="couple">...Read more</Link>
-                        </p>
-                    </StoryDetails>
-                </StoryDiv>
+                {data.map((ele) => {
+                    return (
+                        <>
+                            <StoryDiv>
+                                <StoryImage>
+                                    <img alt='img' style={{ width: "320px", height: "250px" }} src={ele.image} />
+                                </StoryImage>
+                                <StoryDetails>
+                                    <h3>{ele.name}</h3>
+                                    <p>
+                                        {" "}<Link to={`/couple/${ele._id}`}>...Read more</Link>
+                                    </p>
+                                </StoryDetails>
+                            </StoryDiv>
+
+                        </>
+                    )
+                })}
             </StorySection>
             <SectionButton>
-            <span>Your story is waiting to happen!</span>
-            <p><Link to='/signup'>Get Started</Link></p>
+                <span>Your story is waiting to happen!</span>
+                <p><Link to='/signup'>Get Started</Link></p>
             </SectionButton>
         </>
     )
@@ -101,7 +94,7 @@ const StoryDetails = styled.div`
        
    }`
 
-   const SectionButton = styled.div`
+const SectionButton = styled.div`
    background-color:#FFA500;
    display:flex;
    justify-content:center;

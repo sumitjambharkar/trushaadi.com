@@ -1,22 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import UseNav from "./UseNav";
+import { useParams } from "react-router-dom";
+
 
 const CoupleDetails = () => {
+  const params = useParams()
+
+  const [data, setData] = useState({})
+
+    useEffect(() => {
+        const getData = async () => {
+            const respone = await fetch(`http://localhost:3001/profile/${params.id}`)
+            const result = await respone.json()
+            console.log(result.profile);
+            setData(result.profile)
+        }
+        getData()
+    }, [params.id])
+
   return (
     <>
-      <Header>
-        <h1>Trushaddi.com</h1>
-      </Header>
-      <NavBar>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Register</Link>
-      </NavBar>
+      <UseNav/>
       <Details className="container">
-        <Link to="/couple">Featured Success Stories</Link>
+        <Link to="/">Featured Success Stories</Link>
         <Link to="/video">Videos Stories</Link>
         <Link to="/tellus">Tell Us Your Story</Link>
       </Details>
@@ -25,20 +34,14 @@ const CoupleDetails = () => {
         <p>This is where we celebrate Shaadi.com Success Stories.</p>
       </Welcome>
       <Head className="container">
-        <h1>Vaibhav & Vishaka</h1>
-        <p>15 December 2022</p>
+        <h1>{data.name}</h1>
+        <p>{data.date}</p>
         <img
-          src="https://img.shaadi.com/success-story/2SH09514809-hSH27371565-big.jpg"
+          src={data.image}
           alt=""
         />
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, iusto
-          culpa saepe debitis repellendus odio ipsa nesciunt veniam vitae hic
-          ipsam, quod provident odit beatae assumenda reiciendis omnis. Magni,
-          eligendi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
-          quae officiis alias praesentium quas cum eligendi maiores quod quaerat
-          iusto illum minima tenetur, vel architecto nihil distinctio earum sed
-          aliquid.
+         {data.des}
         </p>
       </Head>
       <Footer/>
@@ -47,31 +50,7 @@ const CoupleDetails = () => {
 };
 
 export default CoupleDetails;
-const Header = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin: 12px;
-  > h1 {
-    font-family: romon;
-  }
-`;
-const NavBar = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  background-color: red;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  > a {
-    color: white;
-    text-decoration: none;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    font-weight: 700;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  }
-`;
+
 const Details = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;

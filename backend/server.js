@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const User = require('./model/User');
+const Profile = require("./model/Profile")
 const PatnerDetails = require('./model/PatnerDetails');
 const cors = require('cors')
 const app = express()
@@ -11,9 +12,25 @@ mongoose.connect("mongodb+srv://sumitjambharkar:sumitjambharkar@cluster0.nlsrq.m
 app.use(express.json())
 app.use(cors())
 
-app.get('/', (req, res) => {
+app.get('/',(req, res) => {
   res.json({
     msge: "Hello"
+  })
+
+})
+app.get('/profile',async (req, res) => {
+  const profile =await Profile.find(req.body)
+  res.json({
+    profile:profile
+  }) 
+
+})
+app.get('/profile/:id',async(req, res) => {
+  const {id} = req.params.id
+  const profile = await Profile.findById(req.params.id)
+  console.log(profile);
+  res.json({
+    profile
   })
 
 })

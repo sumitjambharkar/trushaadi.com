@@ -16,6 +16,7 @@ import View from './componets/View';
 import { useDispatch, useSelector} from 'react-redux';
 import {selectUser,login,logout} from './componets/userSlice';
 import { auth } from './componets/firebase';
+import Contact from './componets/Contact';
 
 
 function App() {
@@ -57,7 +58,7 @@ function App() {
           <Route exact path="/signup">
             <Signup />
           </Route>
-          <Route exact path="/couple">
+          <Route exact path="/couple/:id">
             <CoupleDetails/>
           </Route>
           <Route exact path="/video">
@@ -81,6 +82,9 @@ function App() {
           </Route>
           <Route exact path="/about">
             <About/>
+          </Route>
+          <Route exact path="/contact">
+            <Contact/>
           </Route>
           
         </Switch>

@@ -1,21 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import UseNav from './UseNav';
 
 const Tellus = () => {
+
   return (
     <>
-    <Header>
-        <h1>Trushaddi.com</h1>
-    </Header>
-    <NavBar>
-    <Link to="/">Home</Link>
-    <Link to="/about">About</Link>
-    <Link to="/login">Login</Link>
-    <Link to="/signup">Register</Link>
-    </NavBar>
+    <UseNav/>
     <Details className='container'>
-    <Link to="/couple">Featured Success Stories</Link>
+    <Link to="/">Featured Success Stories</Link>
     <Link to="/video">Videos Stories</Link>
     <Link to="/tellus">Tell Us Your Story</Link>
     </Details>
@@ -67,30 +62,7 @@ const Tellus = () => {
 }
 
 export default Tellus;
-const Header = styled.div`
-display:flex;
-justify-content:space-around;
-margin:12px;
-> h1 {
-    font-family:romon
-}`
-const NavBar =styled.div`
-display:flex;
-justify-content:space-evenly;
-background-color:red;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-> a{
-    color:white;
-    text-decoration:none;
-    padding-top:6px;
-    padding-bottom:6px;
-    display:flex;
-    justify-content:center;
-    justify-items:center;
-    font-weight:700;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 
-}`
 const Details = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 display:flex;
