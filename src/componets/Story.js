@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { db } from "./firebase"
 
 const Story = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        const getData = async () => {
-            const respone = await fetch("http://localhost:3001/profile")
-            const result = await respone.json()
-            setData(result.profile)
-        }
-        getData()
+        db.collection("success").onSnapshot((snapshot)=>{
+            setData(snapshot.docs.map((doc)=>({
+                id : doc.id,
+                data : doc.data()
+            })))
+        })
     }, [])
 
     return (
@@ -25,12 +26,12 @@ const Story = () => {
                         <>
                             <StoryDiv>
                                 <StoryImage>
-                                    <img alt='img' style={{ width: "320px", height: "250px" }} src={ele.image} />
+                                    <img alt='img' style={{ width: "320px", height: "250px" }} src={ele.data.image} />
                                 </StoryImage>
                                 <StoryDetails>
-                                    <h3>{ele.name}</h3>
+                                    <h3>{ele.data.name}</h3>
                                     <p>
-                                        {" "}<Link to={`/couple/${ele._id}`}>...Read more</Link>
+                                        {" "}<Link to={`/couple/${ele.id}`}>...Read more</Link>
                                     </p>
                                 </StoryDetails>
                             </StoryDiv>

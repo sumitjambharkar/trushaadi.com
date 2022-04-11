@@ -3,7 +3,6 @@ import Logoo from "../image/logo192.png";
 import styled from "styled-components";
 import Theme from "../image/theme.png";
 import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
 import { auth } from "./firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -37,17 +36,16 @@ const Login = () => {
           password:password,
         }))
         console.log(result);
-        toast.success('🦄 Wow so easy!', {
+        toast.success('Login success!', {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          progress: undefined,
           theme:"colored"
         });
-        history.push('/home/dashbord')
+        history.push('/')
       }
       catch(err){
         console.log(err);
@@ -131,10 +129,10 @@ const Login = () => {
                 </MainDiv>
               </form>
             </FormC>
-            <ToastContainer/>
           </FormCard>
         </Form>
       </LoginContainer>
+      <ToastContainer/>
     </>
   );
 };

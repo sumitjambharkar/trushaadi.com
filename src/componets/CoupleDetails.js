@@ -4,22 +4,19 @@ import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import UseNav from "./UseNav";
 import { useParams } from "react-router-dom";
+import { db } from "./firebase";
 
 
 const CoupleDetails = () => {
-  const params = useParams()
+  const {personId} = useParams()
 
   const [data, setData] = useState({})
 
     useEffect(() => {
-        const getData = async () => {
-            const respone = await fetch(`http://localhost:3001/profile/${params.id}`)
-            const result = await respone.json()
-            console.log(result.profile);
-            setData(result.profile)
-        }
-        getData()
-    }, [params.id])
+      db.collection("success").doc(personId).onSnapshot(snapshot=>{
+        setData(snapshot.data())
+      })
+    }, [personId])
 
   return (
     <>
@@ -41,7 +38,7 @@ const CoupleDetails = () => {
           alt=""
         />
         <p>
-         {data.des}
+         {data.desc}
         </p>
       </Head>
       <Footer/>

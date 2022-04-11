@@ -17,11 +17,17 @@ const Contact = () => {
         <Address>
             <button>TruShaadi</button>
             <span>Address</span>
-            <h4>A-11/F-2, Block-A Dilshad Garden Delhi-110095 New Delhi. India</h4>
+            <h4>001, Kenwood Apartment,
+            <br></br> Lokhandwala Complex,
+            <br></br> Andheri West, Mumbai -400 053</h4>
             <span>Email Id</span>
             <h4>trushaadi@gmail.com</h4>
             <span>Contact No</span>
-            <h4>+918898699498</h4>
+            <h4>+91 98331 88536</h4>
+            <span>Telephone No</span>
+            <h4>+91 224006 5656</h4>
+            <span>U.K No</span>
+            <h4>+44 7405094232</h4>
         </Address>
         <FeedBack>
             <span>Fill form for enquiry or concern.</span>
@@ -66,7 +72,7 @@ button {
     margin-bottom: 12px;
     font-size:24px;
     height: calc(2.5rem);
-    width:435px;
+    width:auto;
     border: 1px solid #ffa500;
     background-color:#ffa500;
     color:white;
@@ -117,4 +123,20 @@ flex-direction:column;
     background-color:#ffa500;
     color:white;
 
+}
+@media (max-width:560px) {
+    > button {
+        width:250px;
+    }
+    > input {
+    margin:6px;
+    padding:4px;
+    font-size: 0.9rem;
+    border-radius: 0.15rem;
+    height: calc(2.5rem);
+    width:250px;
+    border: 1px solid #ffa500;
+    outline:none;
+}
+    
 }`

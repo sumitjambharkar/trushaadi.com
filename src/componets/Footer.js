@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -13,17 +14,17 @@ const Footer = () => {
           <SecandDiv>
           <h2>About Us</h2>
           <hr/>
-          <p>About Trushaddi.com »</p>
-          <p>Contact Us »</p>
-          <p>Sitemap »</p>
+          <p><Link to="/about">About Trushaddi.com »</Link></p>
+          <p><Link to="/contact">Contact Us »</Link></p>
+          <p><Link to="/sitemap">Sitemap »</Link></p>
           </SecandDiv>
           <ThirdDiv>
           <h2>Information</h2>
           <hr/>
-          <p>Terms of Use »</p>
-          <p>Privacy Policy »</p>
-          <p>Help »</p>
-          <p>Contact Us »</p>
+          <p><Link>Terms of Use »</Link></p>
+          <p><Link to="/privacy-policy">Privacy Policy »</Link></p>
+          <p><Link>Help »</Link></p>
+          <p><Link to="/contact">Contact Us »</Link></p>
 
           </ThirdDiv>
       </FooterSection>
@@ -63,7 +64,7 @@ color:white;
     font-family: inherit;
     font-weight: 400;
   }
-  >p {
+  >p{
     color:white;
     padding-bottom: 10px;
     display: block;
@@ -77,7 +78,7 @@ color:white;
     font-family: inherit;
     font-weight: 400;
   }
-  >p {
+  >p > a {
     color:#FFA500;
     padding-bottom:6px;
     display: block;
@@ -91,7 +92,7 @@ color:white;
     font-family: inherit;
     font-weight: 400;
   }
-  >p {
+  >p > a {
     
     color:#FFA500;
     padding-bottom:6px;

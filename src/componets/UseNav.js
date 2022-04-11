@@ -13,8 +13,8 @@ const UseNav = () => {
         <Nav>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        <Link>Register</Link>
-        <Link>Login</Link>
+        <Link to="/signup">Register</Link>
+        <Link to="/login">Login</Link>
         </Nav>
         <Avtar>
         <Link>Help</Link>

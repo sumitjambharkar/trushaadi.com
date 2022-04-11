@@ -26,13 +26,13 @@ const HomeSection = () => {
     </Header>
     <NavBar>
         <Nav>
-        <Link to="/home/dashbord">MY ACCOUNT</Link>
+        <Link to="/">MY ACCOUNT</Link>
         <Link>MY MATCHES</Link>
         <Link>MESSAGE</Link>
         <Link>HELP</Link>
         </Nav>
         <Avtar>
-        <Link>{user.email}</Link>
+        <Link>{user.displayName}</Link>
         <button onClick={handalLogout}>Logout</button>
         </Avtar>
       </NavBar>
@@ -43,28 +43,28 @@ const HomeSection = () => {
         <h6>mnayuri pawar</h6>
         <span>ugsgjgsh</span>
         <span>fdjhklhjv</span>
-        <button><Link to="/home/dashbord/view">Send Message</Link></button>
+        <button><Link to="/view">Send Message</Link></button>
       </Card>
       <Card>
         <img src="https://dynamic.matrimonialsindia.com/photon/dir_27/805970/W/513125-jn7XG4NsPG.jpg" alt="im"/>
         <h6>mnayuri pawar</h6>
         <span>ugsgjgsh</span>
         <span>fdjhklhjv</span>
-        <button><Link to="/home/dashbord/view">Send Message</Link></button>
+        <button><Link to="/view">Send Message</Link></button>
       </Card>
       <Card>
         <img src="https://dynamic.matrimonialsindia.com/photon/dir_27/805970/W/513125-jn7XG4NsPG.jpg" alt="im"/>
         <h6>mnayuri pawar</h6>
         <span>ugsgjgsh</span>
         <span>fdjhklhjv</span>
-        <button><Link to="/home/dashbord/view">Send Message</Link></button>
+        <button><Link to="/view">Send Message</Link></button>
       </Card>
       <Card>
         <img src="https://dynamic.matrimonialsindia.com/photon/dir_27/805970/W/513125-jn7XG4NsPG.jpg" alt="im"/>
         <h6>mnayuri pawar</h6>
         <span>ugsgjgsh</span>
         <span>fdjhklhjv</span>
-        <button><Link to="/home/dashbord/view">Send Message</Link></button>
+        <button><Link to="/view">Send Message</Link></button>
       </Card>
       </Section>
       <Footer/>

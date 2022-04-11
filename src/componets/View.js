@@ -26,7 +26,7 @@ const View = () => {
     </Header>
     <NavBar>
         <Nav>
-        <Link to="/home/dashbord">MY ACCOUNT</Link>
+        <Link to="/">MY ACCOUNT</Link>
         <Link>MY MATCHES</Link>
         <Link>MESSAGE</Link>
         <Link>HELP</Link>

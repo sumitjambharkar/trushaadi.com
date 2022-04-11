@@ -8,6 +8,7 @@ import { auth ,createUserCollecton} from "./firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
+import { login } from "./userSlice";
 
 
 
@@ -26,9 +27,19 @@ const Signup = () => {
     e.preventDefault()  
     const {email,displayName,birth,number,password} = data;
     try{
-      const {user} = await auth.createUserWithEmailAndPassword(email,password,{displayName});
+      const {user} = await auth.createUserWithEmailAndPassword(email,password,{displayName,number});
       console.log(user);
+      await user.updateProfile({
+        displayName:displayName,
+        phoneNumber:number,
+      })
       await createUserCollecton(user,{displayName,birth,number});
+      dispatch(login({
+        uid : user.uid,
+        email:user.email,
+        displayName:user.displayName,
+        phoneNumber:user.number
+      }))
       toast.success(`welcome ${user.email} !`, {
         position: "top-right",
         autoClose: 5000,

@@ -17,6 +17,8 @@ import { useDispatch, useSelector} from 'react-redux';
 import {selectUser,login,logout} from './componets/userSlice';
 import { auth } from './componets/firebase';
 import Contact from './componets/Contact';
+import Policy from './componets/Policy';
+import Sitemap from './componets/Sitemap';
 
 
 function App() {
@@ -47,18 +49,21 @@ function App() {
           <Home/>
         </Route> :
         <>
-        <Route exact path="/home/dashbord">
+        <Route exact path="/">
           <HomeSection/>
         </Route>
-        <Route exact path="/home/dashbord/view">
+        <Route exact path="/view">
         <View/>
       </Route>
+      <Route exact path="/profile">
+            <Profile/>
+          </Route>
         </>
          }
           <Route exact path="/signup">
             <Signup />
           </Route>
-          <Route exact path="/couple/:id">
+          <Route exact path="/couple/:personId">
             <CoupleDetails/>
           </Route>
           <Route exact path="/video">
@@ -71,9 +76,7 @@ function App() {
             <Login />
           </Route>
           
-          <Route exact path="/profile">
-            <Profile/>
-          </Route>
+         
           <Route exact path="/profile/step/2">
             <Steptwo/>
           </Route>
@@ -85,6 +88,12 @@ function App() {
           </Route>
           <Route exact path="/contact">
             <Contact/>
+          </Route>
+          <Route exact path="/privacy-policy">
+            <Policy/>
+          </Route>
+          <Route exact path="/sitemap">
+            <Sitemap/>
           </Route>
           
         </Switch>
