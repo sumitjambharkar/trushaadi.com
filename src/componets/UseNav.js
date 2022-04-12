@@ -1,8 +1,22 @@
 import React from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import {logout} from './userSlice';
+import { auth } from './firebase';
+import { useHistory } from 'react-router-dom';
+import {selectUser} from './userSlice';
+
 
 const UseNav = () => {
+  const user = useSelector(selectUser)
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const handalLogout =() => {
+    dispatch(logout());
+    auth.signOut()
+    history.push('/')
+  }
   return (
     <>
     <Header>
@@ -13,11 +27,30 @@ const UseNav = () => {
         <Nav>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
+        {
+        !user ? 
+        <>
         <Link to="/signup">Register</Link>
         <Link to="/login">Login</Link>
+        </>
+        :
+        <>
+        <Link to="/">My Account</Link>
+        <Link to="/">My Matches</Link>
+        </>
+        } 
+        
         </Nav>
         <Avtar>
-        <Link>Help</Link>
+          {
+            ! user ? 
+            <Link>Help</Link>
+            :
+            <>
+            <Link>{user.email}</Link>
+            <button onClick={handalLogout}>Logout</button>
+            </>
+          }
         </Avtar>
       </NavBar>
     

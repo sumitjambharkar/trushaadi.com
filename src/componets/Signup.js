@@ -156,6 +156,9 @@ const FormC = styled.div`
   background-color: white;
   padding:1rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  @media (max-width:400px) {
+    width:290px;
+  }
 `;
 const MainDiv = styled.div`
   align-items: center;

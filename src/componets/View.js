@@ -2,40 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import Footer from './Footer';
-import { useDispatch, useSelector } from 'react-redux';
-import {logout} from './userSlice';
-import { auth } from './firebase';
-import { useHistory } from 'react-router-dom';
-import {selectUser} from './userSlice';
+import UseNav from './UseNav';
 
 
 const View = () => {
-  const user = useSelector(selectUser)
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const handalLogout =() => {
-    dispatch(logout());
-    auth.signOut()
-    history.push('/')
-  }
   return (
     <>
-    <Header>
-        <h1>Trushaddi.com</h1>
-        <h6>Free Membership</h6>
-    </Header>
-    <NavBar>
-        <Nav>
-        <Link to="/">MY ACCOUNT</Link>
-        <Link>MY MATCHES</Link>
-        <Link>MESSAGE</Link>
-        <Link>HELP</Link>
-        </Nav>
-        <Avtar>
-        <Link to="">Welcome Sumit Jambharkar</Link>
-        <button onClick={handalLogout}>Logout</button>
-        </Avtar>
-      </NavBar>
+    <UseNav/>
       <ProfileSection>
           <ImageSection>
               <CardImage>

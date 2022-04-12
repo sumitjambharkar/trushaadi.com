@@ -29,6 +29,7 @@ const Story = () => {
                                     <img alt='img' style={{ width: "320px", height: "250px" }} src={ele.data.image} />
                                 </StoryImage>
                                 <StoryDetails>
+                                    <p></p>
                                     <h3>{ele.data.name}</h3>
                                     <p>
                                         {" "}<Link to={`/couple/${ele.id}`}>...Read more</Link>
@@ -88,6 +89,7 @@ const StoryDetails = styled.div`
     font-weight:500;
     color: #72727d;
     text-align:center;
+    margin:4px;
    }
    >p >a {
        text-decoration:none;

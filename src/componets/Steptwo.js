@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
+import { auth, db } from './firebase';
 
 const Steptwo = () => {
+    const [data, setData] = useState({
+       qaulification :"" ,
+       collage :"",
+       work:"",
+       income:""
+    })
+
+    const submitForm = (e)=>{
+        e.preventDefault() 
+        const {qaulification,collage,work,income} = data
+        auth.onAuthStateChanged(user=>{
+            if(user){
+                db.collection("users").doc(user.uid).collection("userdata2").add({
+                    qaulification:qaulification,
+                    collage:collage,
+                    work:work,
+                    income:income
+                })
+            }
+        })
+    }
+    let name, value
+    const handalChange =(e)=>{
+        name = e.target.name
+        value = e.target.value
+        setData({...data,[name]:value})
+
+    } 
   return (
     <>
     <Header>
@@ -14,18 +43,17 @@ const Steptwo = () => {
          <Form>
              <h1>Just a few questions your about education & career</h1>
              <label>Your highest qaulification *</label>
-             <input placeholder='Enter the city you live in' type="text" />
+             <input name='qaulification' onChange={handalChange} value={data.qaulification} placeholder='Enter Your Qualification' type="text" />
              <label>Your collage name</label>
-             <input placeholder='Enter your collage' type="text" />
+             <input name='collage' onChange={handalChange} value={data.collage} placeholder='Enter your collage' type="text" />
              <label>Your work with</label>
-             <select>
-                 <option value="">Bussiness</option>
-                 <option value="">Self Employed</option>
+             <select name='work'  onChange={handalChange} value={data.work}>
+                 <option>Bussiness</option>
+                 <option>Self Employed</option>
              </select>
              <label>Your monthly income</label>
-             <input placeholder='Enter your income' type="text" />
-             <button><Link to="/top-matches">Continue</Link></button>
-             
+             <input name='income' onChange={handalChange} value={data.income} placeholder='Enter your income' type="text" />
+             <button onClick={submitForm}><Link to="/top-matches">Continue</Link></button> 
          </Form>
         </Card>
     </CreateSection>

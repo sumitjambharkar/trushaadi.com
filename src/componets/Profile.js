@@ -1,19 +1,11 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import Footer from './Footer';
-import { useSelector } from 'react-redux';
-import {selectUser} from './userSlice';
-
-
+import { auth, db } from './firebase';
 
 
 const Profile = () => {
-    const user = useSelector(selectUser)
-
-    const height = [4.0,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5.0,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6.0,6.1,
-                   6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,6.0,7.0,7.1 ]
-    const city = ['Mumbai','Delhi','Chennai','Bangalore','Hyderabad','Pune','Kochi','Kolkata']
 
     const [data, setData] = useState({
         city: "",
@@ -21,20 +13,37 @@ const Profile = () => {
         maritalStatus: "",
         diet : "",
         height : ""
-
     })
+
+        const submitForm = (e)=>{
+            e.preventDefault() 
+            const {city,family,maritalStatus,diet,height} = data
+            auth.onAuthStateChanged(user=>{
+                if(user){
+                    db.collection("users").doc(user.uid).collection("userdata1").add({
+                        city:city,
+                        famil:family,
+                        diet:diet,
+                        maritalStatus:maritalStatus,
+                        height:height
+                    })
+                }
+            })
+        }
+    
     let name, value
     const handalChange =(e)=>{
         name = e.target.name
         value = e.target.value
         setData({...data,[name]:value})
 
-    }            
+    } 
+   
 
-    const submitForm =(e)=>{
-        e.preventDefault()   
-        
-    }
+    const height = [4.0,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5.0,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6.0,6.1,
+                   6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,6.0,7.0,7.1 ]
+    const city = ['Mumbai','Delhi','Chennai','Bangalore','Hyderabad','Pune','Kochi','Kolkata']
+           
   return (
     <>
     <Header>

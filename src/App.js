@@ -19,6 +19,7 @@ import { auth } from './componets/firebase';
 import Contact from './componets/Contact';
 import Policy from './componets/Policy';
 import Sitemap from './componets/Sitemap';
+import SendEmail from './componets/SendEmail';
 
 
 function App() {
@@ -58,6 +59,26 @@ function App() {
       <Route exact path="/profile">
             <Profile/>
           </Route>
+          <Route exact path="/about">
+            <About/>
+          </Route>
+          <Route exact path="/contact">
+            <Contact/>
+          </Route>
+          <Route exact path="/privacy-policy">
+            <Policy/>
+          </Route>
+          <Route exact path="/sitemap">
+            <Sitemap/>
+          </Route>
+          <Route exact path="/profile/step/2">
+            <Steptwo/>
+          </Route>
+          <Route exact path="/top-matches">
+            <Topmatch/>
+          </Route>
+          
+         
         </>
          }
           <Route exact path="/signup">
@@ -75,11 +96,6 @@ function App() {
           <Route exact path="/login">
             <Login />
           </Route>
-          
-         
-          <Route exact path="/profile/step/2">
-            <Steptwo/>
-          </Route>
           <Route exact path="/top-matches">
             <Topmatch/>
           </Route>
@@ -94,6 +110,9 @@ function App() {
           </Route>
           <Route exact path="/sitemap">
             <Sitemap/>
+          </Route>
+          <Route exact path="/forgot-password">
+            <SendEmail/>
           </Route>
           
         </Switch>

@@ -36,15 +36,7 @@ const Login = () => {
           password:password,
         }))
         console.log(result);
-        toast.success('Login success!', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme:"colored"
-        });
+        alert(`${result}`)
         history.push('/')
       }
       catch(err){
@@ -103,7 +95,7 @@ const Login = () => {
                       <span>Stay Login</span>
                     </Div>
                     <Div>
-                      <span>Forgot Password ?</span>
+                      <Link to="/forgot-password"><span >Forgot Password ?</span></Link>
                     </Div>
                   </Forgot>
                   <Div>
@@ -166,6 +158,9 @@ const FormC = styled.div`
   background-color: white;
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  @media (max-width:400px) {
+    width:290px;
+  }
 `;
 const LogoImage = styled.div`
   display: flex;

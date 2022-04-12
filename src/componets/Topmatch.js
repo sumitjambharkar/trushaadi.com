@@ -32,7 +32,7 @@ const Topmatch = () => {
           </Tamplte>
           <Button>
             <button>
-              <Link to="/profile/step/2">Connect with match</Link>
+              <Link to="/">Connect with match</Link>
             </button>
           </Button>
         </Card>
