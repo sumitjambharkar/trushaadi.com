@@ -20,6 +20,10 @@ import Contact from './componets/Contact';
 import Policy from './componets/Policy';
 import Sitemap from './componets/Sitemap';
 import SendEmail from './componets/SendEmail';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from './componets/ScrollToTop';
 
 
 function App() {
@@ -44,6 +48,8 @@ function App() {
   return (
     <>
     <Router>
+      <ScrollToTop/>
+    <ToastContainer theme="colored" position="top-right"/>
     <Switch>
          {!user ?
         <Route exact path="/">

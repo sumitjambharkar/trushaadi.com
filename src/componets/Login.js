@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Theme from "../image/theme.png";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "./firebase";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
 import {login} from './userSlice'
@@ -35,9 +35,11 @@ const Login = () => {
           email:email,
           password:password,
         }))
+        toast.success("Login Success")
         console.log(result);
-        alert(`${result}`)
-        history.push('/')
+        setTimeout(() => {
+          history.push('/')
+        },1000);
       }
       catch(err){
         console.log(err);
@@ -124,7 +126,6 @@ const Login = () => {
           </FormCard>
         </Form>
       </LoginContainer>
-      <ToastContainer/>
     </>
   );
 };

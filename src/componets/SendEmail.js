@@ -12,8 +12,10 @@ const SendEmail = () => {
         e.preventDefault()
         auth.sendPasswordResetEmail(email)
         .then(function () {
-            alert('Please check your email...')
-            history.push("/login")
+          toast.success("Please check your email...")
+          setTimeout(() => {
+          history.push('/login')
+          },1000);
         }).catch(function (e) {
             console.log(e)
         }) 
