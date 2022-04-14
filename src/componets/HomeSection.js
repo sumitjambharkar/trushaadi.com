@@ -1,43 +1,51 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import Footer from './Footer';
 import UseNav from './UseNav';
+import { db } from './firebase';
 
 const HomeSection = () => {
+  
+  function calculate_age(dob) { 
+    var diff_ms = Date.now() - dob.getTime();
+    var age_dt = new Date(diff_ms); 
+  
+    return Math.abs(age_dt.getUTCFullYear() - 1970);
+  }
+
+  const [personData, setPersonData] = useState([])
+  useEffect(() => {
+    db.collection("users").onSnapshot(snapshot => {
+      setPersonData(snapshot.docs.map((doc) => ({
+        id: doc.id,
+        data : doc.data()
+      })))
+    })  
+    
+    return () => {
+      
+    }
+  }, [])
+  
   return (
     <>
      <UseNav/>
       <h3 style={{textAlign:"center",padding:"40px",backgroundColor:" #ebdcdc"}}>Members Looking For Me 418</h3>
       <Section>
-      <Card>
-        <img src="https://dynamic.matrimonialsindia.com/photon/dir_27/805970/W/513125-jn7XG4NsPG.jpg" alt="im"/>
-        <h6>mnayuri pawar</h6>
-        <span>ugsgjgsh</span>
-        <span>fdjhklhjv</span>
-        <button><Link to="/view">Send Message</Link></button>
+      {personData.map((doc)=>{
+        return (
+          <>
+          <Card>
+        <img src={doc.data.image} alt="im"/>
+        <span>{doc.data.displayName.toUpperCase()}</span>
+        <span>{doc.data.gender.toUpperCase()}</span>
+        <span>{calculate_age(new Date(doc.data.birth))}</span>
+        <button><Link to={`/view/${doc.id}`}>Send Message</Link></button>
       </Card>
-      <Card>
-        <img src="https://dynamic.matrimonialsindia.com/photon/dir_27/805970/W/513125-jn7XG4NsPG.jpg" alt="im"/>
-        <h6>mnayuri pawar</h6>
-        <span>ugsgjgsh</span>
-        <span>fdjhklhjv</span>
-        <button><Link to="/view">Send Message</Link></button>
-      </Card>
-      <Card>
-        <img src="https://dynamic.matrimonialsindia.com/photon/dir_27/805970/W/513125-jn7XG4NsPG.jpg" alt="im"/>
-        <h6>mnayuri pawar</h6>
-        <span>ugsgjgsh</span>
-        <span>fdjhklhjv</span>
-        <button><Link to="/view">Send Message</Link></button>
-      </Card>
-      <Card>
-        <img src="https://dynamic.matrimonialsindia.com/photon/dir_27/805970/W/513125-jn7XG4NsPG.jpg" alt="im"/>
-        <h6>mnayuri pawar</h6>
-        <span>ugsgjgsh</span>
-        <span>fdjhklhjv</span>
-        <button><Link to="/view">Send Message</Link></button>
-      </Card>
+          </>
+        )
+      })}
       </Section>
       <Footer/>
     </>

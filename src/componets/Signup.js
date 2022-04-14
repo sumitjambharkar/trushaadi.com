@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Theme from "../image/theme.png";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { auth ,createUserCollecton} from "./firebase";
-import { ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
 import { login } from "./userSlice";
@@ -40,19 +39,14 @@ const Signup = () => {
         displayName:user.displayName,
         phoneNumber:user.number
       }))
-      toast.success(`welcome ${user.email} !`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme:"colored"
-        });
+      toast.success("Register Successfull")
+      setTimeout(() => {
         history.push('/profile')
+      },100);
     }catch(err){
       console.log(err);
+      toast.error("error")
+      history.push('/signup')
     }
     setData("")
   }
@@ -125,7 +119,6 @@ const Signup = () => {
         </FormCard>
       </Form>
       </SignupContainer>
-      <ToastContainer/>
     </>
   );
 };

@@ -1,24 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import Footer from './Footer';
 import UseNav from './UseNav';
+import { useParams } from 'react-router-dom';
+import { db } from './firebase';
 
 
 const View = () => {
+
+  function calculate_age(dob) { 
+    var diff_ms = Date.now() - dob.getTime();
+    var age_dt = new Date(diff_ms); 
+  
+    return Math.abs(age_dt.getUTCFullYear() - 1970);
+  }
+  const {Id} = useParams()
+  const [personData, setPersonData] = useState([])
+  const [personData1, setPersonData1] = useState([])
+  useEffect (() => {
+    db.collection("users").doc(Id).onSnapshot(snapshot => {
+      setPersonData(snapshot.data())
+      console.log(snapshot.data());
+    })
+    db.collection("users").doc(Id).collection("userData1").onSnapshot(snapshot =>{
+      setPersonData1(snapshot.docs.map((doc) => ({
+        id: doc.id,
+        data : doc.data()
+      })))
+      console.log(setPersonData1);
+    })
+  },[Id])
   return (
     <>
     <UseNav/>
       <ProfileSection>
           <ImageSection>
               <CardImage>
-               <img src='https://dynamic.matrimonialsindia.com/photon/dir_27/805970/W/513125-jn7XG4NsPG.jpg' alt=''/>
+               <img src={personData.image} alt=''/>
               </CardImage>
               <ImageDetails>
-                <h3>Sarika Motak</h3>
+                <h3>{personData.displayName}</h3>
                 <hr></hr>
                 {/* <pre> */}
-                <p>       <span>27 year</span>                         <span>Not Specified</span></p>
+                <p>       <span>{calculate_age(new Date(personData.birth))}</span>                         <span>Not Specified</span></p>
                 <p>       <span>Never Married</span>                   <span>Not Specified</span></p>
                 <p>       <span>Tamil</span>                           <span>Not Specified</span></p>
                 <p>       <span>Hindu, Bariman</span>                  <span>Lives in Canada</span></p>
@@ -38,7 +63,7 @@ const View = () => {
               <Agent>
               <First>
               <li>Gender</li>  
-              <li>Female</li>
+              <li>{personData.gender}</li>
               </First>
               <First>
               <li>Caste</li>

@@ -39,7 +39,7 @@ const Login = () => {
         console.log(result);
         setTimeout(() => {
           history.push('/')
-        },1000);
+        },100);
       }
       catch(err){
         console.log(err);
