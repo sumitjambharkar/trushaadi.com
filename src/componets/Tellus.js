@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import UseNav from './UseNav';

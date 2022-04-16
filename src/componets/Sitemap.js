@@ -13,7 +13,7 @@ const Sitemap = () => {
     <p></p>
     <SiteLocation className='container'>
     <Map>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.1781202163334!2d72.82176281490213!3d19.14367888704915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b7047dac848d%3A0xc26a2c66606f939b!2sKenwood%20Apartment!5e0!3m2!1shi!2sin!4v1649664937669!5m2!1shi!2sin"></iframe>
+    <iframe title='my' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.1781202163334!2d72.82176281490213!3d19.14367888704915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b7047dac848d%3A0xc26a2c66606f939b!2sKenwood%20Apartment!5e0!3m2!1shi!2sin!4v1649664937669!5m2!1shi!2sin"></iframe>
     </Map>
     <Location>
         <h4>Mumbai Andheri (West)</h4>

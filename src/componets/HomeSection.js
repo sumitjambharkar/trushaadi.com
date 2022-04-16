@@ -38,8 +38,8 @@ const HomeSection = () => {
           <>
           <Card>
         <img src={doc.data.image} alt="im"/>
-        <span>{doc.data.displayName.toUpperCase()}</span>
-        <span>{doc.data.gender.toUpperCase()}</span>
+        <span style={{textTransform: 'capitalize'}}>{doc.data.displayName}</span>
+        <span style={{textTransform: 'capitalize'}}>{doc.data.gender}</span>
         <span>{calculate_age(new Date(doc.data.birth))}</span>
         <button><Link to={`/view/${doc.id}`}>Send Message</Link></button>
       </Card>
@@ -53,44 +53,7 @@ const HomeSection = () => {
 }
 
 export default HomeSection;
-const Header = styled.div`
-display:flex;
-justify-content:space-around;
-margin:12px;
-> h1 {
-    font-family:romon
-}
->p {
-  
-  
-}`
-const NavBar = styled.div`
-display: flex;
-justify-content: space-around;
-background-color:#FFA500;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-`;
-const Nav = styled.div`
-> a {
-  color: white;
-    text-decoration: none;
-    padding: 15px;
-    font-size: 15px;
-    font-weight: 400;
-    line-height:50px;
-    /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
-}`
-const Avtar = styled.div`
-> a {
-  color: white;
-    text-decoration: none;
-    padding: 15px;
-    font-size: 15px;
-    font-weight: 400;
-    line-height:50px;
-    /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
-}
-`
+
 const Section = styled.div`
 padding: 46px;
 background-color: #ebdcdc;

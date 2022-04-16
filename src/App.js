@@ -24,6 +24,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from './componets/ScrollToTop';
+import MyProfile from './componets/MyProfile';
+import Email from './componets/setting/Email';
+import Delete from './componets/setting/Delete'
+import Contacts from './componets/setting/Contacts';
+import Policys from './componets/setting/Policys';
+import Account from './componets/setting/Account'
 
 
 function App() {
@@ -42,6 +48,7 @@ function App() {
         dispatch(logout())
       }
     })
+    
   }, [])
   
   
@@ -82,6 +89,24 @@ function App() {
           </Route>
           <Route exact path="/top-matches">
             <Topmatch/>
+          </Route>
+          <Route exact path="/my-profile">
+            <MyProfile/>
+          </Route>
+          <Route exact path="/my-setting">
+            <Email/>
+          </Route>
+          <Route exact path="/my-policy">
+            <Policys/>
+          </Route>
+          <Route exact path="/my-account">
+            <Account/>
+          </Route>
+          <Route exact path="/my-contacts">
+            <Contacts/>
+          </Route>
+          <Route exact path="/delete">
+            <Delete/>
           </Route>
           
          

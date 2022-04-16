@@ -2,7 +2,7 @@ import React from 'react'
 import UseNav from './UseNav';
 import Footer from './Footer';
 import styled from 'styled-components';
-import style from 'radium/lib/components/style';
+
 
 
 const Contact = () => {

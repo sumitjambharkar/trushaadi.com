@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
 import Footer from './Footer';
 import UseNav from './UseNav';
 import { useParams } from 'react-router-dom';
@@ -17,19 +16,34 @@ const View = () => {
   }
   const {Id} = useParams()
   const [personData, setPersonData] = useState([])
-  const [personData1, setPersonData1] = useState([])
+  const [personDataFirst, setPersonDataFirst] = useState([])
+  const [personDataSecand, setPersonDataSecand] = useState([])
   useEffect (() => {
-    db.collection("users").doc(Id).onSnapshot(snapshot => {
-      setPersonData(snapshot.data())
-      console.log(snapshot.data());
-    })
-    db.collection("users").doc(Id).collection("userData1").onSnapshot(snapshot =>{
-      setPersonData1(snapshot.docs.map((doc) => ({
-        id: doc.id,
-        data : doc.data()
-      })))
-      console.log(setPersonData1);
-    })
+    if(Id){
+      db.collection("users").doc(Id).onSnapshot(snapshot => {
+        setPersonData(snapshot.data())
+        console.log(snapshot.data());
+      })
+      db.collection("users")
+      .doc(Id)
+      .collection("userdata1")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+            setPersonDataFirst(doc.data())
+        });
+      });
+      db.collection("users")
+      .doc(Id)
+      .collection("userdata2")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+            setPersonDataSecand(doc.data())
+        });
+      });  
+    }
+     
   },[Id])
   return (
     <>
@@ -40,7 +54,7 @@ const View = () => {
                <img src={personData.image} alt=''/>
               </CardImage>
               <ImageDetails>
-                <h3>{personData.displayName}</h3>
+                <h3 style={{textTransform: 'capitalize'}}>{personData.displayName}</h3>
                 <hr></hr>
                 {/* <pre> */}
                 <p>       <span>{calculate_age(new Date(personData.birth))}</span>                         <span>Not Specified</span></p>
@@ -63,7 +77,7 @@ const View = () => {
               <Agent>
               <First>
               <li>Gender</li>  
-              <li>{personData.gender}</li>
+              <li>{personDataFirst.city}</li>
               </First>
               <First>
               <li>Caste</li>
@@ -86,7 +100,7 @@ const View = () => {
              <Box><h3>Education and profession</h3>
              <Agent>
               <First>
-              <li>Gender</li>  
+              <li>{personDataSecand.qaulification}</li>  
               <li>Female</li>
               </First>
               <First>
@@ -127,44 +141,7 @@ const View = () => {
 }
 
 export default View;
-const Header = styled.div`
-display:flex;
-justify-content:space-around;
-margin:12px;
-> h1 {
-    font-family:romon
-}
->p {
-  
-  
-}`
-const NavBar = styled.div`
-display: flex;
-justify-content: space-around;
-background-color:#FFA500;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-`;
-const Nav = styled.div`
-> a {
-  color: white;
-    text-decoration: none;
-    padding: 15px;
-    font-size: 15px;
-    font-weight: 400;
-    line-height:50px;
-    /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
-}`
-const Avtar = styled.div`
-> a {
-  color: white;
-    text-decoration: none;
-    padding: 15px;
-    font-size: 15px;
-    font-weight: 400;
-    line-height:50px;
-    /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
-}
-`
+
 const ProfileSection = styled.div`
 display:flex;
 justify-content:center;

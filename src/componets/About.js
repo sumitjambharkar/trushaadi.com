@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import AboutImage from '../image/download.jpg';
-import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import UseNav from './UseNav';
 
