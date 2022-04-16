@@ -78,7 +78,7 @@ const UseNav = () => {
             <li to="/my-profile"><AccountCircleIcon/><Link to="/my-profile">My Profile</Link></li>
             <li onClick={handalLogout}><LogoutIcon/>Logout</li>
             <li to="/my-profile"><SettingsIcon/><Link to="/my-account">Account Setting</Link></li>
-            <li><HttpsIcon/><Link to="my-policy">Privacy Options</Link></li>
+            <li><HttpsIcon/><Link to="my-policys">Privacy Options</Link></li>
            </Dash>
            : ""
             }

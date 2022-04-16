@@ -96,7 +96,7 @@ function App() {
           <Route exact path="/my-setting">
             <Email/>
           </Route>
-          <Route exact path="/my-policy">
+          <Route exact path="/my-policys">
             <Policys/>
           </Route>
           <Route exact path="/my-account">

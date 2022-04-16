@@ -13,7 +13,7 @@ const Setting = () => {
     <li><Link to="my-account">Account Setting</Link></li>
     <li><Link to="my-contacts">Contact Filters</Link></li>
     <li>Email / SMS Alerts</li>
-    <li><Link to="my-policy">Policy Options</Link></li>
+    <li><Link to="my-policys">Policy Options</Link></li>
     <li><Link to="delete">Hide / Delete Profile</Link></li>
     </First>
     </Section>

@@ -8,134 +8,142 @@ import { db } from './firebase';
 
 const View = () => {
 
-  function calculate_age(dob) { 
+  function calculate_age(dob) {
     var diff_ms = Date.now() - dob.getTime();
-    var age_dt = new Date(diff_ms); 
-  
+    var age_dt = new Date(diff_ms);
+
     return Math.abs(age_dt.getUTCFullYear() - 1970);
   }
-  const {Id} = useParams()
+  const { Id } = useParams()
   const [personData, setPersonData] = useState([])
   const [personDataFirst, setPersonDataFirst] = useState([])
   const [personDataSecand, setPersonDataSecand] = useState([])
-  useEffect (() => {
-    if(Id){
+  useEffect(() => {
+    if (Id) {
       db.collection("users").doc(Id).onSnapshot(snapshot => {
         setPersonData(snapshot.data())
         console.log(snapshot.data());
       })
       db.collection("users")
-      .doc(Id)
-      .collection("userdata1")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
+        .doc(Id)
+        .collection("userdata1")
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
             setPersonDataFirst(doc.data())
+          });
         });
-      });
       db.collection("users")
-      .doc(Id)
-      .collection("userdata2")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
+        .doc(Id)
+        .collection("userdata2")
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
             setPersonDataSecand(doc.data())
+          });
         });
-      });  
     }
-     
-  },[Id])
+
+  }, [Id])
   return (
     <>
-    <UseNav/>
+      <UseNav />
       <ProfileSection>
-          <ImageSection>
-              <CardImage>
-               <img src={personData.image} alt=''/>
-              </CardImage>
-              <ImageDetails>
-                <h3 style={{textTransform: 'capitalize'}}>{personData.displayName}</h3>
-                <hr></hr>
-                {/* <pre> */}
-                <p>       <span>{calculate_age(new Date(personData.birth))}</span>                         <span>Not Specified</span></p>
-                <p>       <span>Never Married</span>                   <span>Not Specified</span></p>
-                <p>       <span>Tamil</span>                           <span>Not Specified</span></p>
-                <p>       <span>Hindu, Bariman</span>                  <span>Lives in Canada</span></p>
-                {/* </pre> */}
-              </ImageDetails>
-         </ImageSection>
+        <ImageSection>
+          <CardImage>
+            <img src={personData.image} alt='' />
+          </CardImage>
+          <ImageDetails>
+            <h3 style={{ textTransform: 'capitalize' }}>{personData.displayName}</h3>
+            <hr></hr>
+            <Section>
+              <Firsts>
+                <li>{calculate_age(new Date(personData.birth))}</li>
+                <li>Account Setting</li>
+                <li>Contact Filters</li>
+                <li>Email / SMS Alerts</li>
+              </Firsts>
+              <Firsts>
+                <li>Setting</li>
+                <li>Account Setting</li>
+                <li>Contact Filters</li>
+                <li>Email / SMS Alerts</li>
+              </Firsts>
+            </Section>
+          </ImageDetails>
+        </ImageSection>
       </ProfileSection>
       <AllDetails>
-             <Details className='container'>
-               <h1>Details of Profile</h1>
-              <Box>
-              <h3>About</h3>
-              <span>I am currently living in uk. I am a smart and dynamic girl who respects her culture very much. I belong to a simple marathi family.</span>
-              </Box>
-              <Box>
-              <h3>Basic Info</h3>
-              <Agent>
+        <Details className='container'>
+          <h1>Details of Profile</h1>
+          <Box>
+            <h3>About</h3>
+            <span>I am currently living in uk. I am a smart and dynamic girl who respects her culture very much. I belong to a simple marathi family.</span>
+          </Box>
+          <Box>
+            <h3>Basic Info</h3>
+            <Agent>
               <First>
-              <li>Gender</li>  
-              <li>{personDataFirst.city}</li>
+                <li>Gender</li>
+                <li>{personDataFirst.city}</li>
               </First>
               <First>
-              <li>Caste</li>
-              <li>Bhandari</li>
+                <li>Caste</li>
+                <li>Bhandari</li>
               </First>
-              </Agent>
-              </Box>
-              <Box><h3>Lifestyle and Intrests</h3>
-              <Agent>
+            </Agent>
+          </Box>
+          <Box><h3>Lifestyle and Intrests</h3>
+            <Agent>
               <First>
-              <li>Gender</li>  
-              <li>Female</li>
-              </First>
-              <First>
-              <li>Caste</li>
-              <li>Bhandari</li>
-              </First>
-              </Agent>
-              </Box>
-             <Box><h3>Education and profession</h3>
-             <Agent>
-              <First>
-              <li>{personDataSecand.qaulification}</li>  
-              <li>Female</li>
+                <li>Gender</li>
+                <li>Female</li>
               </First>
               <First>
-              <li>Caste</li>
-              <li>Bhandari</li>
+                <li>Caste</li>
+                <li>Bhandari</li>
               </First>
-              </Agent>
-             </Box>
-             <Box><h3>Family Details</h3>
-             <Agent>
+            </Agent>
+          </Box>
+          <Box><h3>Education and profession</h3>
+            <Agent>
               <First>
-              <li>Gender</li>  
-              <li>Female</li>
-              </First>
-              <First>
-              <li>Caste</li>
-              <li>Bhandari</li>
-              </First>
-              </Agent>
-             </Box>
-             <Box><h3>Lifestyle and Intrests</h3>
-             <Agent>
-              <First>
-              <li>Gender</li>  
-              <li>Female</li>
+                <li>{personDataSecand.qaulification}</li>
+                <li>Female</li>
               </First>
               <First>
-              <li>Caste</li>
-              <li>Bhandari</li>
+                <li>Caste</li>
+                <li>Bhandari</li>
               </First>
-              </Agent>
-             </Box>
-             </Details>
-         </AllDetails>
-      <Footer/>
+            </Agent>
+          </Box>
+          <Box><h3>Family Details</h3>
+            <Agent>
+              <First>
+                <li>Gender</li>
+                <li>Female</li>
+              </First>
+              <First>
+                <li>Caste</li>
+                <li>Bhandari</li>
+              </First>
+            </Agent>
+          </Box>
+          <Box><h3>Lifestyle and Intrests</h3>
+            <Agent>
+              <First>
+                <li>Gender</li>
+                <li>Female</li>
+              </First>
+              <First>
+                <li>Caste</li>
+                <li>Bhandari</li>
+              </First>
+            </Agent>
+          </Box>
+        </Details>
+      </AllDetails>
+      <Footer />
     </>
   )
 }
@@ -166,14 +174,29 @@ margin-top:28px;
 padding:12px;
 padding-right: 80px;
 background-color:white;
+> h3 {
+  font-size: 1.2rem;
+    font-weight: bold;
+    font-family: ui-serif;
+    color:#564343;
+}
 > p {
   display:flex;
   justify-content:space-around;
+  font-size: 15px;
+  color: #666;
 }
 @media (max-width:600px) {
     width:230px;
   }
 `
+const Section = styled.div`
+display:flex;
+justify-content:space-around;`
+const Firsts = styled.div`
+> li {
+  list-style:none;
+}`
 const AllDetails = styled.div`
 display:flex;
 justify-content:start;
@@ -183,6 +206,12 @@ const Details = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
 background-color:white;
 width:65%;
+>h1 {
+  font-size: 1.8rem;
+    font-weight: bold;
+    font-family: auto;
+    color:#FFA500;
+}
 @media (max-width:600px) {
     width:100%;
   }
@@ -191,6 +220,11 @@ width:65%;
 }`
 const Box = styled.div`
 padding:24px;
+>h3 {
+  font-size: 1rem;
+    font-weight: 600;
+    font-family: auto;
+}
 `
 const Agent = styled.div`
 display:flex;
@@ -200,5 +234,7 @@ const First = styled.div`
 padding-left:48px;
 > li {
   list-style:none;
+  font-size: 15px;
+  color: #666;
 }
 `
