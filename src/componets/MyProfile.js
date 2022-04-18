@@ -12,17 +12,102 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { toast } from "react-toastify";
+
 
 const MyProfile = () => {
-  const [show, setShow] = useState("");
+
   const [userDetails, setUserDetails] = useState([]);
   const [userFirst, setUserFirst] = useState([]);
   const [userSecand, setUserSecand] = useState([]);
   var user = useSelector(selectUser);
   const dispatch = useDispatch();
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState();
+  const [openF, setOpenF] = useState()
+  const [openS, setOpenS] = useState()
+  const [openT, setOpenT] = useState()
+  const [openFo, setOpenFo] = useState()
+  const [number, setNumber] = useState()
+
+  let x = userDetails.birth
+  let date = new Date(x)
+  let dateMDY = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+  console.log(dateMDY);
+  
+  const [data, setdata] = useState({
+    displayName:userDetails.displayName,
+    birth : userDetails.birth,
+    number : userDetails.number
+  })
+  let name, value
+  const handalChange = (e) => {
+    name = e.target.name
+    value = e.target.value
+    setdata({ ...data, [name]: value })
+  }
+  const updateNumber = (e) =>{
+    e.preventDefault();
+    db.collection("users").doc(user.uid).update({
+      number:data.number
+    })
+    toast.success("update Success")
+    setTimeout(()=>{
+      window.location.reload(false);
+    },1000);
+  }
+  const update = (e)=>{
+    e.preventDefault();
+    console.log();
+    db.collection("users").doc(user.uid).update({
+      birth:data.birth,
+      gender:data.gender,
+    })
+    toast.success("update Success")
+    setTimeout(()=>{
+      window.location.reload(false);
+    },1000);
+    
+  }
+  const updateF = (e)=>{
+    e.preventDefault();
+    console.log();
+    db.collection("users").doc(user.uid).update({
+      birth:data.birth,
+      gender:data.gender,
+    })
+    toast.success("update Success")
+    
+  }
+  const updateS = (e)=>{
+    e.preventDefault();
+    console.log();
+    db.collection("users").doc(user.uid).update({
+      birth:data.birth,
+      gender:data.gender,
+    })
+    toast.success("update Success")
+    
+  }
+  const updateT = (e)=>{
+    e.preventDefault();
+    console.log();
+    db.collection("users").doc(user.uid).update({
+      birth:data.birth,
+      gender:data.gender,
+    })
+    toast.success("update Success")
+    
+  }
+  const updateFo = (e)=>{
+    e.preventDefault();
+    console.log();
+    db.collection("users").doc(user.uid).update({
+      birth:data.birth,
+      gender:data.gender,
+    })
+    toast.success("update Success")
+    
+  }
 
   function calculate_age(dob) {
     var diff_ms = Date.now() - dob.getTime();
@@ -81,10 +166,7 @@ const MyProfile = () => {
         });
     }
   }, [user.uid]);
-  const updateDoc =()=>{}
-  const handalChange =()=>{
 
-  }
   return (
     <>
       <UseNav />
@@ -103,12 +185,29 @@ const MyProfile = () => {
             <li>{calculate_age(new Date(userDetails.birth))} Yrs</li>
             <li>5.2</li>
             <li>indain</li>
-            <li>
-              {userDetails.number}
-              <Tooltip title="Edit">
-                <EditIcon />
+            <li>{userDetails.number}
+            <Button onClick={()=>setNumber(userDetails.number)}>
+              <Tooltip title="Edit"><EditIcon />
               </Tooltip>
-            </li>
+            </Button></li>
+            <Modal
+                  open={number}
+                  onClose={setNumber}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                      Mobile No
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    <input placeholder="Mobile No." type="number" name="number" value={data.number} onChange={handalChange}/>
+                     <br></br>
+                     <Button onClick={updateNumber}>Update</Button>
+                     <Button onClick={()=>setNumber(false)}>Close</Button>
+                    </Typography>
+                  </Box>
+                </Modal>
           </ImageDetails>
         </ImageSection>
       </ProfileSection>
@@ -118,51 +217,90 @@ const MyProfile = () => {
             <h3>About Us</h3>
             <Divs>
               <span>
-                I am currently living in uk. I am a smart and dynamic girl who
-                respects her culture very much. I belong to a simple marathi
-                family.
+                {userDetails.about}
               </span>
-              <div>
-                <Button onClick={handleOpen}><EditIcon />
-                Edit</Button>
+            </Divs>
+          </Boxs>
+          <Boxs>
+            <h3>Basic Info</h3>
+            <Agent>
+              <First>
+                <li>Gender</li>
+                <li>Date Of Birth</li>
+              </First>
+              <First>
+                <li>{userDetails.gender}</li>
+                <li>{dateMDY}</li>
+              </First>
+              <First>
+              <Button onClick={()=>setOpen(userDetails.gender,userDetails.birth)}>
+                  <EditIcon />
+                  Edit
+                </Button>
                 <Modal
                   open={open}
-                  onClose={handleClose}
+                  onClose={setOpen}
                   aria-labelledby="modal-modal-title"
                   aria-describedby="modal-modal-description"
                 >
                   <Box sx={style}>
-                    <Typography
-                      id="modal-modal-title"
-                      variant="h6"
-                      component="h2"
-                    >
-                    About Us
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                      Basic Information
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <form onSubmit={updateDoc}>
-                    <input
-                     type="text"
-                     name="bio"
-                     value="bio"
-                     onChange={handalChange}
-                     placeholder="Bio" />
-                    <Button type="submit">Update</Button>
-                    </form>
+                    <input placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
+                     <input type="date" name="birth" value={data.birth} onChange={handalChange}/>
+                     <br></br>
+                     <Button onClick={update}>Update</Button>
+                     <Button onClick={()=>setOpen(false)}>Close</Button>
                     </Typography>
                   </Box>
                 </Modal>
-              </div>
-            </Divs>
+              </First>
+            </Agent>
           </Boxs>
           <Boxs>
-            <Divs>
-              <h3>Basic Info</h3>
-              <span>
-                <EditIcon />
-                Edit
-              </span>
-            </Divs>
+            <h3>Lifestyle and Intrests</h3>
+            <Agent>
+              <First>
+                <li>Gender</li>
+                <li>Birth Of Date</li>
+              </First>
+              <First>
+                <li>{userDetails.name}</li>
+                <li>{userDetails.birth}</li>
+              </First>
+              <First>
+                <Button onClick={()=>setOpenF(userDetails.displayName,userDetails.birth)}>
+                  <EditIcon />
+                  Edit
+                </Button>
+                <Modal
+                  use={userDetails}
+                  open={openF}
+                  onClose={setOpenF}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                      Basic Information
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                     <input placeholder="Name" type="text" name="displayName" value={data.displayName} onChange={handalChange}/>
+                     <input type="name" name="birth" value={data.birth} onChange={handalChange}/>
+                     <br></br>
+                     <Button onClick={updateF}>Update</Button>
+                     <Button onClick={()=>setOpenF(false)}>Close</Button>
+                    </Typography>
+                  </Box>
+                </Modal>
+              </First>
+            </Agent>
+          </Boxs>
+          <Boxs>
+
+            <h3>Education and profession</h3>
             <Agent>
               <First>
                 <li>Gender</li>
@@ -172,81 +310,108 @@ const MyProfile = () => {
                 <li>{userDetails.gender}</li>
                 <li>{userDetails.birth}</li>
               </First>
+              <First>
+              <Button onClick={()=>setOpenS(userDetails.gender,userDetails.birth)}>
+                  <EditIcon />
+                  Edit
+                </Button>
+                <Modal
+                  open={openS}
+                  onClose={setOpenS}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                      Basic Information
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    <input placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
+                     <input type="date" name="birth" value={data.birth} onChange={handalChange}/>
+                     <br></br>
+                     <Button onClick={updateS}>Update</Button>
+                     <Button onClick={()=>setOpenS(false)}>Close</Button>
+                    </Typography>
+                  </Box>
+                </Modal>
+              </First>
             </Agent>
           </Boxs>
           <Boxs>
-            <Divs>
-              <h3>Lifestyle and Intrests</h3>
-              <span>
-                <EditIcon />
-                Edit
-              </span>
-            </Divs>
+
+            <h3>Family Details</h3>
             <Agent>
               <First>
                 <li>Gender</li>
-                <li>Female</li>
+                <li>Birth Of Date</li>
               </First>
               <First>
-                <li>Caste</li>
-                <li>Bhandari</li>
+                <li>{userDetails.gender}</li>
+                <li>{userDetails.birth}</li>
+              </First>
+              <First>
+              <Button onClick={()=>setOpenT(userDetails.gender,userDetails.birth)}>
+                  <EditIcon />
+                  Edit
+                </Button>
+                <Modal
+                  open={openT}
+                  onClose={setOpenT}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                      Basic Information
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    <input placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
+                     <input type="date" name="birth" value={data.birth} onChange={handalChange}/>
+                     <br></br>
+                     <Button onClick={updateT}>Update</Button>
+                     <Button onClick={()=>setOpenT(false)}>Close</Button>
+                    </Typography>
+                  </Box>
+                </Modal>
               </First>
             </Agent>
           </Boxs>
           <Boxs>
-            <Divs>
-              <h3>Education and profession</h3>
-              <span>
-                <EditIcon />
-                Edit
-              </span>
-            </Divs>
-            <Agent>
-              <First>
-                <li>gender</li>
-                <li>{userSecand.collage}</li>
-              </First>
-              <First>
-                <li>Caste</li>
-                <li>Bhandari</li>
-              </First>
-            </Agent>
-          </Boxs>
-          <Boxs>
-            <Divs>
-              <h3>Family Details</h3>
-              <span>
-                <EditIcon />
-                Edit
-              </span>
-            </Divs>
-            <Agent>
-              <First>
-                <li>Gender</li>
-                <li>Female</li>
-              </First>
-              <First>
-                <li>Caste</li>
-                <li>Bhandari</li>
-              </First>
-            </Agent>
-          </Boxs>
-          <Boxs>
-            <Divs>
-              <h3>Lifestyle and Intrests</h3>
-              <span>
-                <EditIcon />
-                Edit
-              </span>
-            </Divs>
+
+            <h3>Lifestyle and Intrests</h3>
             <Agent>
               <First>
                 <li>Gender</li>
-                <li>Female</li>
+                <li>Birth Of Date</li>
               </First>
               <First>
-                <li>Caste</li>
-                <li>Bhandari</li>
+                <li>{userDetails.gender}</li>
+                <li>{userDetails.birth}</li>
+              </First>
+              <First>
+              <Button onClick={()=>setOpenFo(userDetails.gender,userDetails.birth)}>
+                  <EditIcon />
+                  Edit
+                </Button>
+                <Modal
+                  open={openFo}
+                  onClose={setOpenFo}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                      Basic Information
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    <input placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
+                     <input type="date" name="birth" value={data.birth} onChange={handalChange}/>
+                     <br></br>
+                     <Button onClick={updateFo}>Update</Button>
+                     <Button onClick={()=>setOpenFo(false)}>Close</Button>
+                    </Typography>
+                  </Box>
+                </Modal>
               </First>
             </Agent>
           </Boxs>
@@ -347,4 +512,4 @@ const First = styled.div`
     color: #666;
   }
 `;
-const Dash = styled.div``;
+
