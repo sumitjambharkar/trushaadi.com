@@ -45,7 +45,7 @@ const Signup = () => {
       },100);
     }catch(err){
       console.log(err);
-      toast.error("error")
+      toast.error("error",err.message)
       history.push('/signup')
     }
     setData("")

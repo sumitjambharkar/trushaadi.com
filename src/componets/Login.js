@@ -35,14 +35,14 @@ const Login = () => {
           email:email,
           password:password,
         }))
-        toast.success("Login Success")
+        toast.success("Login Success",result)
         console.log(result);
         setTimeout(() => {
           history.push('/')
         },100);
       }
       catch(err){
-        console.log(err);
+        toast.error(err,"Login failed")
       }
     }  
     setUser("")
