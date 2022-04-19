@@ -4,6 +4,7 @@ import Story from './Story';
 import Main from './Main';
 import Footer from './Footer';
 
+
 const Home = () => {
   return (
     <>
@@ -15,4 +16,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;

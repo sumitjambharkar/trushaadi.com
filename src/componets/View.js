@@ -15,6 +15,7 @@ const View = () => {
     return Math.abs(age_dt.getUTCFullYear() - 1970);
   }
   const { Id } = useParams()
+  const [user, setUser] = useState([])
   const [personData, setPersonData] = useState([])
   const [personDataFirst, setPersonDataFirst] = useState([])
   const [personDataSecand, setPersonDataSecand] = useState([])
@@ -41,13 +42,21 @@ const View = () => {
           querySnapshot.forEach(doc => {
             setPersonDataSecand(doc.data())
           });
-        });
+      });
+      db.collection("users").onSnapshot(snapshot => {
+        setUser(snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data : doc.data()
+        })))
+      })  
     }
 
   }, [Id])
   return (
     <>
       <UseNav />
+      <Com>
+      <MainDiv>
       <ProfileSection>
         <ImageSection>
           <CardImage>
@@ -143,13 +152,56 @@ const View = () => {
           </Box>
         </Details>
       </AllDetails>
+      </MainDiv>
+      <Chat>
+        <ul><p>ChatMatch</p></ul>
+        {user.map((doc)=>{
+          return (
+            <>
+            <li>
+              <span><img style={{width:"30px",borderRadius:"50%",height:"30px",marginRight:"10px"}} src={doc.data.image} alt=""/>{doc.data.displayName}</span>
+              <span ><img style={{width:"10px",borderRadius:"50%",height:"10px",backgroundColor:"#7CFC00",border:"1px solid #7CFC00"}} alt=""/></span>
+            </li>
+            </>
+          )
+        })}
+        
+      </Chat>
+      </Com>
       <Footer />
     </>
   )
 }
 
 export default View;
-
+const Com = styled.div`
+display:flex;`
+const MainDiv = styled.div`
+flex:8.3;`
+const Chat = styled.div`
+flex:1.7;
+@media (max-width:600px) {
+    display:none;
+  }
+>ul > p {
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: cursive;
+  margin-top: 10px;
+}
+> li {
+  display:flex;
+  justify-content: space-between;
+  list-style:none;
+  margin:4px;
+}
+> li > span {
+  font-size: 12px;
+  margin-left: 6px;
+  color: gray;
+}
+`
 const ProfileSection = styled.div`
 display:flex;
 justify-content:center;
@@ -205,7 +257,7 @@ background-color:#ebdcdc;`
 const Details = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
 background-color:white;
-width:65%;
+width:75%;
 >h1 {
   font-size: 1.8rem;
     font-weight: bold;
