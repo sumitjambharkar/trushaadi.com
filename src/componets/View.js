@@ -4,9 +4,11 @@ import Footer from './Footer';
 import UseNav from './UseNav';
 import { useParams } from 'react-router-dom';
 import { db } from './firebase';
+import { Link } from 'react-router-dom';
 
 
-const View = () => {
+
+const View = (props) => {
 
   function calculate_age(dob) {
     var diff_ms = Date.now() - dob.getTime();
@@ -19,6 +21,8 @@ const View = () => {
   const [personData, setPersonData] = useState([])
   const [personDataFirst, setPersonDataFirst] = useState([])
   const [personDataSecand, setPersonDataSecand] = useState([])
+  
+
   useEffect(() => {
     if (Id) {
       db.collection("users").doc(Id).onSnapshot(snapshot => {
@@ -48,15 +52,13 @@ const View = () => {
           id: doc.id,
           data : doc.data()
         })))
-      })  
+      })
     }
 
   }, [Id])
   return (
     <>
       <UseNav />
-      <Com>
-      <MainDiv>
       <ProfileSection>
         <ImageSection>
           <CardImage>
@@ -76,7 +78,7 @@ const View = () => {
                 <li>Setting</li>
                 <li>Account Setting</li>
                 <li>Contact Filters</li>
-                <li>Email / SMS Alerts</li>
+                <li><Link to="/chats">Chat</Link></li>
               </Firsts>
             </Section>
           </ImageDetails>
@@ -151,57 +153,14 @@ const View = () => {
             </Agent>
           </Box>
         </Details>
-      </AllDetails>
-      </MainDiv>
-      <Chat>
-        <ul><p>ChatMatch</p></ul>
-        {user.map((doc)=>{
-          return (
-            <>
-            <li>
-              <span><img style={{width:"30px",borderRadius:"50%",height:"30px",marginRight:"10px"}} src={doc.data.image} alt=""/>{doc.data.displayName}</span>
-              <span ><img style={{width:"10px",borderRadius:"50%",height:"10px",backgroundColor:"#7CFC00",border:"1px solid #7CFC00"}} alt=""/></span>
-            </li>
-            </>
-          )
-        })}
-        
-      </Chat>
-      </Com>
+      </AllDetails> 
       <Footer />
     </>
   )
 }
 
 export default View;
-const Com = styled.div`
-display:flex;`
-const MainDiv = styled.div`
-flex:8.3;`
-const Chat = styled.div`
-flex:1.7;
-@media (max-width:600px) {
-    display:none;
-  }
->ul > p {
-  text-align: center;
-  font-weight: 600;
-  font-size: 14px;
-  font-family: cursive;
-  margin-top: 10px;
-}
-> li {
-  display:flex;
-  justify-content: space-between;
-  list-style:none;
-  margin:4px;
-}
-> li > span {
-  font-size: 12px;
-  margin-left: 6px;
-  color: gray;
-}
-`
+
 const ProfileSection = styled.div`
 display:flex;
 justify-content:center;
@@ -257,7 +216,7 @@ background-color:#ebdcdc;`
 const Details = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
 background-color:white;
-width:75%;
+width:65%;
 >h1 {
   font-size: 1.8rem;
     font-weight: bold;

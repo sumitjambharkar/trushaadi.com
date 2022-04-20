@@ -30,6 +30,7 @@ import Delete from './componets/setting/Delete'
 import Contacts from './componets/setting/Contacts';
 import Policys from './componets/setting/Policys';
 import Account from './componets/setting/Account'
+import Chats from './componets/Chats';
 
 
 function App() {
@@ -108,6 +109,12 @@ function App() {
           <Route exact path="/delete">
             <Delete/>
           </Route>
+          <Route exact path="/chats">
+        <Chats/>
+      </Route>
+      <Route exact path="/chats/roomId">
+        <Chats/>
+      </Route>
           
          
         </>
