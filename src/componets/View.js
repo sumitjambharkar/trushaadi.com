@@ -36,6 +36,7 @@ const View = (props) => {
         .then(querySnapshot => {
           querySnapshot.forEach(doc => {
             setPersonDataFirst(doc.data())
+            console.log(doc.data());
           });
         });
       db.collection("users")
@@ -78,7 +79,7 @@ const View = (props) => {
                 <li>Setting</li>
                 <li>Account Setting</li>
                 <li>Contact Filters</li>
-                <li><Link to="/chats">Chat</Link></li>
+                <li><Link to="/chats/:roomId">Chat</Link></li>
               </Firsts>
             </Section>
           </ImageDetails>

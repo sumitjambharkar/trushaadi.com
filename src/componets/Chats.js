@@ -4,8 +4,8 @@ import Avatar from '@mui/material/Avatar';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 import { db } from './firebase'
-import Message from './Message';
 import {Link} from 'react-router-dom'
+import MessageScreen from './MessageScreen';
 
 function Chats() {
   const [room, setRoom] = useState([])
@@ -25,7 +25,7 @@ function Chats() {
           {room.map((doc) => {
             return (
               <>
-                <Link>
+                <Link to={`/chats/${doc.id}`}>
                 <Contact>
                   <Avatar src={doc.data.image} />
                   <ListItemButton>
@@ -40,7 +40,7 @@ function Chats() {
           })}
         </ContactSideBar>
         <ChatSideBar>
-        <Message/>
+        <MessageScreen/>
         </ChatSideBar>
       </Chat>
     </>
@@ -57,6 +57,10 @@ const ContactSideBar = styled.div`
 flex:3;
 height:100vh;
 background-color:white;
+> a {
+  text-decoration:none;
+  color:black;
+}
 `
 const ChatSideBar = styled.div`
 flex:7;

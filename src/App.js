@@ -33,6 +33,7 @@ import Account from './componets/setting/Account'
 import Chats from './componets/Chats';
 
 
+
 function App() {
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
@@ -109,10 +110,7 @@ function App() {
           <Route exact path="/delete">
             <Delete/>
           </Route>
-          <Route exact path="/chats">
-        <Chats/>
-      </Route>
-      <Route exact path="/chats/roomId">
+      <Route exact path="/chats/:roomId">
         <Chats/>
       </Route>
           
