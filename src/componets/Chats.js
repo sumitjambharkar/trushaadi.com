@@ -6,6 +6,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import { db } from './firebase'
 import {Link} from 'react-router-dom'
 import MessageScreen from './MessageScreen';
+import UseNav from './UseNav';
+
 
 function Chats() {
   const [room, setRoom] = useState([])
@@ -20,6 +22,7 @@ function Chats() {
 
   return (
     <>
+    <UseNav/>
       <Chat>
         <ContactSideBar>
           {room.map((doc) => {
@@ -51,7 +54,7 @@ export default Chats;
 const Chat = styled.div`
 display:flex;
 background-color:gray;
-height:100vh;
+height:100%;
 padding:50px;`
 const ContactSideBar = styled.div`
 flex:3;
@@ -62,12 +65,12 @@ background-color:white;
   color:black;
 }
 `
-const ChatSideBar = styled.div`
-flex:7;
-height:100vh;
-background-color:#e1d9d9;`
 const Contact = styled.div`
 padding:8px;
 display:flex;
 justify-content:start;
 `
+const ChatSideBar = styled.div`
+flex:7;
+height:100vh;
+background-color:#e1d9d9;`
