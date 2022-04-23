@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom';
 import Footer from './Footer';
 import UseNav from './UseNav';
 import { db } from './firebase';
+import { Avatar } from '@mui/material';
+import { useSelector } from "react-redux";
+import { selectUser } from "./userSlice";
 
 const HomeSection = () => {
   
@@ -13,7 +16,7 @@ const HomeSection = () => {
   
     return Math.abs(age_dt.getUTCFullYear() - 1970);
   }
-
+  const user = useSelector(selectUser)
   const [personData, setPersonData] = useState([])
   useEffect(() => {
     db.collection("users").onSnapshot(snapshot => {
@@ -36,13 +39,19 @@ const HomeSection = () => {
       {personData.map((doc)=>{
         return (
           <>
-          <Card>
-        <img src={doc.data.image} alt="im"/>
-        <span style={{textTransform: 'capitalize'}}>{doc.data.displayName}</span>
-        <span style={{textTransform: 'capitalize'}}>{doc.data.gender}</span>
-        <span>{calculate_age(new Date(doc.data.birth))}</span>
-        <button><Link to={`/view/${doc.id}`}>Send Message</Link></button>
-      </Card>
+          {doc.data.gender ==="female" || doc.data.gender !=="male"? 
+          <> {doc.data.displayName===user.displayName ? 
+            null :
+            <Card>
+            <Avatar src={doc.data.image} sx={{width:224,height:250}} variant="square"/>
+            <span style={{textTransform: 'capitalize'}}>{doc.data.displayName}</span>
+            <span style={{textTransform: 'capitalize'}}>{doc.data.gender}</span>
+            <span>{calculate_age(new Date(doc.data.birth))}</span>
+            <button><Link to={`/view/${doc.id}`}>Send Message</Link></button>
+            </Card>
+            }
+            </> : null
+          }
           </>
         )
       })}

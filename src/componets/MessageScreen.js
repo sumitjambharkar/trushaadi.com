@@ -20,12 +20,14 @@ const MessageScreen = () => {
   const [input, setInput] = useState("")
   const sendMessage =(e)=>{
     e.preventDefault()
-    db.collection("users").doc(roomId).collection("message").add({
-      displayName:user.displayName,
-      message:input,
-      timestamp:firebase.firestore.FieldValue.serverTimestamp(),
-    })
-    setInput("")
+    if(roomId){
+      db.collection("users").doc(roomId).collection("message").add({
+        displayName:user.displayName,
+        message:input,
+        timestamp:firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      setInput("")
+    }
   }
 
   useEffect(() => {
@@ -51,16 +53,13 @@ const MessageScreen = () => {
 
   return (
     <>
-      <Section>
       <Header>
-      <ListItemButton>
-          <ListItemText>
-          {!users ? <Avatar/> :<Avatar src={users.image} />}
-          </ListItemText>
-        </ListItemButton>
+        <Logo>
+          {!users ? <Avatar>{user.displayName[0]}</Avatar> :<Avatar src={users.image} />}
+        </Logo>
         <ListItemButton>
           <ListItemText>
-            {!users ? <h1>Sumit</h1> : <h1>{users.displayName}</h1>}
+            {!users ? <h1>{user.displayName}</h1> : <h1>{users.displayName}</h1>}
           </ListItemText>
         </ListItemButton>
       </Header>
@@ -69,7 +68,7 @@ const MessageScreen = () => {
       {message.map((doc)=>{
         return (
           <>
-          <AllMessage className={`right ? ${doc.displayName===user.displayName}: "left`}>
+          <AllMessage>
           <li>{doc.displayName}</li>
           <span>{doc.message}<span style={{fontSize:"8px",fontWeight:700,margin:"10px"}}>{new Date(doc.timestamp?.toDate()).toDateString("en-US")}</span></span>
           </AllMessage>
@@ -78,6 +77,7 @@ const MessageScreen = () => {
       })}
       </Message>
       </ScrollToBottom>
+      <Section>
       <form onSubmit={sendMessage}>
       <Bottom>
       <Input>
@@ -94,35 +94,47 @@ const MessageScreen = () => {
 };
 
 export default MessageScreen;
-const Section = styled.div`
-height:100%;`
+const Section = styled.div``
 const Header = styled.div`
 background-color: #bab0b0;
+height:8vh;
 color:white;
 display:flex;
-height:10vh;
 justify-content:start;
 > .MuiSvgIcon-root {
     height:70px;
     color:white;
 }
 `
+const Logo = styled.div`
+padding:8px;
+display:flex;
+justify-content:start;`
 const Message = styled.div`
 margin:4px;
-height:80vh;`
+height:60vh;
+`
 const Bottom = styled.div`
 display:flex;
-height:10vh;`
+`
 const Input = styled.div`
 flex:80;
 > input {
   width:100%;
+  border-radius: 4px;
+  border: 1px solid #FFA500;
+}
+> input:focus {
+  outline: none;
 }
 `
 const Send = styled.div`
 flex:20;
 > button {
   width:100%;
+  background-color:#FFA500;
+  border:1px solid #FFA500;
+  color:white;
 }`
 const AllMessage = styled.div`
   margin:12px;

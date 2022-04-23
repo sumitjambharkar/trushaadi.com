@@ -7,10 +7,14 @@ import { db } from './firebase'
 import {Link} from 'react-router-dom'
 import MessageScreen from './MessageScreen';
 import UseNav from './UseNav';
+import ScrollToBottom from 'react-scroll-to-bottom';
+import { useSelector } from "react-redux";
+import { selectUser } from "./userSlice";
 
 
 function Chats() {
   const [room, setRoom] = useState([])
+  const user = useSelector(selectUser)
   useEffect(() => {
     db.collection("users").onSnapshot((snapshot) => {
       setRoom(snapshot.docs.map((doc) => ({
@@ -28,6 +32,9 @@ function Chats() {
           {room.map((doc) => {
             return (
               <>
+                {doc.data.displayName===user.displayName ?
+                null 
+                :
                 <Link to={`/chats/${doc.id}`}>
                 <Contact>
                   <Avatar src={doc.data.image} />
@@ -38,6 +45,7 @@ function Chats() {
                   </ListItemButton>
                 </Contact>
                 </Link>
+                }
               </>
             )
           })}
@@ -54,12 +62,13 @@ export default Chats;
 const Chat = styled.div`
 display:flex;
 background-color:gray;
-height:100%;
+height:100vh;
 padding:50px;`
 const ContactSideBar = styled.div`
 flex:3;
-height:100vh;
+height:75vh;
 background-color:white;
+overflow: scroll;
 > a {
   text-decoration:none;
   color:black;
@@ -72,5 +81,5 @@ justify-content:start;
 `
 const ChatSideBar = styled.div`
 flex:7;
-height:100vh;
+height:75vh;
 background-color:#e1d9d9;`

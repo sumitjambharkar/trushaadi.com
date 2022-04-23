@@ -22,7 +22,7 @@ const Profile = () => {
                 if(user){
                     db.collection("users").doc(user.uid).collection("userdata1").add({
                         city:city,
-                        famil:family,
+                        family:family,
                         diet:diet,
                         maritalStatus:maritalStatus,
                         height:height

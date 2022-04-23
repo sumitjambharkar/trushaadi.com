@@ -48,17 +48,19 @@ const UseNav = () => {
     <NavBar>
         <Nav>
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
         {
         !user ? 
         <>
+        <Link to="/about">About</Link>
         <Link to="/signup">Register</Link>
         <Link to="/login">Login</Link>
         </>
         :
         <>
-        <Link to="/">My Account</Link>
+        <Link to="/my-profile">My Account</Link>
         <Link to="/">My Matches</Link>
+        <Link to="/chats/:roomId">My Chat</Link>
+        <Link to="/about">About</Link>
         </>
         } 
         

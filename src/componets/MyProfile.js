@@ -227,10 +227,18 @@ const MyProfile = () => {
               <First>
                 <li>Gender</li>
                 <li>Date Of Birth</li>
+                <li>MaritalStatus</li>
+                <li>Religion</li>
+                <li>Caste</li>
+                <li>Mother Tongue</li>
               </First>
               <First>
                 <li>{userDetails.gender}</li>
                 <li>{dateMDY}</li>
+                <li>{userFirst.maritalStatus}</li>
+                <li>{userFirst.maritalStatus}</li>
+                <li>{userFirst.maritalStatus}</li>
+                <li>{userFirst.maritalStatus}</li>
               </First>
               <First>
               <Button onClick={()=>setOpen(userDetails.gender,userDetails.birth)}>
@@ -259,24 +267,26 @@ const MyProfile = () => {
               </First>
             </Agent>
           </Boxs>
+          
           <Boxs>
-            <h3>Lifestyle and Intrests</h3>
+            <h3>Education & Career</h3>
             <Agent>
               <First>
-                <li>Gender</li>
-                <li>Birth Of Date</li>
+                <li>Qualification</li>
+                <li>University Of Collage</li>
+                <li>Working With</li>
               </First>
               <First>
-                <li>{userDetails.name}</li>
-                <li>{userDetails.birth}</li>
+                <li>{userSecand.qaulification}</li>
+                <li>{userSecand.collage}</li>
+                <li>{userSecand.work}</li>
               </First>
               <First>
-                <Button onClick={()=>setOpenF(userDetails.displayName,userDetails.birth)}>
+              <Button onClick={()=>setOpenF(userDetails.gender,userDetails.birth)}>
                   <EditIcon />
                   Edit
                 </Button>
                 <Modal
-                  use={userDetails}
                   open={openF}
                   onClose={setOpenF}
                   aria-labelledby="modal-modal-title"
@@ -287,8 +297,8 @@ const MyProfile = () => {
                       Basic Information
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                     <input placeholder="Name" type="text" name="displayName" value={data.displayName} onChange={handalChange}/>
-                     <input type="name" name="birth" value={data.birth} onChange={handalChange}/>
+                    <input placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
+                     <input type="date" name="birth" value={data.birth} onChange={handalChange}/>
                      <br></br>
                      <Button onClick={updateF}>Update</Button>
                      <Button onClick={()=>setOpenF(false)}>Close</Button>
@@ -299,15 +309,14 @@ const MyProfile = () => {
             </Agent>
           </Boxs>
           <Boxs>
-
-            <h3>Education and profession</h3>
+            <h3>Family Details</h3>
             <Agent>
               <First>
-                <li>Gender</li>
+                <li>Live with your family</li>
                 <li>Birth Of Date</li>
               </First>
               <First>
-                <li>{userDetails.gender}</li>
+                <li>{userFirst.family}</li>
                 <li>{userDetails.birth}</li>
               </First>
               <First>
@@ -338,16 +347,15 @@ const MyProfile = () => {
             </Agent>
           </Boxs>
           <Boxs>
-
-            <h3>Family Details</h3>
+            <h3>Location</h3>
             <Agent>
               <First>
-                <li>Gender</li>
-                <li>Birth Of Date</li>
+                <li>City you live in</li>
+                <li>State</li>
               </First>
               <First>
-                <li>{userDetails.gender}</li>
-                <li>{userDetails.birth}</li>
+                <li>{userFirst.city}</li>
+                <li>{userFirst.state}</li>
               </First>
               <First>
               <Button onClick={()=>setOpenT(userDetails.gender,userDetails.birth)}>
@@ -381,12 +389,12 @@ const MyProfile = () => {
             <h3>Lifestyle and Intrests</h3>
             <Agent>
               <First>
-                <li>Gender</li>
-                <li>Birth Of Date</li>
+                <li>Eating Habit</li>
+                <li>Height</li>
               </First>
               <First>
-                <li>{userDetails.gender}</li>
-                <li>{userDetails.birth}</li>
+                <li>{userFirst.diet}</li>
+                <li>{userFirst.height}</li>
               </First>
               <First>
               <Button onClick={()=>setOpenFo(userDetails.gender,userDetails.birth)}>
@@ -459,6 +467,9 @@ const ImageDetails = styled.div`
   > li > .MuiSvgIcon-root {
     margin-left: 24px;
   }
+  > li Button {
+    color:white;
+  }
   @media (max-width: 600px) {
     width: 230px;
   }
@@ -466,12 +477,13 @@ const ImageDetails = styled.div`
 const AllDetails = styled.div`
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding:30px;
 `;
 const Details = styled.div`
   background-color: white;
+  width:70%;
   @media (max-width: 600px) {
-    width: 100%;
+    width:100%;
   }
   > h1 {
     text-align: center;
@@ -500,6 +512,9 @@ const Divs = styled.div`
 const Agent = styled.div`
   display: flex;
   justify-content: space-evenly;
+  Button {
+    color:gray;
+  }
 `;
 const First = styled.div`
   padding-left: 48px;
@@ -510,6 +525,7 @@ const First = styled.div`
     list-style: none;
     font-size: 13px;
     color: #666;
+    margin:6px;
   }
 `;
 
