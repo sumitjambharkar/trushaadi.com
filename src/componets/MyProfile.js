@@ -68,7 +68,8 @@ const MyProfile = () => {
   const [data, setdata] = useState({
     displayName:userDetails.displayName,
     birth : userDetails.birth,
-    number : userDetails.number
+    number : userDetails.number,
+    
   })
   let name, value
   const handalChange = (e) => {
@@ -105,6 +106,8 @@ const MyProfile = () => {
     db.collection("users").doc(user.uid).update({
       birth:data.birth,
       gender:data.gender,
+      religion:data.religion,
+      tounge:data.tounge
     })
     toast.success("update Success")
     
@@ -289,7 +292,12 @@ const MyProfile = () => {
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                     <input placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
-                     <input type="date" name="birth" value={data.birth} onChange={handalChange}/>
+                    <br></br>
+                    <input type="date" name="birth" value={data.birth} onChange={handalChange}/> <br></br>
+                    <input placeholder="MaritalStatus" type="text" name="maritalStatus" value={data.maritalStatus} onChange={handalChange}/> <br></br>
+                    <input placeholder="Religion" type="text" name="religion" value={data.religion} onChange={handalChange}/> <br></br>
+                    <input placeholder="Caste" type="text" name="caste" value={data.tounge} onChange={handalChange}/> <br></br>
+                    <input placeholder="MotherTounge" type="text" name="tounge" value={data.tounge} onChange={handalChange}/>
                      <br></br>
                      <Button onClick={update}>Update</Button>
                      <Button onClick={()=>setOpen(false)}>Close</Button>
