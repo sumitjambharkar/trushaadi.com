@@ -20,10 +20,12 @@ const MessageScreen = () => {
   const [input, setInput] = useState("")
   const sendMessage =(e)=>{
     e.preventDefault()
+    const {uid , displayName} = user
     if(roomId){
       db.collection("users").doc(roomId).collection("message").add({
-        displayName:user.displayName,
+        displayName:displayName,
         message:input,
+        uid,
         timestamp:firebase.firestore.FieldValue.serverTimestamp(),
       })
       setInput("")
@@ -77,6 +79,8 @@ const MessageScreen = () => {
       })}
       </Message>
       </ScrollToBottom>
+      {!users ? null :
+      <>
       <Section>
       <form onSubmit={sendMessage}>
       <Bottom>
@@ -89,6 +93,8 @@ const MessageScreen = () => {
       </Bottom>
       </form>
       </Section>
+      </>
+      }
     </>
   );
 };

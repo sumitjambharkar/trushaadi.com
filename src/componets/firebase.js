@@ -1,6 +1,8 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { getStorage } from "firebase/storage";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDIn8gpgu0XueI1rXTpyspikvIt2kJSK7M",
@@ -14,10 +16,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp  = firebase.initializeApp(firebaseConfig);
-
+const storage = getStorage(firebaseApp);
 const auth = firebase.auth()
 const db = firebaseApp.firestore()
-export {auth , db }
+export {auth , db ,storage}
 export const createUserCollecton =async(user,additionalData)=>{
   if(!user) return;
   const userRef = db.doc(`users/${user.uid}`);
@@ -27,11 +29,7 @@ export const createUserCollecton =async(user,additionalData)=>{
     const {displayName} = additionalData;
     const {number} = additionalData;
     const {birth} = additionalData;
-    // const {city} = additionalData;
-    // const {family} = additionalData;
-    // const {maritalStatus} = additionalData;
-    // const {diet} = additionalData;
-    // const {height} = additionalData;
+    const {gender} = additionalData;
 
     try{
       userRef.set({
@@ -40,11 +38,7 @@ export const createUserCollecton =async(user,additionalData)=>{
         birth,
         number,
         createdAt :new Date(),
-        // city,
-        // family,
-        // maritalStatus,
-        // diet,
-        // height,
+        gender,
       })
     }
     catch(err){

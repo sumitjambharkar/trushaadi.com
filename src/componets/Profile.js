@@ -12,12 +12,13 @@ const Profile = () => {
         family : "",
         maritalStatus: "",
         diet : "",
-        height : ""
+        height : "",
+        state:""
     })
 
         const submitForm = (e)=>{
             e.preventDefault() 
-            const {city,family,maritalStatus,diet,height} = data
+            const {city,family,maritalStatus,diet,height,state} = data
             auth.onAuthStateChanged(user=>{
                 if(user){
                     db.collection("users").doc(user.uid).collection("userdata1").add({
@@ -25,7 +26,8 @@ const Profile = () => {
                         family:family,
                         diet:diet,
                         maritalStatus:maritalStatus,
-                        height:height
+                        height:height,
+                        state:state
                     })
                 }
             })
@@ -43,6 +45,8 @@ const Profile = () => {
     const height = [4.0,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5.0,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6.0,6.1,
                    6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,6.0,7.0,7.1 ]
     const city = ['Mumbai','Delhi','Chennai','Bangalore','Hyderabad','Pune','Kochi','Kolkata']
+
+    const state = ["Andhra Pradesh","Arunachal Pradesh","Assam"	,"Bihar"	,"Chhattisgarh"	,"Goa"	,"Gujarat"	,"Haryana","Himachal ","Jammu and Kashmir"	,"Jharkhand","Karnataka"	,"Kerala",	"Madhya Pradesh",	"Maharashtra",	"Manipur","Meghalaya"	,"Nagaland",	"Odisha",	"Punjab","Rajasthan"	,"Sikkim",	"Tamil Nadu",	"Telangana"	,"Tripura",	"Uttar Pradesh",	"Uttarakhand",	"West Bengal"]
            
   return (
     <>
@@ -60,6 +64,13 @@ const Profile = () => {
                      return <option >{ele}</option>
                  })}
              </select>
+             <label>State *</label>
+             <select autoComplete='off' required name='state'   onChange={handalChange} value={data.state}>
+                 <option >Select</option>
+                 {state.map((ele)=>{
+                     return <option >{ele}</option>
+                 })}
+             </select>
              <label>you live with your family</label>
              <select autoComplete='off' required name='family'   onChange={handalChange} value={data.family}>
                  <option >Select</option>
@@ -69,7 +80,7 @@ const Profile = () => {
              <label>your Marital Status</label>
              <select autoComplete='off' required name='maritalStatus'   onChange={handalChange} value={data.maritalStatus}>
              <option >Select</option>
-                 <option>Neverd</option>
+                 <option>Never Married</option>
                  <option>Married</option>
              </select>
              <label>your diet</label>

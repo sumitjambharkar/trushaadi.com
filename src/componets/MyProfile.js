@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import styled from "styled-components";
 import Footer from "./Footer";
 import UseNav from "./UseNav";
-import { db, auth } from "./firebase";
+import { db, auth} from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "./userSlice";
 import { selectUser } from "./userSlice";
@@ -13,9 +13,39 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { toast } from "react-toastify";
+import { Avatar } from '@mui/material';
+import { storage } from "./firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 
 const MyProfile = () => {
+
+  const [image, setImage] = useState(null);
+  const [url, setUrl] = useState(null);
+
+  const handleImageChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
+  const handleSubmit = () => {
+    const imageRef = ref(storage, "image");
+    uploadBytes(imageRef, image)
+      .then(() => {
+        getDownloadURL(imageRef)
+          .then((url) => {
+            setUrl(url);
+          })
+          .catch((error) => {
+            console.log(error.message, "error getting the image url");
+          });
+        setImage(null);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   const [userDetails, setUserDetails] = useState([]);
   const [userFirst, setUserFirst] = useState([]);
@@ -28,6 +58,7 @@ const MyProfile = () => {
   const [openT, setOpenT] = useState()
   const [openFo, setOpenFo] = useState()
   const [number, setNumber] = useState()
+
 
   let x = userDetails.birth
   let date = new Date(x)
@@ -173,8 +204,9 @@ const MyProfile = () => {
       <ProfileSection>
         <ImageSection>
           <CardImage>
-            <img src={userDetails.image} alt="" />
-            <button>Add Photo</button>
+          <Avatar src={url} sx={{width:200,height:230}} variant="square"/>
+          <input type="file" onChange={handleImageChange} />
+            <button onClick={handleSubmit}>Add Photo</button>
           </CardImage>
           <ImageDetails>
             <h3 style={{ textTransform: "capitalize" }}>
@@ -236,9 +268,9 @@ const MyProfile = () => {
                 <li>{userDetails.gender}</li>
                 <li>{dateMDY}</li>
                 <li>{userFirst.maritalStatus}</li>
-                <li>{userFirst.maritalStatus}</li>
-                <li>{userFirst.maritalStatus}</li>
-                <li>{userFirst.maritalStatus}</li>
+                <li>{userSecand.religion}</li>
+                <li>{userSecand.tounge}</li>
+                <li>{userSecand.tounge}</li>
               </First>
               <First>
               <Button onClick={()=>setOpen(userDetails.gender,userDetails.birth)}>
@@ -313,11 +345,11 @@ const MyProfile = () => {
             <Agent>
               <First>
                 <li>Live with your family</li>
-                <li>Birth Of Date</li>
+                <li>Family Members</li>
               </First>
               <First>
                 <li>{userFirst.family}</li>
-                <li>{userDetails.birth}</li>
+                <li>Not Specified</li>
               </First>
               <First>
               <Button onClick={()=>setOpenS(userDetails.gender,userDetails.birth)}>

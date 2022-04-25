@@ -19,12 +19,13 @@ const Signup = () => {
     email:"",
     number:"",
     birth:"",
+    gender:"",
     password:""
 
   })
   const handalSubmit=async(e)=>{
     e.preventDefault()  
-    const {email,displayName,birth,number,password} = data;
+    const {email,displayName,birth,number,password,gender} = data;
     try{
       const {user} = await auth.createUserWithEmailAndPassword(email,password,{displayName,number});
       console.log(user);
@@ -32,7 +33,7 @@ const Signup = () => {
         displayName:displayName,
         phoneNumber:number,
       })
-      await createUserCollecton(user,{displayName,birth,number});
+      await createUserCollecton(user,{displayName,birth,number,gender});
       dispatch(login({
         uid : user.uid,
         email:user.email,
@@ -80,6 +81,14 @@ const Signup = () => {
               <Input>
                 <input name="displayName" type="name" required autoComplete="off" value={data.displayName} onChange={handalChange} />
               </Input>
+              <Label>
+              <label>Gender</label>
+              </Label>
+              <select autoComplete='off' required name='gender'   onChange={handalChange} value={data.gender}>
+                 <option >Select</option>
+                 <option >Male</option>
+                 <option >Female</option>
+             </select>
               <Label>
                 <label>Birth Date</label>
               </Label>
@@ -158,6 +167,14 @@ const MainDiv = styled.div`
   div > a {
     text-decoration:none;
     color:black;
+  }
+  >select {
+    width:270px;
+    height:40px;
+    margin-bottom:8px;
+    padding:5px;
+    border:1px solid #FFA500;
+    outline:none;
   }
 `;
 

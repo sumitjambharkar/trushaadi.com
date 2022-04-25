@@ -9,19 +9,21 @@ const Steptwo = () => {
        qaulification :"" ,
        collage :"",
        work:"",
-       income:""
+       tounge:"",
+       religion:""
     })
 
     const submitForm = (e)=>{
         e.preventDefault() 
-        const {qaulification,collage,work,income} = data
+        const {qaulification,collage,work,tounge,religion} = data
         auth.onAuthStateChanged(user=>{
             if(user){
                 db.collection("users").doc(user.uid).collection("userdata2").add({
                     qaulification:qaulification,
                     collage:collage,
                     work:work,
-                    income:income
+                    tounge:tounge,
+                    religion:religion
                 })
             }
         })
@@ -32,7 +34,13 @@ const Steptwo = () => {
         value = e.target.value
         setData({...data,[name]:value})
 
-    } 
+    }
+    let religion = ["Hindu","Muslim","Christian","Sikh","Parsi","Jain","Buddhist","Jewish","No_Religion","Spiritual","Other"]
+    let motherTounge = ["Hindi","English","Marathi","Punjabi","Bengali","Gujarati","Urdu","Telugu","Kannada","English", "Tamil","Oriya","Marwari","More","Aka",
+        "Arabic","Arunachali","Assamese","Awadhi","Baluchi","Bengali","Bhojpuri","Bhutia","Brahui","Brij","Burmese","Chattis,garhi","Chinese",
+        "Coorgi","Dogri","English,","French","Garhwali,","Garo","Gujarati","Haryana","Himachal","Pahari","Hindi","Hindko","Kakbarak,","Kanauji", "Kannada","Kashmiri",
+        "Khandesi","Khasi","Konkani,","Koshali","Kumaoni","Kutchi","Ladakhi","Lepcha","Magahi","Maithili,", "Malay","Malayal","Manipuri", "Marathi","Marwari","Miji","Mizo","Monpa","Nepali","Odia","Pashto","Persian",
+        "Punjabi","Rajasthan","Russian","Sanskrit","Santhali","Seraiki","Sindhi","Sinhala","Sourashtr","Spanish","Swedish","Tagalog","Tamil","Telugu","Tulu","Urdu","Other"]
   return (
     <>
     <Header>
@@ -41,18 +49,32 @@ const Steptwo = () => {
     <CreateSection>
         <Card>
          <Form>
-             <h1>Just a few questions your about education & career</h1>
+             <h1>Just a few questions your about.</h1>
+             <label>Your Religion</label>
+             <select name='religion'  onChange={handalChange} value={data.religion}>
+             <option >Select</option>
+                 {religion.map((ele)=>{
+                     return <option >{ele}</option>
+                 })}
+             </select>
+             <label>Your Mother Tongue</label>
+             <select name='tounge'  onChange={handalChange} value={data.tounge}>
+             <option >Select</option>
+                 {motherTounge.map((ele)=>{
+                     return <option >{ele}</option>
+                 })}
+             </select>
              <label>Your highest qaulification *</label>
              <input name='qaulification' onChange={handalChange} value={data.qaulification} placeholder='Enter Your Qualification' type="text" />
-             <label>Your collage name</label>
-             <input name='collage' onChange={handalChange} value={data.collage} placeholder='Enter your collage' type="text" />
+             <label>Your collage of univercity</label>
+             <input name='collage' onChange={handalChange} value={data.collage} placeholder='Enter your Univercity' type="text" />
              <label>Your work with</label>
              <select name='work'  onChange={handalChange} value={data.work}>
+               <option >Select</option>
                  <option>Bussiness</option>
                  <option>Self Employed</option>
+                 <option>Not Work</option>
              </select>
-             <label>Your monthly income</label>
-             <input name='income' onChange={handalChange} value={data.income} placeholder='Enter your income' type="text" />
              <button onClick={submitForm}><Link to="/top-matches">Continue</Link></button> 
          </Form>
         </Card>

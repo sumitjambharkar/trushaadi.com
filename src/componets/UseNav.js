@@ -138,6 +138,7 @@ const Avtars = styled.div`
   
 `
 const Dash = styled.div`
+z-index:1;
 display:flex;
 justify-content:start;
 flex-wrap:wrap;
@@ -148,7 +149,7 @@ position:absolute;
 width:340px;
 height:115px;
 padding-top:16px;
-margin-left:-230px;
+margin-left:-130px;
 > li {
     width: 149px;
     margin: 10px;

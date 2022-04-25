@@ -32,9 +32,9 @@ function Chats() {
           {room.map((doc) => {
             return (
               <>
-                {doc.data.displayName===user.displayName ?
+                {/* {doc.data.displayName===user.displayName ?
                 null 
-                :
+                : */}
                 <Link to={`/chats/${doc.id}`}>
                 <Contact>
                   <Avatar src={doc.data.image} />
@@ -45,7 +45,7 @@ function Chats() {
                   </ListItemButton>
                 </Contact>
                 </Link>
-                }
+                {/* } */}
               </>
             )
           })}

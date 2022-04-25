@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 
 
 
-const View = (props) => {
+
+const View = () => {
 
   function calculate_age(dob) {
     var diff_ms = Date.now() - dob.getTime();
@@ -17,10 +18,13 @@ const View = (props) => {
     return Math.abs(age_dt.getUTCFullYear() - 1970);
   }
   const { Id } = useParams()
-  const [user, setUser] = useState([])
   const [personData, setPersonData] = useState([])
   const [personDataFirst, setPersonDataFirst] = useState([])
   const [personDataSecand, setPersonDataSecand] = useState([])
+
+  let x = personData.birth
+  let date = new Date(x)
+  let dateMDY = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
   
 
   useEffect(() => {
@@ -48,12 +52,7 @@ const View = (props) => {
             setPersonDataSecand(doc.data())
           });
       });
-      db.collection("users").onSnapshot(snapshot => {
-        setUser(snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data : doc.data()
-        })))
-      })
+  
     }
 
   }, [Id])
@@ -70,15 +69,15 @@ const View = (props) => {
             <hr></hr>
             <Section>
               <Firsts>
-                <li>{calculate_age(new Date(personData.birth))}</li>
-                <li>Account Setting</li>
-                <li>Contact Filters</li>
-                <li>Email / SMS Alerts</li>
+                <li>{calculate_age(new Date(personData.birth))} Years</li>
+                <li>{personDataFirst.maritalStatus}</li>
+                <li>{personDataSecand.religion}</li>
+                <li>{personDataSecand.tounge}</li>
               </Firsts>
               <Firsts>
-                <li>Setting</li>
-                <li>Account Setting</li>
-                <li>Contact Filters</li>
+                <li>Not Specified</li>
+                <li>Not Specified</li>
+                <li>Lives in {personDataFirst.city}</li>
                 <li><Link to="/chats/:roomId">Chat</Link></li>
               </Firsts>
             </Section>
@@ -97,59 +96,69 @@ const View = (props) => {
             <Agent>
               <First>
                 <li>Gender</li>
-                <li>{personDataFirst.city}</li>
+                <li>{personData.gender}</li>
               </First>
               <First>
-                <li>Caste</li>
-                <li>Bhandari</li>
+                <li>Date Of Birth</li>
+                <li>{dateMDY}</li>
+              </First>
+            </Agent>
+            <Agent>
+            <First>
+                <li>Religion</li>
+                <li>{personDataSecand.religion}</li>
+              </First>
+              <First>
+                <li>Mother Tounge</li>
+                <li>{personDataSecand.tounge}</li>
               </First>
             </Agent>
           </Box>
           <Box><h3>Lifestyle and Intrests</h3>
             <Agent>
               <First>
-                <li>Gender</li>
-                <li>Female</li>
+                <li>Eating Habit</li>
+                <li>{personDataFirst.diet}</li>
               </First>
               <First>
-                <li>Caste</li>
-                <li>Bhandari</li>
+                <li>Height</li>
+                <li>{personDataFirst.height}</li>
               </First>
             </Agent>
           </Box>
           <Box><h3>Education and profession</h3>
             <Agent>
               <First>
+                <li>Qaulification</li>
                 <li>{personDataSecand.qaulification}</li>
-                <li>Female</li>
               </First>
               <First>
-                <li>Caste</li>
-                <li>Bhandari</li>
+                <li>University</li>
+                <li>{personDataSecand.collage}</li>
               </First>
             </Agent>
           </Box>
           <Box><h3>Family Details</h3>
             <Agent>
               <First>
-                <li>Gender</li>
-                <li>Female</li>
+                <li>Live in Family</li>
+                <li>{personDataFirst.family}</li>
               </First>
               <First>
-                <li>Caste</li>
-                <li>Bhandari</li>
+                <li>Members</li>
+                <li>Not Specified</li>
               </First>
             </Agent>
           </Box>
-          <Box><h3>Lifestyle and Intrests</h3>
+          <Box><h3>Location</h3>
             <Agent>
               <First>
-                <li>Gender</li>
-                <li>Female</li>
+                <li>Live in</li>
+                <li>{personDataFirst.city}</li>
               </First>
               <First>
-                <li>Caste</li>
-                <li>Bhandari</li>
+                <li>State</li>
+                <li>{personDataFirst.state}</li>
               </First>
             </Agent>
           </Box>
@@ -208,6 +217,14 @@ justify-content:space-around;`
 const Firsts = styled.div`
 > li {
   list-style:none;
+  font-size: 15px;
+  color: #666;
+  margin:4px;
+}
+> li > a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #666;
 }`
 const AllDetails = styled.div`
 display:flex;
@@ -244,6 +261,7 @@ justify-content:space-around;
 `
 const First = styled.div`
 padding-left:48px;
+margin:4px;
 > li {
   list-style:none;
   font-size: 15px;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Footer from './Footer';
 
 const Topmatch = () => {
   const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -37,12 +38,7 @@ const Topmatch = () => {
           </Button>
         </Card>
       </CreateSection>
-      <Footer>
-        <h1>
-          © 1996-2022 TruShaadi.com, The World's Leading Matchmaking Service™
-        </h1>
-        <h1>Created By Sumit Jambharkar</h1>
-      </Footer>
+      <Footer/>
     </>
   );
 };
@@ -57,7 +53,7 @@ const Header = styled.div`
   }
 `;
 const CreateSection = styled.div`
-  background-color: aqua;
+  background-color: rgb(235, 220, 220);;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -90,8 +86,8 @@ const Button = styled.div`
   > button {
     width: 210px;
     height: 40px;
-    border: 1px solid aqua;
-    background-color: aqua;
+    border: 1px solid #FFA500;
+    background-color:#FFA500;
     border-radius: 24px;
     font-weight: 700;
     margin: 8px;
@@ -105,14 +101,4 @@ const GusetBox = styled.div`
   display: flex;
   margin: 8px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-`;
-const Footer = styled.div`
-  background-color: gray;
-  display: flex;
-  justify-content: space-around;
-  > h1 {
-    font-size: 16px;
-    padding: 24px 24px;
-    color: white;
-  }
 `;

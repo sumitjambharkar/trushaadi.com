@@ -1,8 +1,34 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import UseNav from './UseNav';
+import Footer from './Footer';
+import { useState } from 'react';
+import { db } from './firebase';
+import { toast } from 'react-toastify';
+
 
 const Tellus = () => {
+    const [patner, setPatner] = useState({
+        fName:"",pName:"",email:"",pEmail:"",firstMeet:"",wedDate:"",
+        tell:""
+    })
+    const submitData =(e)=>{
+        const { fName,pName,email,pEmail,firstMeet,wedDate,tell} = patner
+       e.preventDefault()
+        console.log(patner);
+        db.collection("patners").add({
+            fName,pName,email,pEmail,firstMeet,wedDate,tell
+        })
+        toast.success("Submit")
+        setPatner("")
+
+    }
+    let name,value
+    const handalChange =(e)=>{
+        name = e.target.name
+        value = e.target.value
+        setPatner({...patner,[name]:value})
+    }
 
   return (
     <>
@@ -27,19 +53,19 @@ const Tellus = () => {
      </Company>
      <p>Give us Detail of you and your partner</p>
      <Input>
-     <input placeholder='Your Name' type="text" />
-     <input placeholder='Your Partner Name' type="text" />
+     <input name="fName" onChange={handalChange} value={patner.fName} placeholder='Your Name' type="text" />
+     <input name='pName' onChange={handalChange} value={patner.pName} placeholder='Your Partner Name' type="text" />
      </Input>
      <Input>
-     <input placeholder='Your Email Id' type="text" />
-     <input placeholder='Your Partner Email Id' type="text" />
+     <input name='email' onChange={handalChange} value={patner.email} placeholder='Your Email Id' type="email" />
+     <input name='pEmail' onChange={handalChange} value={patner.pEmail} placeholder='Your Partner Email Id' type="email" />
      </Input>
      <Input>
-     <input placeholder='When did you first meet ?' type="text" />
-     <input placeholder='Your Wedding Date' type="text" />
+     <input name='firstMeet' onChange={handalChange} value={patner.firstMeet} placeholder='When did you first meet ?' type="text" />
+     <input name='wedDate' onChange={handalChange} value={patner.wedDate} placeholder='Your Wedding Date' type="text" />
      </Input>
      <Input>
-     <input placeholder='Tell us how you meet each other on TruShaddhi.com' type="text" />
+     <input name='tell' onChange={handalChange} value={patner.tell} placeholder='Tell us how you meet each other on TruShaddhi.com' type="text" />
      </Input>
      <Input>
      <label>Your Couple or Weddding Photos</label>
@@ -48,13 +74,10 @@ const Tellus = () => {
      <Checkbox>
      <input type="checkbox" /> I agree to Teams & Conditions.
      </Checkbox>
-     <h3><button>Submit</button></h3>
+     <h3><button onClick={submitData} type='submit'>Submit</button></h3>
      </TellUsCard> 
     </Welcome>
-    <Footer>
-        <h1>© 1996-2022 TruShaadi.com, The World's Leading Matchmaking Service™</h1>
-        <h1>Created By Sumit Jambharkar</h1>
-    </Footer>
+   <Footer/>
     </>
   )
 }
@@ -89,15 +112,6 @@ padding:24px;
     text-align:center;
     color:#72727D;
 }`
-const Footer = styled.div`
-background-color:gray;
-display:flex;
-justify-content:space-around;
-> h1 {
-    font-size:16px;
-    padding:24px 24px;
-    color:white;
-}`
 const TellUsCard = styled.div`
 background-color:white;
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -110,11 +124,11 @@ padding:12px;
     
 }
 > h3 > button {
-    background-color:aqua;
+    background-color:#FFA500;
     color:white;
     padding:4px;
     width:150px;
-    border:1px solid aqua;
+    border:1px solid #FFA500;
     border-radius:8px;
     margin:12px;
 }`
@@ -128,22 +142,24 @@ display:flex;
 justify-content:center;
 margin:12px;
 align-items:center;
+flex-wrap: wrap;
 > input {
     width:300px;
     margin:6px;
     padding:2.5px;
     border-radius:4px;
-    border:0.2px solid gray;
+    border:1px solid #FFA500;
 }
 input:focus {
-    outline: none !important;
+    outline: none;
 } 
 @media (min-width:430px) {
     >input {
+    width:220px;
     margin:6px;
     padding:2.5px;
     border-radius:4px;
-    border:0.2px solid gray;
+    border:1px solid #FFA500;
 }   
 }
 `

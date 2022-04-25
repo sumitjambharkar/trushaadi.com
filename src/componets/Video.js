@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import UseNav from "./UseNav";
+import Footer from "./Footer";
 
 
 const Video = () => {
@@ -30,12 +31,7 @@ const Video = () => {
           );
         })}
       </Videos>
-      <Footer>
-        <h1>
-          © 1996-2022 TruShaadi.com, The World's Leading Matchmaking Service™
-        </h1>
-        <h1>Created By Sumit Jambharkar</h1>
-      </Footer>
+      <Footer/>
     </>
   );
 };
@@ -68,16 +64,6 @@ const Welcome = styled.div`
   > p {
     text-align: center;
     color: #72727d;
-  }
-`;
-const Footer = styled.div`
-  background-color: gray;
-  display: flex;
-  justify-content: space-around;
-  > h1 {
-    font-size: 16px;
-    padding: 24px 24px;
-    color: white;
   }
 `;
 const Videos = styled.div`
