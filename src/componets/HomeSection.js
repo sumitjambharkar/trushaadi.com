@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
 
 const HomeSection = () => {
-  
+
   function calculate_age(dob) { 
     var diff_ms = Date.now() - dob.getTime();
     var age_dt = new Date(diff_ms); 

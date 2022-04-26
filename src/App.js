@@ -31,6 +31,8 @@ import Contacts from './componets/setting/Contacts';
 import Policys from './componets/setting/Policys';
 import Account from './componets/setting/Account'
 import Chats from './componets/Chats';
+import BuySub from './componets/BuySub';
+import PayHome from './componets/PayHome';
 
 
 
@@ -71,6 +73,9 @@ function App() {
         <Route exact path="/view/:Id">
         <View/>
       </Route>
+      <Route exact path="/view/:Id/buy">
+        <BuySub/>
+      </Route>
       <Route exact path="/profile">
             <Profile/>
           </Route>
@@ -95,6 +100,9 @@ function App() {
           <Route exact path="/my-profile">
             <MyProfile/>
           </Route>
+          <Route exact path="/connect-match">
+            <PayHome/>
+          </Route>
           <Route exact path="/my-setting">
             <Email/>
           </Route>
@@ -113,10 +121,12 @@ function App() {
       <Route exact path="/chats/:roomId">
         <Chats/>
       </Route>
-          
          
         </>
          }
+         <Route exact path="/connect-match">
+            <PayHome/>
+          </Route>
           <Route exact path="/signup">
             <Signup />
           </Route>

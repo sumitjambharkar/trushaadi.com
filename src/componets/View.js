@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 
+
 const View = () => {
 
   function calculate_age(dob) {
@@ -83,6 +84,8 @@ const View = () => {
             </Section>
           </ImageDetails>
         </ImageSection>
+      </ProfileSection>
+      <ProfileSection>
       </ProfileSection>
       <AllDetails>
         <Details className='container'>
