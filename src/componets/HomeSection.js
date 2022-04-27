@@ -39,7 +39,7 @@ const HomeSection = () => {
       {personData.map((doc)=>{
         return (
           <>
-          {doc.data.gender ==="female" || doc.data.gender !=="male"? 
+          {doc.data.gender ==="Female" || doc.data.gender !=="Male"? 
           <> {doc.data.displayName===user.displayName ? 
             null :
             <Card>

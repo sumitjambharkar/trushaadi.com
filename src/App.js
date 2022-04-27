@@ -67,9 +67,12 @@ function App() {
           <Home/>
         </Route> :
         <>
-        <Route exact path="/">
+        {/* <Route exact path="/">
           <HomeSection/>
-        </Route>
+        </Route> */}
+        <Route exact path="/">
+            <PayHome/>
+          </Route>
         <Route exact path="/view/:Id">
         <View/>
       </Route>
@@ -124,9 +127,7 @@ function App() {
          
         </>
          }
-         <Route exact path="/connect-match">
-            <PayHome/>
-          </Route>
+        
           <Route exact path="/signup">
             <Signup />
           </Route>

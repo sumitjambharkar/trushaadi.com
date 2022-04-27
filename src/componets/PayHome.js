@@ -83,7 +83,10 @@ const PayHome = () => {
         </>
         :
         <>
-        <Link to="/connect-match">My Matches</Link>
+        <Link to="/my-profile">My Account</Link>
+        <Link to="/">My Matches</Link>
+        <Link to="/view/:Id/Buy">My Chat</Link>
+        <Link to="/about">About</Link>
         </>
         } 
         
@@ -94,10 +97,19 @@ const PayHome = () => {
             <Link>Help</Link>
             :
             <>
-            <Link style={{textTransform: 'capitalize'}} to="/view/:Id/Buy">{user.displayName}
+            <Link style={{textTransform: 'capitalize'}}  onClick={()=>setShow(!show)}>{user.displayName}
             <button><Avatar style={{textTransform: 'capitalize'}}>{user.displayName?.[0]}</Avatar></button>
             <ArrowDropDownIcon/>
             </Link>
+            {show ? 
+            <Dash>
+            <li to="/my-profile"><AccountCircleIcon/><Link to="/my-profile">My Profile</Link></li>
+            <li onClick={handalLogout}><LogoutIcon/><Link>Logout</Link></li>
+            <li to="/my-profile"><SettingsIcon/><Link to="/my-account">Account Setting</Link></li>
+            <li><HttpsIcon/><Link to="my-policys">Privacy Options</Link></li>
+           </Dash>
+           : ""
+            }
             
             </>
           }
@@ -108,7 +120,7 @@ const PayHome = () => {
       {personData.map((doc)=>{
         return (
           <>
-          {doc.data.gender ==="female" || doc.data.gender !=="male"? 
+          {doc.data.gender ==="Female" || doc.data.gender !=="Male"? 
           <> {doc.data.displayName===user.displayName ? 
             null :
             <Card>

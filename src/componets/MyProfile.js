@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, {useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Footer from "./Footer";
 import UseNav from "./UseNav";
@@ -17,6 +17,9 @@ import { Avatar } from '@mui/material';
 import { storage} from "./firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
+import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
+
+
 
 
 const MyProfile = () => {
@@ -34,13 +37,17 @@ const MyProfile = () => {
   const [openFo, setOpenFo] = useState()
   const [number, setNumber] = useState()
   const [userN, setUserN] = useState()
+ 
   
   useEffect(()=>{
-    getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
-      if (docSnap.exists) {
-        setUserN(docSnap.data());
-      }
-    });
+    db.collection("users").doc(user.uid).onSnapshot(snapshot=>{
+      setUserN(snapshot.doc.data())
+    })
+    // getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
+    //   if (docSnap.exists) {
+    //     setUserN(docSnap.data());
+    //   }
+    // });
     if(img){
       const uploadImg =async()=>{
         const imgRef = ref(storage,`avatar/${new Date().getTime()} - ${img.name}`)
@@ -70,9 +77,16 @@ const MyProfile = () => {
   console.log(dateMDY);
   
   const [data, setdata] = useState({
+    gender:userDetails.gender,
     displayName:userDetails.displayName,
+    maritalStatus:userFirst.maritalStatus,
     birth : userDetails.birth,
     number : userDetails.number,
+    religion:userSecand.religion,
+    tounge:userSecand.tounge,
+    collage:userSecand.collage,
+    qaulification:userSecand.qaulification,
+    worK:userSecand.work
     
   })
   let name, value
@@ -97,6 +111,9 @@ const MyProfile = () => {
     db.collection("users").doc(user.uid).update({
       birth:data.birth,
       gender:data.gender,
+      religion:data.religion,
+      tounge:data.tounge,
+      maritalStatus:data.maritalStatus
     })
     toast.success("update Success")
     setTimeout(()=>{
@@ -107,11 +124,11 @@ const MyProfile = () => {
   const updateF = (e)=>{
     e.preventDefault();
     console.log();
-    db.collection("users").doc(user.uid).update({
-      birth:data.birth,
-      gender:data.gender,
-      religion:data.religion,
-      tounge:data.tounge
+    db.collection("users").doc(user.uid).collection("userdata2").update({
+     collage:data.collage,
+     qaulification:data.qaulification,
+     work:data.worK
+      
     })
     toast.success("update Success")
     
@@ -211,8 +228,10 @@ const MyProfile = () => {
       <ProfileSection>
         <ImageSection>
           <CardImage>
-          <Avatar src={userDetails.image}  sx={{width:200,height:230}} variant="square"/>
-          <input type="file" accept="image/*"  style={{dispay:"none"}} onChange={(e)=>setImag(e.target.files[0])}/>
+          <Avatar src={userDetails.image}   sx={{width:200,height:230}} variant="square"/>
+          <label style={{fontWeight:"500",textAlign:"center",color:"white",border:"#FFA500",backgroundColor: "#FFA500"}}>Add Photo
+          <input style={{width:"100px",display:"none"}} type="file" accept="image/*" onChange={(e)=>setImag(e.target.files[0])}/>
+          </label>
           </CardImage>
           <ImageDetails>
             <h3 style={{ textTransform: "capitalize" }}>
@@ -279,7 +298,7 @@ const MyProfile = () => {
                 <li>{userSecand.tounge}</li>
               </First>
               <First>
-              <Button onClick={()=>setOpen(userDetails.gender,userDetails.birth)}>
+              <Button onClick={()=>setOpen(userDetails.gender,userDetails.birth,userFirst.maritalStatus,userSecand.religion,userSecand.tounge)}>
                   <EditIcon />
                   Edit
                 </Button>
@@ -325,7 +344,7 @@ const MyProfile = () => {
                 <li>{userSecand.work}</li>
               </First>
               <First>
-              <Button onClick={()=>setOpenF(userDetails.gender,userDetails.birth)}>
+              <Button onClick={()=>setOpenF(userSecand.qaulification,userSecand.collage,userSecand.work)}>
                   <EditIcon />
                   Edit
                 </Button>
@@ -340,8 +359,9 @@ const MyProfile = () => {
                       Basic Information
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
-                     <input type="date" name="birth" value={data.birth} onChange={handalChange}/>
+                    <input placeholder="Qualification" type="text" name="qaulification" value={data.qaulification} onChange={handalChange}/>
+                     <input placeholder="University" type="text" name="collage" value={data.collage} onChange={handalChange}/>
+                     <input placeholder="Work" type="text" name="work" value={data.work} onChange={handalChange}/>
                      <br></br>
                      <Button onClick={updateF}>Update</Button>
                      <Button onClick={()=>setOpenF(false)}>Close</Button>

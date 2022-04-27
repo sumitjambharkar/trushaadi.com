@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import first from '../image/home-icon-sprite.jpg';
+import first from '../image/home-icon-sprite.png';
 import secand from '../image/home-icon-sprite-p.png';
-import third from '../image/home-icon-sprite-c.jpg';
+import third from '../image/home-icon-sprite-c.png';
 import { Link } from "react-router-dom";
 
 const Main = () => {

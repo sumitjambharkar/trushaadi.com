@@ -59,7 +59,7 @@ const UseNav = () => {
         <>
         <Link to="/my-profile">My Account</Link>
         <Link to="/">My Matches</Link>
-        <Link to="/chats/:roomId">My Chat</Link>
+        {/* <Link to="/chats/:roomId">My Chat</Link> */}
         <Link to="/about">About</Link>
         </>
         } 

@@ -42,7 +42,7 @@ const BuySub = () => {
          <p>Membership Duration - 10 Days</p>
          </Dive>
      <h4><Button onClick={displayRazorpay}>Pay Now</Button></h4>
-     <Link to="/connect-match">x</Link>
+     <Link to="/">x</Link>
      </Main>
     </Container>
     </>
