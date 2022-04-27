@@ -1,5 +1,7 @@
-export default async function displayRazorpay() {
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
+
+export default async function displayRazorpay() {
   const data = await fetch("http://localhost:1337/razorpay", {
     method: "POST",
   }).then((t) => t.json());
@@ -17,6 +19,8 @@ export default async function displayRazorpay() {
     handler: function (response) {
       alert("PAYMENT ID ::" + response.razorpay_payment_id);
       alert("ORDER ID :: " + response.razorpay_order_id);
+      const history = useHistory()
+      history('/')
 
     },
     prefill: {

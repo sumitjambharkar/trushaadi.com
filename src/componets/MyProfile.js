@@ -14,39 +14,14 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { toast } from "react-toastify";
 import { Avatar } from '@mui/material';
-import { storage } from "./firebase";
+import { storage} from "./firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
 
 
 const MyProfile = () => {
-
-  const [image, setImage] = useState(null);
-  const [url, setUrl] = useState(null);
-
-  const handleImageChange = (e) => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-  };
-
-  const handleSubmit = () => {
-    const imageRef = ref(storage, "image");
-    uploadBytes(imageRef, image)
-      .then(() => {
-        getDownloadURL(imageRef)
-          .then((url) => {
-            setUrl(url);
-          })
-          .catch((error) => {
-            console.log(error.message, "error getting the image url");
-          });
-        setImage(null);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
+  const [img ,setImag ] = useState('')
+  console.log(img)
   const [userDetails, setUserDetails] = useState([]);
   const [userFirst, setUserFirst] = useState([]);
   const [userSecand, setUserSecand] = useState([]);
@@ -58,7 +33,36 @@ const MyProfile = () => {
   const [openT, setOpenT] = useState()
   const [openFo, setOpenFo] = useState()
   const [number, setNumber] = useState()
+  const [userN, setUserN] = useState()
+  
+  useEffect(()=>{
+    getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
+      if (docSnap.exists) {
+        setUserN(docSnap.data());
+      }
+    });
+    if(img){
+      const uploadImg =async()=>{
+        const imgRef = ref(storage,`avatar/${new Date().getTime()} - ${img.name}`)
+        try{
+        const snap =await uploadBytes(imgRef,img)
+        console.log(snap.ref.fullPath)
+        const url = await  getDownloadURL(ref(storage,snap.ref.fullPath))
+        await updateDoc(doc(db,"users",auth.currentUser.uid),{
+          image:url,
+          avatarPath:snap.ref.fullPath
+        })
+        console.log(url)
+        setImag("")
+        }
+        catch(err){
+          console.log(err.message);
+        }
+      }
+      uploadImg()
+    }
 
+  },[img])
 
   let x = userDetails.birth
   let date = new Date(x)
@@ -207,9 +211,8 @@ const MyProfile = () => {
       <ProfileSection>
         <ImageSection>
           <CardImage>
-          <Avatar src={url} sx={{width:200,height:230}} variant="square"/>
-          <input type="file" onChange={handleImageChange} />
-            <button onClick={handleSubmit}>Add Photo</button>
+          <Avatar src={userDetails.image}  sx={{width:200,height:230}} variant="square"/>
+          <input type="file" accept="image/*"  style={{dispay:"none"}} onChange={(e)=>setImag(e.target.files[0])}/>
           </CardImage>
           <ImageDetails>
             <h3 style={{ textTransform: "capitalize" }}>
