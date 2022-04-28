@@ -6,7 +6,7 @@ import Footer from "./Footer";
 
 
 const Video = () => {
-  const vid = [1, 2, 3, 4];
+
   return (
     <>
       <UseNav/>
@@ -21,15 +21,24 @@ const Video = () => {
         </h1>
       </Welcome>
       <Videos className="container">
-        {vid.map((ele) => {
-          return (
+        
+          
             <>
               <Box>
-                
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/QZbwu95eYHE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </Box>
+              <Box>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/95qPaIqLK8A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </Box>
+              <Box>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/L_GgJZbPZus" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </Box>
+              <Box>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/jczNUPS1cMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </Box>
             </>
-          );
-        })}
+         
+     
       </Videos>
       <Footer/>
     </>

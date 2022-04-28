@@ -1,9 +1,8 @@
-export default async function displayRazorpay() {
-  const data = await fetch("http://localhost:1337/razorpay", {
+function displayRazorpay() {
+  const getData =async()=>{
+    const data = await fetch("http://localhost:1337/razorpay", {
     method: "POST",
   }).then((t) => t.json());
-
-  console.log(data);
 
   const options = {
     key: "rzp_test_dgT6dQaeQPEj6s",
@@ -16,8 +15,6 @@ export default async function displayRazorpay() {
     handler: function (response) {
       alert("PAYMENT ID ::" + response.razorpay_payment_id);
       alert("ORDER ID :: " + response.razorpay_order_id);
-    
-
     },
     prefill: {
       name: "xxxxxx",
@@ -25,7 +22,12 @@ export default async function displayRazorpay() {
       contact: "",
     },
   };
-
+ 
   const paymentObject = new window.Razorpay(options);
   paymentObject.open();
+
+  }
+  getData()
+
 }
+export default displayRazorpay

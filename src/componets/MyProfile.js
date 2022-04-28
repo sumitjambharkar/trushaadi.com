@@ -40,14 +40,14 @@ const MyProfile = () => {
  
   
   useEffect(()=>{
-    db.collection("users").doc(user.uid).onSnapshot(snapshot=>{
-      setUserN(snapshot.doc.data())
-    })
-    // getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
-    //   if (docSnap.exists) {
-    //     setUserN(docSnap.data());
-    //   }
-    // });
+    // db.collection("users").doc(user.uid).onSnapshot(snapshot=>{
+    //   setUserN(snapshot.doc.data())
+    // })
+    getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
+      if (docSnap.exists) {
+        setUserN(docSnap.data());
+      }
+    });
     if(img){
       const uploadImg =async()=>{
         const imgRef = ref(storage,`avatar/${new Date().getTime()} - ${img.name}`)
@@ -86,14 +86,20 @@ const MyProfile = () => {
     tounge:userSecand.tounge,
     collage:userSecand.collage,
     qaulification:userSecand.qaulification,
-    worK:userSecand.work
+    worK:userSecand.work,
     
+    
+  })
+  const [first, setfirst] = useState({
+    height:userFirst.height,
+    diet:userFirst.diet
   })
   let name, value
   const handalChange = (e) => {
     name = e.target.name
     value = e.target.value
     setdata({ ...data, [name]: value })
+    setfirst({...first,[name]:value})
   }
   const updateNumber = (e) =>{
     e.preventDefault();
@@ -156,9 +162,9 @@ const MyProfile = () => {
   const updateFo = (e)=>{
     e.preventDefault();
     console.log();
-    db.collection("users").doc(user.uid).update({
-      birth:data.birth,
-      gender:data.gender,
+    db.collection("users").doc(user.uid).collection("userdata1").doc(user.uid).update({
+      diet:first.diet,
+      height:first.height,
     })
     toast.success("update Success")
     
@@ -436,8 +442,8 @@ const MyProfile = () => {
                       Basic Information
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
-                     <input type="date" name="birth" value={data.birth} onChange={handalChange}/>
+                    <input placeholder="City you live in" type="text" name="city" value={data.city} onChange={handalChange}/>
+                     <input placeholder="State" type="text" name="state" value={data.state} onChange={handalChange}/>
                      <br></br>
                      <Button onClick={updateT}>Update</Button>
                      <Button onClick={()=>setOpenT(false)}>Close</Button>
@@ -460,7 +466,7 @@ const MyProfile = () => {
                 <li>{userFirst.height}</li>
               </First>
               <First>
-              <Button onClick={()=>setOpenFo(userDetails.gender,userDetails.birth)}>
+              <Button onClick={()=>setOpenFo(userFirst.diet,userFirst.height)}>
                   <EditIcon />
                   Edit
                 </Button>
@@ -475,8 +481,8 @@ const MyProfile = () => {
                       Basic Information
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
-                     <input type="date" name="birth" value={data.birth} onChange={handalChange}/>
+                    <input placeholder="Eating Habit" type="text" name="diet" value={first.diet} onChange={handalChange}/>
+                     <input placeholder="Height" type="text" name="height" value={first.height} onChange={handalChange}/>
                      <br></br>
                      <Button onClick={updateFo}>Update</Button>
                      <Button onClick={()=>setOpenFo(false)}>Close</Button>

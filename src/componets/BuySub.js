@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import displayRazorpay from './Payment';
 import styled from '@emotion/styled';
 import { useSelector } from 'react-redux';

@@ -14,18 +14,20 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 const MessageScreen = () => {
   const user = useSelector(selectUser)
+  const user1 = user
   const { roomId } = useParams();
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState([])
   const [input, setInput] = useState("")
   const sendMessage =(e)=>{
     e.preventDefault()
-    const {uid , displayName} = user
-    if(roomId){
-      db.collection("users").doc(roomId).collection("message").add({
-        displayName:displayName,
+    const user2 = message.uid
+    const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`
+    if(id){
+      db.collection("users").doc(id).collection("message").add({
+        from:user1,
+        to:user2,
         message:input,
-        uid,
         timestamp:firebase.firestore.FieldValue.serverTimestamp(),
       })
       setInput("")

@@ -16,6 +16,8 @@ import { useDispatch } from 'react-redux';
 import {logout,login} from './userSlice';
 import { auth } from './firebase';
 import { useHistory } from 'react-router-dom';
+import New from './New';
+import Button from '@mui/material/Button';
 
 const PayHome = () => {
 
@@ -73,7 +75,7 @@ const PayHome = () => {
     </Header>
     <NavBar>
         <Nav>
-        <Link to="/connect-match">Home</Link>
+        <Link to="/">Home</Link>
         {
         !user ? 
         <>
@@ -85,7 +87,7 @@ const PayHome = () => {
         <>
         <Link to="/my-profile">My Account</Link>
         <Link to="/">My Matches</Link>
-        <Link to="/view/:Id/Buy">My Chat</Link>
+        <Link>My Chat</Link>
         <Link to="/about">About</Link>
         </>
         } 
@@ -128,7 +130,7 @@ const PayHome = () => {
             <span style={{textTransform: 'capitalize'}}>{doc.data.displayName}</span>
             <span style={{textTransform: 'capitalize'}}>{doc.data.gender}</span>
             <span>{calculate_age(new Date(doc.data.birth))}</span>
-            <button><Link to="/view/:Id/Buy">Send Message</Link></button>
+            <span style={{color:"white",backgroundColor:"#FFA500",textAlign:"center"}}><New user={user}/></span>
             </Card>
             }
             </> : null
@@ -171,20 +173,6 @@ margin:6px;
 box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 2px;
 width:247px;
 background-color:white;
-> button {
-padding: 4px;
-background-color:#FFA500;
-color: white;
-border: 1px solid #FFA500;
-margin: 4px;
-}
-> button :hover {
-  color: red;
-}
-> button a {
-  color:white;
-  text-decoration:none;
-}
 `
 const NavBar = styled.div`
 display: flex;

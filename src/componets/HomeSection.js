@@ -7,6 +7,7 @@ import { db } from './firebase';
 import { Avatar } from '@mui/material';
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
+import { Button } from '@mui/material';
 
 const HomeSection = () => {
 
@@ -39,7 +40,7 @@ const HomeSection = () => {
       {personData.map((doc)=>{
         return (
           <>
-          {doc.data.gender ==="Female" || doc.data.gender !=="Male"? 
+          { doc.data.gender ==="Female" || doc.data.gender !=="Male"? 
           <> {doc.data.displayName===user.displayName ? 
             null :
             <Card>
@@ -47,7 +48,7 @@ const HomeSection = () => {
             <span style={{textTransform: 'capitalize'}}>{doc.data.displayName}</span>
             <span style={{textTransform: 'capitalize'}}>{doc.data.gender}</span>
             <span>{calculate_age(new Date(doc.data.birth))}</span>
-            <button><Link to={`/view/${doc.id}`}>Send Message</Link></button>
+            <Button><Link to={`/view/${doc.id}`}>Send Message</Link></Button>
             </Card>
             }
             </> : null

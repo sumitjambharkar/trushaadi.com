@@ -1,23 +1,25 @@
+import React, {useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import UseNav from './UseNav';
 import Footer from './Footer';
-import { useState } from 'react';
 import { db } from './firebase';
 import { toast } from 'react-toastify';
 
 
+
 const Tellus = () => {
+
     const [patner, setPatner] = useState({
         fName:"",pName:"",email:"",pEmail:"",firstMeet:"",wedDate:"",
-        tell:""
+        tell:"",file:""
     })
     const submitData =(e)=>{
-        const { fName,pName,email,pEmail,firstMeet,wedDate,tell} = patner
+        const { fName,pName,email,pEmail,firstMeet,wedDate,tell,file} = patner
        e.preventDefault()
         console.log(patner);
         db.collection("patners").add({
-            fName,pName,email,pEmail,firstMeet,wedDate,tell
+            fName,pName,email,pEmail,firstMeet,wedDate,tell,file
         })
         toast.success("Submit")
         setPatner("")
@@ -27,6 +29,7 @@ const Tellus = () => {
     const handalChange =(e)=>{
         name = e.target.name
         value = e.target.value
+        value = e.target.file
         setPatner({...patner,[name]:value})
     }
 
@@ -69,7 +72,7 @@ const Tellus = () => {
      </Input>
      <Input>
      <label>Your Couple or Weddding Photos</label>
-     <input type="file" />
+     <input name='file' type="file" value={patner.file} onChange={handalChange}  />
      </Input>
      <Checkbox>
      <input type="checkbox" /> I agree to Teams & Conditions.

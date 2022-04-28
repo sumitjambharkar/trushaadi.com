@@ -36,6 +36,7 @@ import PayHome from './componets/PayHome';
 
 
 
+
 function App() {
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
@@ -55,7 +56,6 @@ function App() {
     
   }, [])
   
-  
   return (
     <>
     <Router>
@@ -67,12 +67,7 @@ function App() {
           <Home/>
         </Route> :
         <>
-        {/* <Route exact path="/">
-          <HomeSection/>
-        </Route> */}
-        <Route exact path="/">
-            <PayHome/>
-          </Route>
+        { user.email === "ssjambharkar@gmail.com" || user.email === "shraddha@gmail.com" ? <Route exact path="/"><HomeSection/></Route> :<Route exact path="/"><PayHome/></Route> }
         <Route exact path="/view/:Id">
         <View/>
       </Route>

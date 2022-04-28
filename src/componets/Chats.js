@@ -7,7 +7,6 @@ import { db } from './firebase'
 import {Link} from 'react-router-dom'
 import MessageScreen from './MessageScreen';
 import UseNav from './UseNav';
-import ScrollToBottom from 'react-scroll-to-bottom';
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
 
@@ -32,9 +31,9 @@ function Chats() {
           {room.map((doc) => {
             return (
               <>
-                {/* {doc.data.displayName===user.displayName ?
+                {doc.data.displayName===user.displayName ?
                 null 
-                : */}
+                :
                 <Link to={`/chats/${doc.id}`}>
                 <Contact>
                   <Avatar src={doc.data.image} />
@@ -45,7 +44,7 @@ function Chats() {
                   </ListItemButton>
                 </Contact>
                 </Link>
-                {/* } */}
+                } 
               </>
             )
           })}
