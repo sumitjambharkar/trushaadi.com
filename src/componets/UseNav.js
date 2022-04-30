@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import {logout,login} from './userSlice';
-import { auth } from './firebase';
+import { auth,db } from './firebase';
+import { updateDoc, doc } from "firebase/firestore";
 import { useHistory } from 'react-router-dom';
 import {selectUser} from './userSlice';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -26,15 +27,21 @@ const UseNav = () => {
         uid:userAuth.uid,
         email:userAuth.email,
         displayName :userAuth.displayName,
+        isOnline:true
         }))
       }else{
-        dispatch(logout())
+        dispatch(logout({
+          isOnline:false
+        }))
       }
     })
     
   }, [])
 
-  const handalLogout =() => {
+  const handalLogout =async() => {
+    await updateDoc(doc(db, "users", auth.currentUser.uid), {
+      isOnline: false,
+    });
     dispatch(logout());
     auth.signOut()
     history.push('/')

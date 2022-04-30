@@ -80,6 +80,7 @@ const View = () => {
                 <li>Not Specified</li>
                 <li>Lives in {personDataFirst.city}</li>
                 <li><Link to="/chats/:roomId">Chat</Link></li>
+                <li><Link to="/new-chat">new-chat</Link></li>
               </Firsts>
             </Section>
           </ImageDetails>

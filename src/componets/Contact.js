@@ -21,13 +21,13 @@ const Contact = () => {
             <br></br> Lokhandwala Complex,
             <br></br> Andheri West, Mumbai -400 053</h4>
             <span>Email Id</span>
-            <h4>trushaadi@gmail.com</h4>
+            <h4><a href ="mailto:trushaadi@gmail.com">trushaadi@gmail.com</a></h4>
             <span>Contact No</span>
-            <h4>+91 98331 88536</h4>
+            <h4><a href='tel:9833188536'>+91 98331 88536</a></h4>
             <span>Telephone No</span>
-            <h4>+91 224006 5656</h4>
+            <h4><a href='tel:+91 224006 5656'>+91 224006 5656</a></h4>
             <span>U.K No</span>
-            <h4>+44 7405094232</h4>
+            <h4><a href='tel:+44 7405094232'>+44 7405094232</a></h4>
         </Address>
         <FeedBack>
             <span>Fill form for enquiry or concern.</span>
@@ -89,6 +89,11 @@ button {
     margin-top: 0px;
     color: #FFA500;
     word-break: break-word;
+}
+> h4 a {
+  text-decoration:none;
+  color:#FFA500;
+  
 }
 `
 const FeedBack = styled.div`

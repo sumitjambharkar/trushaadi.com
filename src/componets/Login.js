@@ -34,6 +34,7 @@ const Login = () => {
         dispatch(login({
           email:email,
           password:password,
+          isOnline: true,
         }))
         toast.success("Login Success",result)
         console.log(result);

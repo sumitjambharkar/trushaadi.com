@@ -32,13 +32,16 @@ const Signup = () => {
       await user.updateProfile({
         displayName:displayName,
         phoneNumber:number,
+        isOnline: true,
       })
       await createUserCollecton(user,{displayName,birth,number,gender});
       dispatch(login({
         uid : user.uid,
         email:user.email,
         displayName:user.displayName,
-        phoneNumber:user.number
+        phoneNumber:user.number,
+        isOnline: true,
+        
       }))
       toast.success("Register Successfull")
       setTimeout(() => {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { db } from "./firebase"
+import { Button } from '@mui/material';
 
 const Story = () => {
     const [data, setData] = useState([])
@@ -43,7 +44,7 @@ const Story = () => {
             </StorySection>
             <SectionButton>
                 <span>Your story is waiting to happen!</span>
-                <p><Link to='/signup'>Get Started</Link></p>
+                <Button><Link to='/signup'>Get Started</Link></Button>
             </SectionButton>
         </>
     )
@@ -110,26 +111,20 @@ const SectionButton = styled.div`
        padding:28px;
        color:white;
    }
-   >p {
+   >Button {
     font-size:24px;
     color:white;
     margin-top: 0;
     margin-bottom: 0;
-    padding:8px;
+    padding:6px;
     border:2px solid white;
     border-radius:4px;
     transition:padding 2s;
    }
-   > p a {
+   > Button a {
        text-decoration:none;
        color:white;
    }
-    >p :hover {
-    
-    color:white;
-    padding:4px;
-    cursor:pointer;
-  }
   
    `
 export default Story;

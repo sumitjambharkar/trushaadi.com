@@ -17,7 +17,7 @@ import { Avatar } from '@mui/material';
 import { storage} from "./firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
-import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
+
 
 
 

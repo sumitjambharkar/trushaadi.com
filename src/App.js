@@ -33,6 +33,8 @@ import Account from './componets/setting/Account'
 import Chats from './componets/Chats';
 import BuySub from './componets/BuySub';
 import PayHome from './componets/PayHome';
+import Chat from './componets/chat/Chat';
+
 
 
 
@@ -67,7 +69,7 @@ function App() {
           <Home/>
         </Route> :
         <>
-        { user.email === "ssjambharkar@gmail.com" || user.email === "shraddha@gmail.com" ? <Route exact path="/"><HomeSection/></Route> :<Route exact path="/"><PayHome/></Route> }
+        {user.email === "xyz@gmail.com" || user.email === "kachara@gmail.com" || user.email === "ssjambharkar@gmail.com" ? <Route exact path="/"><HomeSection/></Route> :<Route exact path="/"><PayHome/></Route> }
         <Route exact path="/view/:Id">
         <View/>
       </Route>
@@ -118,6 +120,9 @@ function App() {
           </Route>
       <Route exact path="/chats/:roomId">
         <Chats/>
+      </Route>
+      <Route exact path="/new-chat">
+        <Chat/>
       </Route>
          
         </>

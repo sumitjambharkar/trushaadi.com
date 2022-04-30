@@ -4,11 +4,13 @@ import Avatar from '@mui/material/Avatar';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 import { db } from './firebase'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import MessageScreen from './MessageScreen';
 import UseNav from './UseNav';
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
+
+
 
 
 function Chats() {
@@ -23,6 +25,8 @@ function Chats() {
     })
   }, [])
 
+ 
+
   return (
     <>
     <UseNav/>
@@ -34,7 +38,9 @@ function Chats() {
                 {doc.data.displayName===user.displayName ?
                 null 
                 :
-                <Link to={`/chats/${doc.id}`}>
+                <Link 
+                 to={`/chats/${doc.id}`}
+                 >
                 <Contact>
                   <Avatar src={doc.data.image} />
                   <ListItemButton>
