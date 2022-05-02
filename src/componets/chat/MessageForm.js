@@ -16,6 +16,8 @@ const MessageForm = ({ handleSubmit, text, setText, setImg }) => {
       />
       <div>
         <input
+          autoComplete="off"
+          required
           type="text"
           placeholder="Enter message"
           value={text}

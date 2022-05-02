@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db, auth, storage } from "../firebase";
+import Avatar from '@mui/material/Avatar';
 import styled from "styled-components";
 import {
   collection,
@@ -15,6 +16,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import ScrollToBottom from 'react-scroll-to-bottom';
 import User from "./User";
 import MessageForm from "./MessageForm";
 import Message from "./Message";
@@ -115,6 +117,7 @@ const Home = () => {
     <UseNav/>
     <HomeContainer>
       <UserContainer>
+        <ScrollToBottom>
         {users.map((user) => (
           <User
             key={user.uid}
@@ -124,11 +127,13 @@ const Home = () => {
             chat={chat}
           />
         ))}
+        </ScrollToBottom>
       </UserContainer>
       <MessageContainer>
         {chat ? (
           <>
             <div className="messages_user">
+              <Avatar style={{width:"50px",height: "50px",marginRight:"6px"}} src={chat.image}/>
               <h3>{chat.displayName}</h3>
             </div>
             <div className="messages">
@@ -157,12 +162,14 @@ const Home = () => {
 export default Home;
 const HomeContainer = styled.div`
 display:flex;
-width:100vh;
+width:auto;
 height:100vh;`
 const UserContainer = styled.div`
-flex:5;
+margin:24px;
+flex:3;
 border-right: 1px solid black;`
 const MessageContainer = styled.div`
-flex:5;
+flex:7;
 position: relative;
-width: 100%;`
+margin:24px;
+width:auto;`

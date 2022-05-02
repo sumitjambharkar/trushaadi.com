@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "../firebase";
+import Avatar from '@mui/material/Avatar';
 
 const User = ({ user1, user, selectUser, chat }) => {
   console.log(user);
@@ -23,7 +24,7 @@ const User = ({ user1, user, selectUser, chat }) => {
       >
         <div className="user_info">
           <div className="user_detail">
-            <img src={user.image} alt="avatar" className="avatar" />
+            <Avatar src={user.image} alt="avatar" />
             <h4>{user.displayName}</h4>
             {data?.from !== user1 && data?.unread && (
               <small className="unread">New</small>

@@ -39,10 +39,10 @@ const UseNav = () => {
   }, [])
 
   const handalLogout =async() => {
+    dispatch(logout());
     await updateDoc(doc(db, "users", auth.currentUser.uid), {
       isOnline: false,
     });
-    dispatch(logout());
     auth.signOut()
     history.push('/')
   }

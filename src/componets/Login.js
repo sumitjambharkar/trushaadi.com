@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import Logoo from "../image/logo192.png";
+import Logo from "../image/MyMarriage.png";
 import styled from "styled-components";
-import Theme from "../image/theme.png";
+import Theme from "../image/Screenshot.png";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "./firebase";
+import { auth} from "./firebase";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
-import {login} from './userSlice'
+import {login} from './userSlice';
+import {db} from './firebase'
+import { updateDoc, doc } from "firebase/firestore";
 
 
 
@@ -30,17 +32,17 @@ const Login = () => {
     const {email,password} = user
     if(email && password){
       try{
-        const {result } = await auth.signInWithEmailAndPassword(email,password)
+        const {result} = await auth.signInWithEmailAndPassword(email,password)
+        // await updateDoc(doc(db, "users", result.user.uid), {
+        //   isOnline: true,
+        // });
         dispatch(login({
           email:email,
           password:password,
-          isOnline: true,
         }))
         toast.success("Login Success",result)
         console.log(result);
-        setTimeout(() => {
-          history.push('/')
-        },100);
+        history.push('/')
       }
       catch(err){
         toast.error(err,"Login failed")
@@ -60,7 +62,7 @@ const Login = () => {
                     <Link to="/">X</Link>
                   </div>
                   <LogoImage>
-                    <img style={{ width: "40px" }} src={Logoo} alt="logo" />
+                    <img style={{ width: "50px",height:"60px" }} src={Logo} alt="logo" />
                   </LogoImage>
                   <h5 style={{ marginBottom: "24px" }}>
                     Welcome back ! Please Login

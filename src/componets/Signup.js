@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Theme from "../image/theme.png";
+import Theme from "../image/Screenshot.png";
 import { useHistory } from "react-router-dom";
 import { auth ,createUserCollecton} from "./firebase";
 import {toast } from 'react-toastify';

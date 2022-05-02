@@ -79,8 +79,8 @@ const View = () => {
                 <li>Not Specified</li>
                 <li>Not Specified</li>
                 <li>Lives in {personDataFirst.city}</li>
-                <li><Link to="/chats/:roomId">Chat</Link></li>
-                <li><Link to="/new-chat">new-chat</Link></li>
+                {/* <li><Link to="/chats/:roomId">Group Chat</Link></li> */}
+                <li><Link to="/chat">Chat</Link></li>
               </Firsts>
             </Section>
           </ImageDetails>

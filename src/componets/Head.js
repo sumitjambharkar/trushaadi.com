@@ -1,7 +1,10 @@
 import React, {useState } from "react";
 import styled from "styled-components";
 import Banner from "../image/banner.jpeg";
+import Shaadi from '../image/pressure-hatao.jpg'
+import Logoo from '../image/logo.png'
 import { Link } from "react-router-dom";
+import Button from '@mui/material/Button';
 
 
 const Header = () => {
@@ -26,7 +29,7 @@ const Header = () => {
       mother_tounge: "",
     });
   };
-  handalSubmit();
+  handalSubmit()
   let motherTounge = [
     "Hindi",
     "English",
@@ -142,7 +145,7 @@ const Header = () => {
       <Head>
         <Navbar>
           <Logo>
-            <h1>TruShaadi.com</h1>
+            <img style={{width:"250px",height:"120px"}} src={Logoo} alt=""/>
           </Logo>
           {!user ? (
             <Login>
@@ -220,7 +223,7 @@ const Header = () => {
             <Let>
               <h1>.</h1>
               <Link to="/signup">
-                <button type="submit">Lest Go</button>
+                <Button type="submit" color="error">Lest Go</Button>
               </Link>
             </Let>
           </Nav>
@@ -231,7 +234,7 @@ const Header = () => {
 };
 export default Header;
 const Head = styled.div`
-  background-image: url(${Banner});
+  background-image: url(${Shaadi});
   height: 630px;
   background-size: 100% 650px;
   align-items: center;
@@ -255,7 +258,7 @@ const Login = styled.div`
   > h1 > a {
     font-size: 20px;
     text-decoration: none;
-    color: black;
+    color:#ffa500;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   }
 `;
@@ -263,7 +266,7 @@ const Heading = styled.div`
   text-align: center;
   margin-top: 260px;
   position: relative;
-  color: black; 
+  color:#FFA500; 
 `;
 const Nav = styled.div`
   position: relative;
@@ -273,7 +276,7 @@ const Nav = styled.div`
   flex-wrap: wrap;
   background-color:black;
   padding: 4px;
-  padding-bottom: 30px;
+  padding-bottom:28px;
   margin: 58px 90px 18px 100px;
   opacity: 0.9;
   @media (max-width: 675px) {
@@ -429,9 +432,13 @@ const Let = styled.div`
     margin-top: 0.7rem;
     margin-bottom: 0.3rem;
   }
-  > a > button {
+  > a {
+    text-decoration:none;  
+  }
+  >a  Button {
     width: 150px;
     background-color:#FFA500;
+    height:32px;
     position: relative;
     overflow: hidden;
     border: 1px solid #FFA500;

@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect } from "react";
-import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
+import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom";
 import Signup from './componets/Signup';
 import Login from './componets/Login';
 import CoupleDetails from './componets/CoupleDetails';
@@ -34,12 +34,10 @@ import Chats from './componets/Chats';
 import BuySub from './componets/BuySub';
 import PayHome from './componets/PayHome';
 import Chat from './componets/chat/Chat';
+import PrivateRoute from './PrivateRoute';
 
 
-
-
-
-function App() {
+function App(props) {
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
 
@@ -52,7 +50,9 @@ function App() {
         password: userAuth.password
         }))
       }else{
-        dispatch(logout())
+        dispatch(logout({
+          isOnline:false
+        }))
       }
     })
     
@@ -69,7 +69,7 @@ function App() {
           <Home/>
         </Route> :
         <>
-        {user.email === "xyz@gmail.com" || user.email === "kachara@gmail.com" || user.email === "ssjambharkar@gmail.com" ? <Route exact path="/"><HomeSection/></Route> :<Route exact path="/"><PayHome/></Route> }
+        {user.email === "xyz@gmail.com" || user.email === "abc@gmail.com" || user.email === "steyn3@gmail.com" ? <Route exact path="/"><HomeSection/></Route> :<Route exact path="/"><PayHome/></Route> }
         <Route exact path="/view/:Id">
         <View/>
       </Route>
@@ -91,9 +91,9 @@ function App() {
           <Route exact path="/sitemap">
             <Sitemap/>
           </Route>
-          <Route exact path="/profile/step/2">
+          <PrivateRoute exact path="/profile/step/2">
             <Steptwo/>
-          </Route>
+          </PrivateRoute>
           <Route exact path="/top-matches">
             <Topmatch/>
           </Route>
@@ -121,7 +121,7 @@ function App() {
       <Route exact path="/chats/:roomId">
         <Chats/>
       </Route>
-      <Route exact path="/new-chat">
+      <Route exact path="/chat">
         <Chat/>
       </Route>
          

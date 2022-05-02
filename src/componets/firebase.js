@@ -40,7 +40,7 @@ export const createUserCollecton =async(user,additionalData)=>{
         createdAt :new Date(),
         gender,
         isOnline:true,
-        uid:user.uid
+        uid:user.uid,
       })
     }
     catch(err){
