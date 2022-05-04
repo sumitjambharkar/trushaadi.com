@@ -8,6 +8,7 @@ import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
 import { login } from "./userSlice";
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -72,7 +73,7 @@ const Signup = () => {
               <div
                 style={{ marginLeft: "256px",marginBottom:"4px" }}
               >
-                <Link to="/">X</Link>
+                <Link to="/"><CloseIcon/></Link>
               </div>
               <h5 style={{ marginBottom: "4px" }}>
               Let's set up your account,<br></br> while

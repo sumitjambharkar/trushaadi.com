@@ -24,6 +24,7 @@ const Main = () => {
   ]
   return (
     <>
+    <MainContainer>
       <h1 style={{ textAlign: "center", marginTop: "5rem", color: "#FFA500", fontWeight: "500" }}>Find your Special Someone</h1>
       <Selection>
         {array.map((ele) => {
@@ -49,12 +50,21 @@ const Main = () => {
         })}
 
       </Selection>
+      </MainContainer>
     </>
   )
 
 }
 
 export default Main;
+
+const MainContainer = styled.div`
+@media (min-width: 300px) and (max-width:600px) {
+    padding-top:150px;
+}
+@media (min-width:600px) and (max-width:830px) {
+    padding-top:60px;
+}`
 
 const Selection = styled.div`
   display:flex;

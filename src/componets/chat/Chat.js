@@ -173,3 +173,4 @@ flex:7;
 position: relative;
 margin:24px;
 width:auto;`
+

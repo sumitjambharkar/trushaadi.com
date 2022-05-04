@@ -4,21 +4,25 @@ import styled from "styled-components";
 import Theme from "../image/Screenshot.png";
 import { Link, useHistory } from "react-router-dom";
 import { auth} from "./firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from "react-redux";
-import {login} from './userSlice';
+// import { useDispatch } from "react-redux";
+// import {login} from './userSlice';
 import {db} from './firebase'
 import { updateDoc, doc } from "firebase/firestore";
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
-    password : ""
+    password : "",
+    error:null
+    
   });
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const history = useHistory();
   let name, value
   const handalChange=(e)=>{
@@ -32,20 +36,23 @@ const Login = () => {
     const {email,password} = user
     if(email && password){
       try{
-        const {result} = await auth.signInWithEmailAndPassword(email,password)
-        // await updateDoc(doc(db, "users", result.user.uid), {
-        //   isOnline: true,
-        // });
-        dispatch(login({
-          email:email,
-          password:password,
-        }))
-        toast.success("Login Success",result)
-        console.log(result);
-        history.push('/')
+        // const {result} = await auth.signInWithEmailAndPassword(email,password)
+        // dispatch(login({
+        //   email:email,
+        //   password:password,
+        // }))
+      const result = await signInWithEmailAndPassword(auth, email, password);
+
+      await updateDoc(doc(db, "users", result.user.uid), {
+        isOnline: true,
+      });
+      toast.success("Login Success",result)
+      console.log(result);
+      history.push('/')
       }
-      catch(err){
-        toast.error(err,"Login failed")
+      catch(error){
+        console.log(error.message);
+        toast.error(error.message,"Login failed")
       }
     }  
     setUser("")
@@ -59,7 +66,7 @@ const Login = () => {
               <form onSubmit={handalSubmit}>
                 <MainDiv>
                   <div style={{ marginLeft: "256px" }}>
-                    <Link to="/">X</Link>
+                    <Link to="/"><CloseIcon/></Link>
                   </div>
                   <LogoImage>
                     <img style={{ width: "50px",height:"60px" }} src={Logo} alt="logo" />

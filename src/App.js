@@ -69,7 +69,7 @@ function App(props) {
           <Home/>
         </Route> :
         <>
-        {user.email === "xyz@gmail.com" || user.email === "abc@gmail.com" || user.email === "steyn3@gmail.com" ? <Route exact path="/"><HomeSection/></Route> :<Route exact path="/"><PayHome/></Route> }
+        {user.email === "xyz@gmail.com" || user.email === "abc@gmail.com" || user.email === "ssjambharkar@gmail.com" ? <Route exact path="/"><HomeSection/></Route> :<Route exact path="/"><PayHome/></Route> }
         <Route exact path="/view/:Id">
         <View/>
       </Route>
