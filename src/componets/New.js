@@ -6,16 +6,18 @@ import Modal from '@mui/material/Modal';
 import displayRazorpay from './Payment';
 
 
+
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width:"auto",
+  width:300,
   bgcolor: 'background.paper',
   border: '1px solid #000',
   boxShadow: 24,
   p: 4,
+  
 };
 
 const New =({user})=> {
@@ -57,7 +59,7 @@ const New =({user})=> {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={style} >
             <span onClick={handleClose} style={{float:"right",fontWeight:"700",cursor:"pointer"}}>X</span>
           <Typography id="modal-modal-title" variant="h6" component="h2">
           <h2 style={{textAlign:"center"}}>Contact Details</h2>
@@ -80,4 +82,4 @@ const New =({user})=> {
     </div>
   );
 }
-export default New
+export default New;

@@ -64,10 +64,8 @@ const UseNav = () => {
         </>
         :
         <>
-        <Link to="/my-profile">My Account</Link>
-        <Link to="/">My Matches</Link>
-        {/* <Link to="/chats/:roomId">My Chat</Link> */}
-        <Link to="/about">About</Link>
+        <Link to="/">Matches</Link>
+        <Link to="/my-profile">Account</Link>
         </>
         } 
         
@@ -75,10 +73,11 @@ const UseNav = () => {
         <Avtars>
           {
             ! user ? 
-            <Link>Help</Link>
+            <Link to="/">Help</Link>
             :
             <>
-            <Link style={{textTransform: 'capitalize'}} onClick={()=>setShow(!show)}>{user.displayName}
+            <Link className='name' onClick={()=>setShow(!show)}>{user.displayName}</Link>
+            <Link style={{textTransform: 'capitalize'}} onClick={()=>setShow(!show)}>
             <button><Avatar style={{textTransform: 'capitalize'}}>{user.displayName?.[0]}</Avatar></button>
             <ArrowDropDownIcon/>
             </Link>
@@ -86,8 +85,8 @@ const UseNav = () => {
             <Dash>
             <li to="/my-profile"><AccountCircleIcon/><Link to="/my-profile">My Profile</Link></li>
             <li onClick={handalLogout}><LogoutIcon/><Link>Logout</Link></li>
-            <li to="/my-profile"><SettingsIcon/><Link to="/my-account">Account Setting</Link></li>
-            <li><HttpsIcon/><Link to="my-policys">Privacy Options</Link></li>
+            <li to="/my-profile"><SettingsIcon/><Link to="/">Account Setting</Link></li>
+            <li><HttpsIcon/><Link to="">Privacy Options</Link></li>
            </Dash>
            : ""
             }
@@ -125,12 +124,16 @@ const Nav = styled.div`
     line-height:50px;
     font-weight: 700;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+
+}
+@media (max-width:500px) {
+  a {padding:5px;
+  }
 }`
 const Avtars = styled.div`
 > a {
   color: white;
     text-decoration: none;
-    padding: 15px;
     font-size: 16px;
     font-weight: 400;
     line-height:50px;
@@ -142,7 +145,11 @@ const Avtars = styled.div`
     border:none;
     border-radius:50%;
   }
-  
+  @media (max-width:500px) {
+    .name {
+      display: none;
+    }
+  }
 `
 const Dash = styled.div`
 z-index:1;
@@ -156,7 +163,7 @@ position:absolute;
 width:340px;
 height:115px;
 padding-top:16px;
-margin-left:-130px;
+margin-left:-100px;
 > li {
     width: 149px;
     margin: 10px;
@@ -174,6 +181,19 @@ margin-left:-130px;
   color: gray;
   margin:5px;
 }
-
+@media (max-width:500px) {
+z-index:1;
+display:flex;
+justify-content:start;
+flex-direction:column;
+flex-wrap:wrap;
+background-color:#fff;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+border-radius:2px;
+position:absolute;
+width:170px;
+height:200px;
+margin-left:-100px;
+}
 
 `

@@ -15,7 +15,6 @@ const CoupleDetails = () => {
     useEffect(() => {
       db.collection("success").doc(personId).onSnapshot(snapshot=>{
         setData(snapshot.data())
-        console.log(snapshot);
       })
     }, [personId])
 

@@ -8,6 +8,9 @@ import { Avatar } from '@mui/material';
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
 import { Button } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import {login,logout} from './userSlice';
+import { auth } from './firebase';
 
 const HomeSection = () => {
 
@@ -18,8 +21,34 @@ const HomeSection = () => {
     return Math.abs(age_dt.getUTCFullYear() - 1970);
   }
   const user = useSelector(selectUser)
+
+  const dispatch = useDispatch()
   const [personData, setPersonData] = useState([])
+  const [isGender, setIsGender] = useState('')
+
   useEffect(() => {
+    auth.onAuthStateChanged(userAuth=>{
+      if(userAuth){
+        dispatch(login({
+        uid:userAuth.uid,
+        email:userAuth.email,
+        displayName :userAuth.displayName,
+        }))
+      }else{
+        dispatch(logout())
+      }
+    })
+    
+  }, [login])
+
+  useEffect(() => {
+    if(user.uid){
+      db.collection("users")
+      .doc(user.uid)
+      .onSnapshot((snapshot) => {
+        setIsGender(snapshot.data());
+      });
+    }
     db.collection("users").onSnapshot(snapshot => {
       setPersonData(snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -40,7 +69,7 @@ const HomeSection = () => {
       {personData.map((doc)=>{
         return (
           <>
-          { doc.data.gender ==="Female" || doc.data.gender !=="Male"? 
+          { isGender.gender !== doc.data.gender ? 
           <> {doc.data.displayName===user.displayName ? 
             null :
             <Card>

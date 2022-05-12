@@ -103,7 +103,9 @@ const Profile = () => {
          </Form>
         </Card>
     </CreateSection>
+    <SectionFooter>
     <Footer/>
+    </SectionFooter>
     </>
   )
 }
@@ -115,17 +117,26 @@ justify-content:space-around;
 margin:12px;
 > h1 {
     font-family:romon
+}
+@media (max-width:500px) {
+    display: none;
 }`
 const CreateSection = styled.div`
 background-color:#E8E8E8;
 display:flex;
 justify-content:center;
-padding-top:24px;`
+padding-top:24px;
+@media (max-width:500px) {
+    background-color: white;
+}`
 const Card = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 background-color:white;
 border-radius:6px;
 margin-bottom:24px;
+@media (max-width:500px) {
+    box-shadow:none;
+}
 `
 const Form = styled.div`
 padding: 20px 20px 20px 20px;
@@ -166,4 +177,8 @@ flex-direction:column;
 >button a {
     text-decoration:none;
     color:white;
+}`
+const SectionFooter = styled.div`
+@media (max-width:500px) {
+    display: none;
 }`

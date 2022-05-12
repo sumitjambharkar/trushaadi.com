@@ -38,7 +38,9 @@ const Topmatch = () => {
           </Button>
         </Card>
       </CreateSection>
+      <SectionFooter>
       <Footer/>
+      </SectionFooter>
     </>
   );
 };
@@ -51,6 +53,9 @@ const Header = styled.div`
   > h1 {
     font-family: romon;
   }
+  @media (max-width:500px) {
+    display: none;
+  }
 `;
 const CreateSection = styled.div`
   background-color: rgb(235, 220, 220);;
@@ -58,12 +63,18 @@ const CreateSection = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 24px;
+  @media (max-width:500px) {
+    background-color: white;
+  }
 `;
 const Card = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: white;
   border-radius: 6px;
   margin-bottom: 24px;
+  @media (max-width:500px) {
+    box-shadow:none;
+  }
 `;
 const Form = styled.div`
   padding: 20px 20px 20px 20px;
@@ -102,3 +113,8 @@ const GusetBox = styled.div`
   margin: 8px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
+
+const SectionFooter = styled.div`
+@media (max-width:500px) {
+    display: none;
+}`

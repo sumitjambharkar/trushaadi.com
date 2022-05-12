@@ -17,15 +17,15 @@ import {logout,login} from './userSlice';
 import { auth } from './firebase';
 import { useHistory } from 'react-router-dom';
 import New from './New';
-import Button from '@mui/material/Button';
 
 const PayHome = () => {
 
-    const [show, setShow] = useState('')
-  
+  const [show, setShow] = useState('')
+  const [isGender, setIsGender] = useState('')
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
   const history = useHistory()
+  
   useEffect(() => {
     auth.onAuthStateChanged(userAuth=>{
       if(userAuth){
@@ -55,6 +55,13 @@ const PayHome = () => {
   }
   const [personData, setPersonData] = useState([])
   useEffect(() => {
+    if(user.uid){
+      db.collection("users")
+      .doc(user.uid)
+      .onSnapshot((snapshot) => {
+        setIsGender(snapshot.data());
+      });
+    }
     db.collection("users").onSnapshot(snapshot => {
       setPersonData(snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -85,10 +92,8 @@ const PayHome = () => {
         </>
         :
         <>
-        <Link to="/my-profile">My Account</Link>
-        <Link to="/">My Matches</Link>
-        <Link>My Chat</Link>
-        <Link to="/about">About</Link>
+        <Link to="/">Matches</Link>
+        <Link to="/my-profile">Account</Link>
         </>
         } 
         
@@ -99,7 +104,8 @@ const PayHome = () => {
             <Link>Help</Link>
             :
             <>
-            <Link style={{textTransform: 'capitalize'}}  onClick={()=>setShow(!show)}>{user.displayName}
+            <Link className='name' onClick={()=>setShow(!show)}>{user.displayName}</Link>
+            <Link style={{textTransform: 'capitalize'}}  onClick={()=>setShow(!show)}>
             <button><Avatar style={{textTransform: 'capitalize'}}>{user.displayName?.[0]}</Avatar></button>
             <ArrowDropDownIcon/>
             </Link>
@@ -122,7 +128,7 @@ const PayHome = () => {
       {personData.map((doc)=>{
         return (
           <>
-          {doc.data.gender ==="Female" || doc.data.gender !=="Male"? 
+          {isGender.gender !== doc.data.gender ? 
           <> {doc.data.displayName===user.displayName ? 
             null :
             <Card>
@@ -190,12 +196,15 @@ const Nav = styled.div`
     line-height:50px;
     font-weight: 700;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+@media (max-width:500px) {
+  a {padding:5px;
+  }
 }`
 const Avtars = styled.div`
 > a {
-  color: white;
+    color: white;
     text-decoration: none;
-    padding: 15px;
     font-size: 16px;
     font-weight: 400;
     line-height:50px;
@@ -206,6 +215,11 @@ const Avtars = styled.div`
     margin:4px;
     border:none;
     border-radius:50%;
+  }
+  @media (max-width:500px) {
+    .name {
+      display: none;
+    }
   }
   
 `

@@ -4,7 +4,6 @@ import { db } from "../firebase";
 import Avatar from '@mui/material/Avatar';
 
 const User = ({ user1, user, selectUser, chat }) => {
-  console.log(user);
   const user2 = user?.uid;
   const [data, setData] = useState("");
 

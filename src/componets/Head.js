@@ -1,6 +1,6 @@
 import React, {useState } from "react";
 import styled from "styled-components";
-import Banner from "../image/banner.jpeg";
+import Mobile from "../image/back.jpeg";
 import Shaadi from '../image/pressure-hatao.jpg'
 import Logoo from '../image/logo.png'
 import { Link } from "react-router-dom";
@@ -20,7 +20,6 @@ const Header = () => {
 
   const handalSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
     setData({
       gender: "",
       minimum: "",
@@ -29,7 +28,7 @@ const Header = () => {
       mother_tounge: "",
     });
   };
-  handalSubmit()
+
   let motherTounge = [
     "Hindi",
     "English",
@@ -143,6 +142,18 @@ const Header = () => {
   return (
     <>
       <Head>
+      <div className="form">
+          <div className="login">
+            <Link to="/login">
+              <h4>Login</h4>
+            </Link>
+          </div>
+          <div className="signup">
+            <Link to="/signup">
+              <h4>SignUp</h4>
+            </Link>
+          </div>
+        </div>
         <Navbar>
           <Logo>
             <img style={{width:"250px",height:"120px"}} src={Logoo} alt=""/>
@@ -185,8 +196,8 @@ const Header = () => {
                 value={data.minimum}
                 onChange={handalChange}
               >
-                {array.map((ele) => {
-                  return <option>{ele}</option>;
+                {array.map((ele,i) => {
+                  return <option key={i}>{ele}</option>;
                 })}
               </select>
               to
@@ -195,16 +206,16 @@ const Header = () => {
                 value={data.maximum}
                 onChange={handalChange}
               >
-                {array.map((ele) => {
-                  return <option>{ele}</option>;
+                {array.map((ele,i) => {
+                  return <option key={i}>{ele}</option>;
                 })}
               </select>
             </Age>
             <Religion>
               <h1>of religion</h1>
               <select name="caste" value={data.caste} onChange={handalChange}>
-                {caste.map((ele) => {
-                  return <option>{ele}</option>;
+                {caste.map((ele,i) => {
+                  return <option key={i}>{ele}</option>;
                 })}
               </select>
             </Religion>
@@ -215,8 +226,8 @@ const Header = () => {
                 value={data.mother_tounge}
                 onChange={handalChange}
               >
-                {motherTounge.map((ele) => {
-                  return <option>{ele}</option>;
+                {motherTounge.map((ele,i) => {
+                  return <option key={i}>{ele}</option>;
                 })}
               </select>
             </Mother>
@@ -238,13 +249,69 @@ const Head = styled.div`
   height: 630px;
   background-size: 100% 650px;
   align-items: center;
+  .login {
+    display: none;
+  }
+  .signup {
+    display: none;
+  }
+  @media (max-width:500px) {
+    background-image: url(${Mobile});
+  position: relative;
+  height: 100vh;
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  .form {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  position: relative;
+  bottom: -480px;
+  padding: 2px 50px;
+  }
+  .login {
+    display: block;
+    background-color: #ffa500;
+  padding:2px;
+  border-radius: 72px;
+  margin: 5px;
+  a {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+  }
+  h4 {
+    margin-top: 8px;
+  }
+  }
+  .signup {
+    display: block;
+    background-color: #ffa500;
+  padding:2px;
+  border-radius: 72px;
+  margin: 5px;
+  a {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+  }
+  h4 {
+    margin-top: 8px;
+  }
+  }
+  }
 `;
+
+
 const Navbar = styled.div`
   display: flex;
   justify-content: space-around;
   position: relative;
   padding-top: 40px;
   position:static;
+  @media (max-width:500px) {
+    display: none;
+  }
 `;
 const Logo = styled.div`
   color: black;
@@ -267,6 +334,9 @@ const Heading = styled.div`
   margin-top: 260px;
   position: relative;
   color:#FFA500; 
+  @media (max-width:500px) {
+    display: none;
+  }
 `;
 const Nav = styled.div`
   position: relative;
@@ -286,6 +356,9 @@ const Nav = styled.div`
     flex-wrap: wrap;
     padding: 2px;
     margin: 11px 10px 18px 10px;
+  }
+  @media (max-width:500px) {
+    display: none;
   }
 `;
 const Look = styled.div`

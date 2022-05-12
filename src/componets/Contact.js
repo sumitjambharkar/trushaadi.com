@@ -1,11 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import UseNav from './UseNav';
 import Footer from './Footer';
 import styled from 'styled-components';
+import { db } from './firebase';
 
 
 
 const Contact = () => {
+    const [input, setinput] = useState({
+        name:"",
+        email:"",
+        message:"",
+        number:"",
+        subject:""
+    })
+    let name, value
+    const inputFeild =(e)=> {
+        name = e.target.name
+        value = e.target.value
+        setinput({...input,[name]:value})
+    }
+    const submitForm =(e) =>{
+        e.preventDefault()
+        const {name,email,message} = input
+        if(!name || !email || ! message){
+            alert("please Field")
+        }
+        db.collection("contact_query").add({
+          input
+        })
+        alert("submit")
+        setinput("")
+    }
   return (
     <>
     <UseNav/>
@@ -31,12 +57,12 @@ const Contact = () => {
         </Address>
         <FeedBack>
             <span>Fill form for enquiry or concern.</span>
-            <input placeholder='Enter Your Name'/>
-            <input placeholder='Enter Your Email Id'/>
-            <input placeholder='Enter Your Mobile No'/>
-            <input placeholder='Enter Subject'/>
-            <input placeholder='Enter Message Here'/>
-            <button>Submit</button>
+            < input autoComplete='off' required onChange={inputFeild} value={input.name} name="name" placeholder='Enter Your Name'/>
+            < input onChange={inputFeild} value={input.email} name="email" placeholder='Enter Your Email Id'/>
+            < input onChange={inputFeild} value={input.number} name='number'  placeholder='Enter Your Mobile No'/>
+            < input onChange={inputFeild} value={input.subject} name="subject" placeholder='Enter Subject'/>
+            < input onChange={inputFeild} value={input.message} name='message' placeholder='Enter Message Here'/>
+            <button onClick={submitForm} type='submit'>Submit</button>
         </FeedBack>
     </Feed>
     <Footer/>

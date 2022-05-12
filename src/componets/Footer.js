@@ -21,9 +21,9 @@ const Footer = () => {
           <ThirdDiv>
           <h2>Information</h2>
           <hr/>
-          <p><Link>Terms of Use »</Link></p>
+          <p><Link to="/">Terms of Use »</Link></p>
           <p><Link to="/privacy-policy">Privacy Policy »</Link></p>
-          <p><Link>Help »</Link></p>
+          <p><Link to="/">Help »</Link></p>
           <p><Link to="/contact">Contact Us »</Link></p>
 
           </ThirdDiv>

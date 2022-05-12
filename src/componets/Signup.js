@@ -10,8 +10,6 @@ import { useDispatch } from "react-redux";
 import { login } from "./userSlice";
 import CloseIcon from '@mui/icons-material/Close';
 
-
-
 const Signup = () => {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -32,7 +30,7 @@ const Signup = () => {
       console.log(user);
       await user.updateProfile({
         displayName:displayName,
-        phoneNumber:number,
+        phoneNumber:user.number,
         isOnline: true,
       })
       await createUserCollecton(user,{displayName,birth,number,gender});
@@ -45,9 +43,7 @@ const Signup = () => {
         
       }))
       toast.success("Register Successfull")
-      setTimeout(() => {
-        history.push('/profile')
-      },100);
+      history.push('/profile')
     }catch(err){
       console.log(err);
       toast.error("error",err.message)
@@ -142,6 +138,9 @@ const SignupContainer = styled.div`
    height: 630px;
    background-size: 100% 650px;
    align-items: center;
+   @media (max-width: 600px) {
+    background-image:none;
+  }
 `
 const Form = styled.div``;
 const FormCard = styled.div`
@@ -162,8 +161,9 @@ const FormC = styled.div`
   background-color: white;
   padding:1rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  @media (max-width:400px) {
+  @media (max-width:500px) {
     width:290px;
+    box-shadow: none;
   }
 `;
 const MainDiv = styled.div`

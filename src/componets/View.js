@@ -5,6 +5,7 @@ import UseNav from './UseNav';
 import { useParams } from 'react-router-dom';
 import { db } from './firebase';
 import { Link } from 'react-router-dom';
+import { Avatar } from '@mui/material';
 
 
 
@@ -63,7 +64,7 @@ const View = () => {
       <ProfileSection>
         <ImageSection>
           <CardImage>
-            <img src={personData.image} alt='' />
+          <Avatar src={personData.image} sx={{width:224,height:250}} variant="square"/>
           </CardImage>
           <ImageDetails>
             <h3 style={{ textTransform: 'capitalize' }}>{personData.displayName}</h3>

@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from "styled-components";
 import first from '../image/home-icon-sprite.png';
 import secand from '../image/home-icon-sprite-p.png';
@@ -27,17 +28,17 @@ const Main = () => {
     <MainContainer>
       <h1 style={{ textAlign: "center", marginTop: "5rem", color: "#FFA500", fontWeight: "500" }}>Find your Special Someone</h1>
       <Selection>
-        {array.map((ele) => {
+        {array.map((ele,i) => {
           return (
-            <>
-              <SingDiv>
+            <React.Fragment key={i}>
+              <SingDiv >
                 <Image>
-                <Link to="signup">
+                <Link to="/signup">
                 <img alt="" style={{ width: "140px", borderRadius: "50%", backgroundColor: "aqua" }} src={ele.img} />
                 </Link>
                 </Image>
                 <Title>
-                <Link to="signup">
+                <Link to="/signup">
                 <p>{ele.name}</p>
                 </Link>
                 </Title>
@@ -45,7 +46,7 @@ const Main = () => {
                   <p>{ele.detail}</p>
                 </Span>
               </SingDiv>
-            </>
+            </React.Fragment>
           )
         })}
 

@@ -167,10 +167,20 @@ height:100vh;`
 const UserContainer = styled.div`
 margin:24px;
 flex:3;
-border-right: 1px solid black;`
+border-right: 2px solid var(--color-6);
+overflow-y: auto;
+border-right: 1px solid black;
+@media (max-width:500px) {
+  margin:0px;
+  flex: 2;
+}`
 const MessageContainer = styled.div`
 flex:7;
 position: relative;
 margin:24px;
-width:auto;`
+width:auto;
+@media (max-width:500px) {
+  margin:0px;
+  flex: 8;
+}`
 

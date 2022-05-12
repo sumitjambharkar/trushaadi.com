@@ -22,9 +22,9 @@ const Story = () => {
                 <h2>Matrimony Service with Millions of Success Stories</h2>
             </Title>
             <StorySection>
-                {data.map((ele) => {
+                {data.map((ele,i) => {
                     return (
-                        <>
+                        <React.Fragment key={i}>
                             <StoryDiv>
                                 <StoryImage>
                                     <img alt='img' style={{ width: "320px", height: "250px" }} src={ele.data.image} />
@@ -38,7 +38,7 @@ const Story = () => {
                                 </StoryDetails>
                             </StoryDiv>
 
-                        </>
+                        </React.Fragment>
                     )
                 })}
             </StorySection>
