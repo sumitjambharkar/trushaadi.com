@@ -1,6 +1,6 @@
 function displayRazorpay() {
   const getData =async()=>{
-    const data = await fetch("http://localhost:1337/razorpay", {
+    const data = await fetch("http://localhost:3001/razorpay", {
     method: "POST",
   }).then((t) => t.json());
 
@@ -10,7 +10,7 @@ function displayRazorpay() {
     amount: data.amount,
     name: "MyShaddi.com",
     description: "Wallet Transaction",
-    image: "http://localhost:1337/logo.jpg",
+    image: "http://localhost:3001/logo.png",
     order_id: data.id,
     handler: function (response) {
       alert("PAYMENT ID ::" + response.razorpay_payment_id);

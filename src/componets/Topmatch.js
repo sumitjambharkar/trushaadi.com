@@ -1,10 +1,65 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Footer from './Footer';
+import Footer from "./Footer";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Checkbox from "@mui/material/Checkbox";
+import { green} from "@mui/material/colors";
 
 const Topmatch = () => {
-  const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+  const innerTheme = createTheme({
+    palette: {
+      primary: {
+        main: green[500],
+      },
+    },
+  });
+
+  const num = [
+    {
+      name: "Uma Gawasak",
+      age: "26",
+      live: "Mumbai",
+      image:
+        "https://dynamic.matrimonialsindia.com/photon/dir_20/582865/347004-em6IimbOUq.jpg",
+    },
+    {
+      name: "Suman Kumari",
+      age: "22",
+      live: "Mumbai",
+      image:
+        "https://dynamic.matrimonialsindia.com/photon/dir_27/793782/504517-c8tQqSNBSD.jpg",
+    },
+    {
+      name: "Anamika jainie",
+      age: "22",
+      live: "Mumbai",
+      image:
+        "https://dynamic.matrimonialsindia.com/photon/dir_29/840177/535881-3NmPSAGd1D.jpg",
+    },
+    {
+      name: "Kritika Jaiswal",
+      age: "25",
+      live: "Mumbai",
+      image:
+        "https://dynamic.matrimonialsindia.com/photon/dir_27/785901/499193-mcHHqboANH.jpg",
+    },
+    {
+      name: "Tamana Chawan",
+      age: "24",
+      live: "Mumbai",
+      image:
+        "https://dynamic.matrimonialsindia.com/photon/dir_27/809798/515703-uAISm6RVFT.jpg",
+    },
+    {
+      name: "Ruchika Sharma",
+      age: "24",
+      live: "Mumbai",
+      image:
+        "https://dynamic.matrimonialsindia.com/photon/dir_25/736113/464270-oQteXcuxXJ.jpg",
+    },
+  ];
   return (
     <>
       <Header>
@@ -20,12 +75,15 @@ const Topmatch = () => {
               return (
                 <>
                   <GusetBox>
-                    <img
-                      style={{ width: "120px" }}
-                      src="https://img.shaadi.com/success-story/2SH09514809-hSH27371565-big.jpg"
-                      alt=""
-                    />
-                    <p>sumit Jambharkar</p>
+                    <img style={{ width: "120px" }} src={ele.image} alt="" />
+                    <diV style={{ padding: "8px" }}>
+                      <p style={{ fontWeight: "bold" }}>{ele.name}</p>
+                      <p>{ele.age} Yrs</p>
+                      <p>{ele.live}</p>
+                    </diV>
+                    <ThemeProvider theme={innerTheme}>
+                      <Checkbox defaultChecked />
+                    </ThemeProvider>
                   </GusetBox>
                 </>
               );
@@ -39,7 +97,7 @@ const Topmatch = () => {
         </Card>
       </CreateSection>
       <SectionFooter>
-      <Footer/>
+        <Footer />
       </SectionFooter>
     </>
   );
@@ -53,17 +111,17 @@ const Header = styled.div`
   > h1 {
     font-family: romon;
   }
-  @media (max-width:500px) {
+  @media (max-width: 500px) {
     display: none;
   }
 `;
 const CreateSection = styled.div`
-  background-color: rgb(235, 220, 220);;
+  background-color: rgb(235, 220, 220);
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding: 24px;
-  @media (max-width:500px) {
+  @media (max-width: 500px) {
     background-color: white;
   }
 `;
@@ -72,8 +130,8 @@ const Card = styled.div`
   background-color: white;
   border-radius: 6px;
   margin-bottom: 24px;
-  @media (max-width:500px) {
-    box-shadow:none;
+  @media (max-width: 500px) {
+    box-shadow: none;
   }
 `;
 const Form = styled.div`
@@ -97,8 +155,8 @@ const Button = styled.div`
   > button {
     width: 210px;
     height: 40px;
-    border: 1px solid #FFA500;
-    background-color:#FFA500;
+    border: 1px solid #ffa500;
+    background-color: #ffa500;
     border-radius: 24px;
     font-weight: 700;
     margin: 8px;
@@ -115,6 +173,7 @@ const GusetBox = styled.div`
 `;
 
 const SectionFooter = styled.div`
-@media (max-width:500px) {
+  @media (max-width: 500px) {
     display: none;
-}`
+  }
+`;

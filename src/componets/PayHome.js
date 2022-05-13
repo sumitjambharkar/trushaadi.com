@@ -2,7 +2,6 @@ import React, { useState,useEffect } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import Footer from './Footer';
-import UseNav from './UseNav';
 import { db } from './firebase';
 import { Avatar } from '@mui/material';
 import { useSelector } from "react-redux";
@@ -16,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import {logout,login} from './userSlice';
 import { auth } from './firebase';
 import { useHistory } from 'react-router-dom';
+import { updateDoc, doc } from "firebase/firestore";
 import New from './New';
 
 const PayHome = () => {
@@ -41,8 +41,11 @@ const PayHome = () => {
     
   }, [])
 
-  const handalLogout =() => {
+  const handalLogout = async() => {
     dispatch(logout());
+    await updateDoc(doc(db, "users", auth.currentUser.uid), {
+      isOnline: false,
+    });
     auth.signOut()
     history.push('/')
   }
@@ -82,18 +85,18 @@ const PayHome = () => {
     </Header>
     <NavBar>
         <Nav>
-        <Link to="/">Home</Link>
+        <Link to="/">HOME</Link>
         {
         !user ? 
         <>
-        <Link to="/about">About</Link>
-        <Link to="/signup">Register</Link>
-        <Link to="/login">Login</Link>
+        <Link to="/about">ABOUT</Link>
+        <Link to="/signup">REGISTER</Link>
+        <Link to="/login">LOGIN</Link>
         </>
         :
         <>
-        <Link to="/">Matches</Link>
-        <Link to="/my-profile">Account</Link>
+        <Link to="/">MATCHES</Link>
+        <Link to="/my-profile">ACCOUNT</Link>
         </>
         } 
         
@@ -104,7 +107,7 @@ const PayHome = () => {
             <Link>Help</Link>
             :
             <>
-            <Link className='name' onClick={()=>setShow(!show)}>{user.displayName}</Link>
+            <Link style={{textTransform: 'capitalize'}} onClick={()=>setShow(!show)}>{user.displayName}</Link>
             <Link style={{textTransform: 'capitalize'}}  onClick={()=>setShow(!show)}>
             <button><Avatar style={{textTransform: 'capitalize'}}>{user.displayName?.[0]}</Avatar></button>
             <ArrowDropDownIcon/>
@@ -182,6 +185,7 @@ background-color:white;
 `
 const NavBar = styled.div`
 display: flex;
+padding: 8px;
 justify-content: space-around;
 background-color:#FFA500;
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
@@ -191,16 +195,15 @@ const Nav = styled.div`
   color: white;
     text-decoration: none;
     padding: 15px;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 14px;
     line-height:50px;
-    font-weight: 700;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
-@media (max-width:500px) {
-  a {padding:5px;
+    font-weight: 600;
   }
-}`
+  @media (max-width:500px) {
+  a {padding:5px;
+     }
+  }
+  `
 const Avtars = styled.div`
 > a {
     color: white;

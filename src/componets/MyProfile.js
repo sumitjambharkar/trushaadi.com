@@ -17,6 +17,8 @@ import { Avatar } from '@mui/material';
 import { storage} from "./firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 
 
@@ -227,6 +229,9 @@ const MyProfile = () => {
         });
     }
   }, [user.uid]);
+  const Input = styled('input')({
+    display: 'none',
+  });
 
   return (
     <>
@@ -235,9 +240,12 @@ const MyProfile = () => {
         <ImageSection>
           <CardImage>
           <Avatar src={userDetails.image}   sx={{width:200,height:230}} variant="square"/>
-          <label style={{fontWeight:"500",textAlign:"center",color:"white",border:"#FFA500",backgroundColor: "#FFA500"}}>Add Photo
-          <input style={{width:"100px",display:"none"}} type="file" accept="image/*" onChange={(e)=>setImag(e.target.files[0])}/>
-          </label>
+          <label htmlFor="icon-button-file">
+        <Input onChange={(e)=>setImag(e.target.files[0])} accept="image/*" id="icon-button-file" type="file" />
+        <IconButton style={{display:"flex",fontWeight:"500",color:"white",border:"#FFA500",backgroundColor: "#FFA500",borderRadius:"1px"}} aria-label="upload picture" component="span">
+          <PhotoCamera />
+        </IconButton>
+      </label>
           </CardImage>
           <ImageDetails>
             <h3 style={{ textTransform: "capitalize" }}>

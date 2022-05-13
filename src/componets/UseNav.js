@@ -14,6 +14,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import HttpsIcon from '@mui/icons-material/Https';
 import SettingsIcon from '@mui/icons-material/Settings';
 
+
 const UseNav = () => {
   const [show, setShow] = useState('')
   
@@ -38,7 +39,7 @@ const UseNav = () => {
     
   }, [])
 
-  const handalLogout =async() => {
+  const handalLogout = async() => {
     dispatch(logout());
     await updateDoc(doc(db, "users", auth.currentUser.uid), {
       isOnline: false,
@@ -54,7 +55,7 @@ const UseNav = () => {
     </Header>
     <NavBar>
         <Nav>
-        <Link to="/">Home</Link>
+        <Link to="/">HOME</Link>
         {
         !user ? 
         <>
@@ -64,8 +65,8 @@ const UseNav = () => {
         </>
         :
         <>
-        <Link to="/">Matches</Link>
-        <Link to="/my-profile">Account</Link>
+        <Link to="/">MATCHES</Link>
+        <Link to="/my-profile">ACCOUNT</Link>
         </>
         } 
         
@@ -109,21 +110,20 @@ margin:12px;
 }
 `
 const NavBar = styled.div`
+padding: 8px;
 display: flex;
 justify-content: space-around;
 background-color:#FFA500;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
 `;
 const Nav = styled.div`
 > a {
   color: white;
     text-decoration: none;
     padding: 15px;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 14px;
     line-height:50px;
-    font-weight: 700;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight:600;
+    
 
 }
 @media (max-width:500px) {

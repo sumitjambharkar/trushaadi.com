@@ -164,6 +164,7 @@ flex-direction:column;
     padding:5px;
     border:1px solid #FFA500;
     outline:none;
+    height: 40px;
 }
 >button {
     margin-top:8px;

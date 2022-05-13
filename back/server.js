@@ -1,6 +1,8 @@
 const app = require("express")();
 const path = require("path");
 
+const Port = process.env.Port || 3001
+
 const cors = require("cors");
 
 const shortid = require("shortid");
@@ -43,6 +45,6 @@ app.post("/razorpay", async (req, res) => {
   }
 });
 
-app.listen(1337, () => {
-  console.log("Backend running at localhost:1337");
+app.listen(Port, () => {
+  console.log(`Backend running at localhost:${Port}`);
 });
