@@ -66,13 +66,16 @@ const Steptwo = () => {
              </select>
              <label>Your highest qaulification *</label>
              <input name='qaulification' onChange={handalChange} value={data.qaulification} placeholder='Enter Your Qualification' type="text" />
-             <label>Your collage of univercity</label>
-             <input name='collage' onChange={handalChange} value={data.collage} placeholder='Enter your Univercity' type="text" />
+             <label>Your University</label>
+             <input name='collage' onChange={handalChange} value={data.collage} placeholder='Enter your University' type="text" />
              <label>Your work with</label>
              <select name='work'  onChange={handalChange} value={data.work}>
                <option >Select</option>
                  <option>Bussiness</option>
                  <option>Self Employed</option>
+                 <option>Salaried</option>
+                 <option>Govt Employed</option>
+                 <option>Private Firm</option>
                  <option>Not Work</option>
              </select>
              <button onClick={submitForm}><Link to="/top-matches">Continue</Link></button> 

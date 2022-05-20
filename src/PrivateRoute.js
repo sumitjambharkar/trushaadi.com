@@ -1,18 +1,20 @@
-import React from 'react';
-import { auth } from './componets/firebase';
-import { Route,Redirect } from 'react-router-dom';
+import React from "react";
+import { useSelector } from "react-redux";
+import { Redirect, Route } from "react-router-dom";
+import { selectUser } from "./componets/userSlice";
 
-const PrivateRoute = ({ children, ...rest }) => {
-    
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const user = useSelector(selectUser)
+  console.log(user);
   return (
     <Route
       {...rest}
-      render={() => auth
-        ? children
-        : <Redirect to="/" />
+      exact
+      render={(props) =>
+        user ? <Component {...props} /> : <Redirect to="/" />
       }
     />
-  )
-}
+  );
+};
 
-export default PrivateRoute
+export default PrivateRoute;

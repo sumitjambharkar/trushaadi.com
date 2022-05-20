@@ -47,11 +47,11 @@ const Tellus = () => {
       <p>Lorem ipsum do Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione ad magni voluptatum aliquam? Placeat quas, quasi animi saepe nulla tempore deserunt ducimus deleniti optio, inventore assumenda est maiores, omnis quae? lor sit amet consectetur, adipisicing elit. Totam reiciendis ullam possimus enim quas repellendus nihil? Rem unde sapiente reiciendis ab! Repellat est facere, aliquam vitae officia fugit sed a.</p>
      <hr />
      <Company>
-         <img style={{width:"100px",marginRight:"24px"}} src="https://img.shaadi.com/success-story/2SH09514809-hSH27371565-big.jpg" alt="" />
+         <img style={{width:"100px",marginRight:"24px"}} src="https://smartpropdeals.com/wp-content/uploads/2020/12/Harish-Rupani-210x210.jpg" alt="" />
          <pre>
          <p>Best Wishes</p>
-         <span>Founder TruShaddi.com</span>
-         <p>Anupan Vittal</p>
+         <span>Founder Marriageorbit.com</span>
+         <h5>Harish Rupani</h5>
          </pre>
      </Company>
      <p>Give us Detail of you and your partner</p>
@@ -139,7 +139,10 @@ const Company = styled.div`
 display:flex;
 justify-content:center;
 margin:12px;
-align-items:center;`
+align-items:center;
+> pre h5{
+    font-weight:600;
+}`
 const Input = styled.div`
 display:flex;
 justify-content:center;

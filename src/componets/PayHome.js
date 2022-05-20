@@ -107,7 +107,7 @@ const PayHome = () => {
             <Link>Help</Link>
             :
             <>
-            <Link style={{textTransform: 'capitalize'}} onClick={()=>setShow(!show)}>{user.displayName}</Link>
+            <Link className='name' onClick={()=>setShow(!show)}>{user.displayName}</Link>
             <Link style={{textTransform: 'capitalize'}}  onClick={()=>setShow(!show)}>
             <button><Avatar style={{textTransform: 'capitalize'}}>{user.displayName?.[0]}</Avatar></button>
             <ArrowDropDownIcon/>
@@ -255,6 +255,20 @@ margin-left:-130px;
   width: 20px;
   color: gray;
   margin:5px;
+}
+@media (max-width:500px) {
+z-index:1;
+display:flex;
+justify-content:start;
+flex-direction:column;
+flex-wrap:wrap;
+background-color:#fff;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+border-radius:2px;
+position:absolute;
+width:170px;
+height:200px;
+margin-left:-100px;
 }
 
 

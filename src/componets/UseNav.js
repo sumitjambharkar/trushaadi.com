@@ -50,7 +50,7 @@ const UseNav = () => {
   return (
     <>
     <Header>
-     <h1>TruShaadi.com</h1>
+     <h1>Marriageorbit.com</h1>
      <h6>Free Membership</h6>
     </Header>
     <NavBar>
@@ -86,8 +86,8 @@ const UseNav = () => {
             <Dash>
             <li to="/my-profile"><AccountCircleIcon/><Link to="/my-profile">My Profile</Link></li>
             <li onClick={handalLogout}><LogoutIcon/><Link>Logout</Link></li>
-            <li to="/my-profile"><SettingsIcon/><Link to="/">Account Setting</Link></li>
-            <li><HttpsIcon/><Link to="">Privacy Options</Link></li>
+            <li ><SettingsIcon/>Settings</li>
+            <li ><HttpsIcon/>Privancy</li>
            </Dash>
            : ""
             }

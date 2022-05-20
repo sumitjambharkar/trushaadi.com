@@ -80,8 +80,9 @@ const Profile = () => {
              <label>your Marital Status</label>
              <select autoComplete='off' required name='maritalStatus'   onChange={handalChange} value={data.maritalStatus}>
              <option >Select</option>
-                 <option>Never Married</option>
                  <option>Married</option>
+                 <option>Never Married</option>
+                 <option>Divorce</option>
              </select>
              <label>your diet</label>
              <select autoComplete='off' required name='diet'  onChange={handalChange} value={data.diet}>

@@ -2,9 +2,10 @@ import React, {useState } from "react";
 import styled from "styled-components";
 import Mobile from "../image/back.jpeg";
 import Shaadi from '../image/pressure-hatao.jpg'
-import Logoo from '../image/logo.png'
+import Logoo from '../image/marr.png'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
+import Orr from '../image/orr.png'
 
 
 const Header = () => {
@@ -156,7 +157,12 @@ const Header = () => {
         </div>
         <Navbar>
           <Logo>
-            <img style={{width:"250px",height:"120px"}} src={Logoo} alt=""/>
+            <h1 style={{color:"#E9B453"}}>
+            <img style={{width:"40px",height:"40px"}} src={Logoo} alt=""/>
+              arriage</h1>
+            <h1 style={{color:"#E9B453"}}>
+            <img style={{width:"40px",height:"40px"}} src={Orr} alt=""/>
+              rbit.com</h1>
           </Logo>
           {!user ? (
             <Login>
@@ -314,8 +320,17 @@ const Navbar = styled.div`
   }
 `;
 const Logo = styled.div`
-  color: black;
-  margin-right: 20px;
+    border-radius: 12px;
+    color: black;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 300px;
+    background-color: black;
+    border: 1px solid #FFA500;
+    padding:2px;
+    height: 55px;
   > h1 {
     font-family: romon;
   }

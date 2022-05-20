@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import displayRazorpay from './Payment';
+import { Close } from '@mui/icons-material';
 
 
 
@@ -12,7 +13,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width:300,
+  width:320,
   bgcolor: 'background.paper',
   border: '1px solid #000',
   boxShadow: 24,
@@ -25,7 +26,7 @@ const New =({user})=> {
     displayRazorpay()
     setTimeout(() => {
       handleClose()
-    },1000);
+    },500);
   }
 
   const [open, setOpen] = React.useState(false);
@@ -60,7 +61,7 @@ const New =({user})=> {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} >
-            <span onClick={handleClose} style={{float:"right",fontWeight:"700",cursor:"pointer"}}>X</span>
+            <span onClick={handleClose} style={{float:"right",fontWeight:"700",cursor:"pointer"}}><Close/></span>
           <Typography id="modal-modal-title" variant="h6" component="h2">
           <h2 style={{textAlign:"center"}}>Contact Details</h2>
           </Typography>

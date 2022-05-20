@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../image/MyMarriage.png";
+import Logo from "../image/marr.png";
 import styled from "styled-components";
 import Theme from "../image/Screenshot.png";
 import { Link, useHistory } from "react-router-dom";
@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {db} from './firebase'
 import { updateDoc, doc } from "firebase/firestore";
 import CloseIcon from '@mui/icons-material/Close';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 
 
@@ -22,6 +23,11 @@ const Login = () => {
     error:null
     
   });
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClick = () => {
+    setShowPassword(!showPassword);
+  };
   // const dispatch = useDispatch()
   const history = useHistory();
   let name, value
@@ -32,6 +38,7 @@ const Login = () => {
   }
 
   const handalSubmit = async (e) => {
+    console.log(user);
     e.preventDefault();
     const {email,password} = user
     if(email && password){
@@ -69,7 +76,7 @@ const Login = () => {
                     <Link to="/"><CloseIcon/></Link>
                   </div>
                   <LogoImage>
-                    <img style={{ width: "50px",height:"60px" }} src={Logo} alt="logo" />
+                    <img style={{ width: "0px",height:"60px" }} src={Logo} alt="logo" />
                   </LogoImage>
                   <h5 style={{ marginBottom: "24px" }}>
                     Welcome back ! Please Login
@@ -97,9 +104,10 @@ const Login = () => {
                       required
                       autoComplete="off"
                       onChange={handalChange}
-                      type="password"
+                      type={showPassword ? 'text' : 'password'}
                       value={user.password}
                     />
+                    <span style={{marginLeft:"-30px"}}>{showPassword ? <Visibility onClick={handleClick}/> : <VisibilityOff onClick={handleClick}/>}</span>
                   </Input>
                   <Forgot>
                     <Div>

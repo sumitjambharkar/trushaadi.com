@@ -1,6 +1,6 @@
 function displayRazorpay() {
   const getData =async()=>{
-    const data = await fetch("http://localhost:3001/razorpay", {
+    const data = await fetch("https://immense-sands-61563.herokuapp.com/razorpay", {
     method: "POST",
   }).then((t) => t.json());
 
@@ -8,9 +8,9 @@ function displayRazorpay() {
     key: "rzp_test_dgT6dQaeQPEj6s",
     currency: data.currency,
     amount: data.amount,
-    name: "MyShaddi.com",
+    name: "Marriageorbit.com",
     description: "Wallet Transaction",
-    image: "http://localhost:3001/logo.png",
+    image: "https://immense-sands-61563.herokuapp.com/logo.png",
     order_id: data.id,
     handler: function (response) {
       alert("PAYMENT ID ::" + response.razorpay_payment_id);

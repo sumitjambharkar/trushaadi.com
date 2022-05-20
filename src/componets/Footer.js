@@ -7,14 +7,14 @@ const Footer = () => {
     <>
     <FooterSection>
           <FirstDiv>
-           <h2>TruShaadi.com</h2>
-           
+           <h2>Marriageorbit.com</h2>
            <hr/>
+           <p>Mere Jeevan Sathi</p>
           </FirstDiv>
           <SecandDiv>
           <h2>About Us</h2>
           <hr/>
-          <p><Link to="/about">About Trushaddi.com »</Link></p>
+          <p><Link to="/about">About Marriageorbit.com »</Link></p>
           <p><Link to="/contact">Contact Us »</Link></p>
           <p><Link to="/sitemap">Sitemap »</Link></p>
           </SecandDiv>
@@ -30,7 +30,7 @@ const Footer = () => {
       </FooterSection>
        <FooterDiv>
         <h1>
-          © 1996-2022 TruShaadi.com, The World's Leading Matchmaking Service™
+          © 1996-2022 Marriageorbit.com, The World's Leading Matchmaking Service™
         </h1>
         <h1>Created By Sumit Jambharkar</h1>
         </FooterDiv>

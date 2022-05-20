@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
 import { login } from "./userSlice";
 import CloseIcon from '@mui/icons-material/Close';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const Signup = () => {
   const dispatch = useDispatch()
@@ -22,6 +23,11 @@ const Signup = () => {
     password:""
 
   })
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClick = () => {
+    setShowPassword(!showPassword);
+  };
   const handalSubmit=async(e)=>{
     e.preventDefault()  
     const {email,displayName,birth,number,password,gender} = data;
@@ -112,7 +118,8 @@ const Signup = () => {
               </Label>
               <div></div>
               <Input>
-                <input name="password" type="password" required autoComplete="off" value={data.password} onChange={handalChange}  />
+                <input name="password" type={showPassword ? 'text' : 'password'} required autoComplete="off" value={data.password} onChange={handalChange}  />
+                <span style={{marginLeft:"-30px"}}>{showPassword ? <Visibility onClick={handleClick}/> : <VisibilityOff onClick={handleClick}/>}</span>
               </Input>
               <Div>
                 <button type="submit" className="button">Register</button>

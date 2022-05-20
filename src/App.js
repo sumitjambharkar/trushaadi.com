@@ -27,9 +27,6 @@ import ScrollToTop from './componets/ScrollToTop';
 import MyProfile from './componets/MyProfile';
 import Email from './componets/setting/Email';
 import Delete from './componets/setting/Delete'
-import Contacts from './componets/setting/Contacts';
-import Policys from './componets/setting/Policys';
-import Account from './componets/setting/Account'
 import Chats from './componets/Chats';
 import BuySub from './componets/BuySub';
 import PayHome from './componets/PayHome';
@@ -37,7 +34,8 @@ import Chat from './componets/chat/Chat';
 import PrivateRoute from './PrivateRoute';
 
 
-function App(props) {
+
+function App() {
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
 
@@ -105,15 +103,6 @@ function App(props) {
           </Route>
           <Route exact path="/my-setting">
             <Email/>
-          </Route>
-          <Route exact path="/my-policys">
-            <Policys/>
-          </Route>
-          <Route exact path="/my-account">
-            <Account/>
-          </Route>
-          <Route exact path="/my-contacts">
-            <Contacts/>
           </Route>
           <Route exact path="/delete">
             <Delete/>
