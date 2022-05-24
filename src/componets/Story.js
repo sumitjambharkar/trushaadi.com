@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { db } from "./firebase"
 import { Button } from '@mui/material';
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const Story = () => {
     const [data, setData] = useState([])
@@ -26,10 +29,14 @@ const Story = () => {
                     return (
                         <React.Fragment key={i}>
                             <StoryDiv>
-                                <StoryImage>
-                                    <img alt='img' style={{ width: "320px", height: "250px" }} src={ele.data.image} />
+                                <StoryImage >
+                                    <span>
+                                    </span>
+                                    <img alt='img'  src={ele.data.image} />
+                                   
                                 </StoryImage>
-                                <StoryDetails>
+                                
+                                <StoryDetails data-aos="flip-up" data-aos-duration="1800">
                                     <p></p>
                                     <h3>{ele.data.name}</h3>
                                     <p>
@@ -44,7 +51,7 @@ const Story = () => {
             </StorySection>
             <SectionButton>
                 <span>Your story is waiting to happen!</span>
-                <Button><Link to='/signup'>Get Started</Link></Button>
+                <Button data-aos="zoom-in-down" data-aos-duration="1500"><Link to='/signup'>Get Started</Link></Button>
             </SectionButton>
         </>
     )
@@ -71,9 +78,42 @@ const StoryDiv = styled.div`
    height:320px;
    margin: 24px;
    padding:4px;
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;`
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-const StoryImage = styled.div``
+   
+   `
+
+const StoryImage = styled.div`
+   > img {
+       
+       width: 320px;
+       height: 250px;
+       position: relative;
+       overflow: hidden !important;
+       
+   }
+
+   span{
+       content: '';
+       position: absolute;
+       width: 293px;
+       height: 227px;
+       margin: 12px;
+       background: #0008;
+       z-index: 1;
+       opacity: 0;
+       transition: 0.5s;
+   }
+
+
+   span:hover{
+     opacity: 100%;
+     transform: scale(1.1);
+   }
+
+   
+
+`
 
 const StoryDetails = styled.div`
   width:330;
@@ -101,6 +141,7 @@ const StoryDetails = styled.div`
 const SectionButton = styled.div`
    background-color:#FFA500;
    display:flex;
+   min-height: 113px;
    justify-content:center;
    justify-items:center;
    flex-wrap:wrap;
@@ -119,8 +160,9 @@ const SectionButton = styled.div`
     padding:6px;
     border:2px solid white;
     border-radius:4px;
-    transition:padding 2s;
+
    }
+
    > Button a {
        text-decoration:none;
        color:white;

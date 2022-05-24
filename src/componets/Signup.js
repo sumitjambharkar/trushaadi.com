@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { login } from "./userSlice";
 import CloseIcon from '@mui/icons-material/Close';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Button } from "@mui/material";
 
 const Signup = () => {
   const dispatch = useDispatch()
@@ -119,7 +120,7 @@ const Signup = () => {
               <div></div>
               <Input>
                 <input name="password" type={showPassword ? 'text' : 'password'} required autoComplete="off" value={data.password} onChange={handalChange}  />
-                <span style={{marginLeft:"-30px"}}>{showPassword ? <Visibility onClick={handleClick}/> : <VisibilityOff onClick={handleClick}/>}</span>
+                <Button style={{marginLeft:"-55px",color:"black"}}>{showPassword ? <Visibility onClick={handleClick}/> : <VisibilityOff onClick={handleClick}/>}</Button>
               </Input>
               <Div>
                 <button type="submit" className="button">Register</button>

@@ -5,25 +5,25 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-    <FooterSection>
-          <FirstDiv>
+    <FooterSection >
+          <FirstDiv data-aos="zoom-in-right" data-aos-duration="1500">
            <h2>Marriageorbit.com</h2>
            <hr/>
            <p>Mere Jeevan Sathi</p>
           </FirstDiv>
-          <SecandDiv>
+          <SecandDiv data-aos="zoom-out-up" data-aos-duration="1500">
           <h2>About Us</h2>
           <hr/>
           <p><Link to="/about">About Marriageorbit.com »</Link></p>
           <p><Link to="/contact">Contact Us »</Link></p>
           <p><Link to="/sitemap">Sitemap »</Link></p>
           </SecandDiv>
-          <ThirdDiv>
+          <ThirdDiv data-aos="zoom-in-left" data-aos-duration="1500">
           <h2>Information</h2>
           <hr/>
           <p><Link to="/">Terms of Use »</Link></p>
           <p><Link to="/privacy-policy">Privacy Policy »</Link></p>
-          <p><Link to="/">Help »</Link></p>
+          <p><a href="https://api.whatsapp.com/send?phone=8898699492&amp;text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">Help »</a></p>
           <p><Link to="/contact">Contact Us »</Link></p>
 
           </ThirdDiv>

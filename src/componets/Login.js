@@ -13,6 +13,7 @@ import {db} from './firebase'
 import { updateDoc, doc } from "firebase/firestore";
 import CloseIcon from '@mui/icons-material/Close';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Button } from "@mui/material";
 
 
 
@@ -107,7 +108,7 @@ const Login = () => {
                       type={showPassword ? 'text' : 'password'}
                       value={user.password}
                     />
-                    <span style={{marginLeft:"-30px"}}>{showPassword ? <Visibility onClick={handleClick}/> : <VisibilityOff onClick={handleClick}/>}</span>
+                    <Button style={{marginLeft:"-55px",color:"black"}}>{showPassword ? <Visibility onClick={handleClick}/> : <VisibilityOff onClick={handleClick}/>}</Button>
                   </Input>
                   <Forgot>
                     <Div>
@@ -148,6 +149,8 @@ const Login = () => {
   );
 };
 export default Login;
+
+
 
 const LoginContainer = styled.div`
   background-image: url(${Theme});

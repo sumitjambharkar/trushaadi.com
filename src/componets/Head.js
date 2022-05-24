@@ -1,11 +1,12 @@
 import React, {useState } from "react";
 import styled from "styled-components";
 import Mobile from "../image/back.jpeg";
-import Shaadi from '../image/pressure-hatao.jpg'
+import Shaadi from '../image/photo.jpg'
 import Logoo from '../image/marr.png'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import Orr from '../image/orr.png'
+import Loginn from "./Loginn";
 
 
 const Header = () => {
@@ -167,7 +168,8 @@ const Header = () => {
           {!user ? (
             <Login>
               <h1>
-                <Link to="/login">Login</Link>
+                {/* <Link to="/login">Login</Link> */}
+                <Link ><Loginn/></Link>
               </h1>
             </Login>
           ) : (
@@ -252,8 +254,9 @@ const Header = () => {
 export default Header;
 const Head = styled.div`
   background-image: url(${Shaadi});
-  height: 630px;
-  background-size: 100% 650px;
+  height:650px;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
   align-items: center;
   .login {
     display: none;

@@ -20,7 +20,7 @@ const Main = () => {
     {
       "img":third,
       "name": "Interact",
-      "detail": "Become a Premium Member & Start a Conversation"
+      "detail": "Become a Premium Member & Start"
     }
   ]
   return (
@@ -33,18 +33,20 @@ const Main = () => {
             <React.Fragment key={i}>
               <SingDiv >
                 <Image>
-                <Link to="/signup">
-                <img alt="" style={{ width: "140px", borderRadius: "50%", backgroundColor: "aqua" }} src={ele.img} />
-                </Link>
+                {/* <Link to="/signup"> */}
+                <img alt=""  src={ele.img} />
+                {/* </Link> */}
                 </Image>
-                <Title>
-                <Link to="/signup">
-                <p>{ele.name}</p>
-                </Link>
-                </Title>
+               
                 <Span>
                   <p>{ele.detail}</p>
                 </Span>
+
+                <Title>
+                <Link to="/signup">
+                {ele.name}
+                </Link>
+                </Title>
               </SingDiv>
             </React.Fragment>
           )
@@ -82,21 +84,59 @@ const Image = styled.div`
   display:flex;
   justify-content:center;
   margin-bottom:2rem;
+  transition: 0.5s;
+
+  >img{
+    width: 140px;
+    border-radius: 50%;
+    transition: 1s;
+    border: 2px solid #FF0000;
+  }
+  >img:hover{
+  /* transform: scale(1.1); */
+  transform: rotate(360deg);
+  }
+  
+
 `
+
+
 const Title = styled.p`
   text-align:center;
   color: #00bcd5;
   font-size: 24px;
   font-weight: 400;
+ 
   > a {
     text-decoration:none;
     text-align:center;
     color:red;
     font-size: 24px;
     font-weight: 400;
-  }`
+    /* background: #000; */
+    /* margin: 35px; */
+    padding: 5px 25px;
+    border-radius: 15px;
+    position: relative;
+    
+  }
+  > a::before {
+    position: absolute;
+    content: '';
+    width: 0%;
+    top: 100%;
+    left: 15%;
+    transition:0.5s ;
+  }
+  > a:hover::before{
+    width: 70%;
+    border-bottom: 3px solid #000;  
+  }
+ 
+  `
 const Span = styled.p`
   text-align:center;
   font-size: 16px;
   font-weight: normal;
   color: #72727d;`
+  
