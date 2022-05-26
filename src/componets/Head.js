@@ -2,11 +2,11 @@ import React, {useState } from "react";
 import styled from "styled-components";
 import Mobile from "../image/back.jpeg";
 import Shaadi from '../image/photo.jpg'
-import Logoo from '../image/marr.png'
+import Logoo from '../image/logo13.png'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
-import Orr from '../image/orr.png'
 import Loginn from "./Loginn";
+
 
 
 const Header = () => {
@@ -157,20 +157,23 @@ const Header = () => {
           </div>
         </div>
         <Navbar>
-          <Logo>
-            <h1 style={{color:"#E9B453"}}>
+          <Logo><h1>MARRIAGE</h1>
+            <img className="App-logo" src={Logoo} alt=""/>
+            <h1>RBIT</h1>
+            {/* <h1 style={{color:"#E9B453"}}>
             <img style={{width:"40px",height:"40px"}} src={Logoo} alt=""/>
               arriage</h1>
             <h1 style={{color:"#E9B453"}}>
             <img style={{width:"40px",height:"40px"}} src={Orr} alt=""/>
-              rbit.com</h1>
+              rbit.com</h1> */}
           </Logo>
           {!user ? (
             <Login>
-              <h1>
+              
                 {/* <Link to="/login">Login</Link> */}
-                <Link ><Loginn/></Link>
-              </h1>
+                <p ><Loginn/></p>
+                {/* <button><LoginAndSign/></button> */}
+                
             </Login>
           ) : (
             <Login>
@@ -247,6 +250,7 @@ const Header = () => {
             </Let>
           </Nav>
         </form>
+
       </Head>
     </>
   );
@@ -254,7 +258,7 @@ const Header = () => {
 export default Header;
 const Head = styled.div`
   background-image: url(${Shaadi});
-  height:650px;
+  min-height:650px;
   background-size: 100% auto;
   background-repeat: no-repeat;
   align-items: center;
@@ -323,20 +327,39 @@ const Navbar = styled.div`
   }
 `;
 const Logo = styled.div`
-    border-radius: 12px;
-    color: black;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    margin-right: 300px;
-    background-color: black;
-    border: 1px solid #FFA500;
-    padding:2px;
-    height: 55px;
-  > h1 {
-    font-family: romon;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+> h1 {
+  font-size: 30px;
+    font-weight: 600;
+    color: #FFA500;
+    font-family: poppins;
+}
+
+.App-logo {
+
+  width: 4rem;
+  margin-top: -10px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 1s linear;
   }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+  
 `;
 const Login = styled.div`
   color: black;
@@ -349,9 +372,12 @@ const Login = styled.div`
 `;
 const Heading = styled.div`
   text-align: center;
-  margin-top: 260px;
+  margin-top: 280px;
   position: relative;
-  color:#FFA500; 
+  color:#FFA500;
+  @media (max-width:995px) {
+    margin-top:200px;
+  }
   @media (max-width:500px) {
     display: none;
   }

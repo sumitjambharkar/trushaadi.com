@@ -1,5 +1,0 @@
-Login User Changed Password
-Login User Delete Profile
-Login User Upload Photo and Remove
-Register User Activation message in Mobile
-User Buy SubScription

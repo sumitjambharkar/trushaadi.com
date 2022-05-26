@@ -1,8 +1,6 @@
 import './App.css';
 import React, { useEffect } from "react";
 import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom";
-import Signup from './componets/Signup';
-import Login from './componets/Login';
 import CoupleDetails from './componets/CoupleDetails';
 import Video from './componets/Video';
 import Tellus from './componets/Tellus';
@@ -19,21 +17,16 @@ import { auth } from './componets/firebase';
 import Contact from './componets/Contact';
 import Policy from './componets/Policy';
 import Sitemap from './componets/Sitemap';
-import SendEmail from './componets/SendEmail';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from './componets/ScrollToTop';
 import MyProfile from './componets/MyProfile';
-import Email from './componets/setting/Email';
-import Delete from './componets/setting/Delete'
 import Chats from './componets/Chats';
 import BuySub from './componets/BuySub';
 import PayHome from './componets/PayHome';
 import Chat from './componets/chat/Chat';
 import PrivateRoute from './PrivateRoute';
-
-
 
 function App() {
   const user = useSelector(selectUser)
@@ -101,12 +94,6 @@ function App() {
           <Route exact path="/connect-match">
             <PayHome/>
           </Route>
-          <Route exact path="/my-setting">
-            <Email/>
-          </Route>
-          <Route exact path="/delete">
-            <Delete/>
-          </Route>
       <Route exact path="/chats/:roomId">
         <Chats/>
       </Route>
@@ -116,10 +103,6 @@ function App() {
          
         </>
          }
-        
-          <Route exact path="/signup">
-            <Signup />
-          </Route>
           <Route exact path="/couple/:personId">
             <CoupleDetails/>
           </Route>
@@ -128,9 +111,6 @@ function App() {
           </Route>
           <Route exact path="/tellus">
             <Tellus/>
-          </Route>
-          <Route exact path="/login">
-            <Login />
           </Route>
           <Route exact path="/top-matches">
             <Topmatch/>
@@ -146,9 +126,6 @@ function App() {
           </Route>
           <Route exact path="/sitemap">
             <Sitemap/>
-          </Route>
-          <Route exact path="/forgot-password">
-            <SendEmail/>
           </Route>
           
         </Switch>

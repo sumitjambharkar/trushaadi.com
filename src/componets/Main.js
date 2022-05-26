@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from "styled-components";
-import first from '../image/home-icon-sprite.png';
-import secand from '../image/home-icon-sprite-p.png';
-import third from '../image/home-icon-sprite-c.png';
+import first from '../image/call7.png';
+import secand from '../image/call3.png';
+import third from '../image/call.png';
 import { Link } from "react-router-dom";
 
 const Main = () => {
@@ -91,6 +91,9 @@ const Image = styled.div`
     border-radius: 50%;
     transition: 1s;
     border: 2px solid #FF0000;
+    background-color: #FFA500;
+    padding: 18px;
+
   }
   >img:hover{
   /* transform: scale(1.1); */
