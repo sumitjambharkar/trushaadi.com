@@ -69,7 +69,11 @@ color:white;
     padding-bottom: 10px;
     display: block;
     transition: all 0.3s ease-in-out;
-  }`
+  }
+  >p:hover{
+    transform: translate(25px);
+  }
+  `
 const SecandDiv = styled.div`
 padding-top:20px;
 color:white;
@@ -83,7 +87,12 @@ color:white;
     padding-bottom:6px;
     display: block;
     transition: all 0.3s ease-in-out;
-  }`
+    transition: 0.5s;
+  }
+  >p > a:hover{
+    transform: translate(25px);
+  }
+  `
 const ThirdDiv = styled.div`
 padding-top:20px;
 color:white;
@@ -98,4 +107,9 @@ color:white;
     padding-bottom:6px;
     display: block;
     transition: all 0.3s ease-in-out;
-  }`
+    transition: 0.5s;
+  }
+  >p > a:hover{
+    transform: translate(25px);
+  }
+  `

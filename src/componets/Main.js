@@ -4,6 +4,7 @@ import first from '../image/call7.png';
 import secand from '../image/call3.png';
 import third from '../image/call.png';
 import { Link } from "react-router-dom";
+import Loginn from './Loginn';
 
 const Main = () => {
   const array = [
@@ -43,9 +44,10 @@ const Main = () => {
                 </Span>
 
                 <Title>
-                <Link to="/signup">
-                {ele.name}
+                <Link>
+                   {ele.name}
                 </Link>
+                <Loginn/>
                 </Title>
               </SingDiv>
             </React.Fragment>

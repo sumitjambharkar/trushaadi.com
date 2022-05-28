@@ -15,6 +15,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { login } from "./userSlice";
+import Logo from '../image/log1.png'
 
 const style = {
   position: "absolute",
@@ -190,9 +191,9 @@ const Loginn = () => {
                                 <CloseIcon onClick={handleClose} />
                               </Link>
                             </div>
-                            {/* <LogoImage>
-                    <img style={{ width: "0px",height:"60px" }} src={Logo} alt="logo" />
-                  </LogoImage> */}
+                            <LogoImage>
+                    <img style={{ width: "60px",height:"60px" }} src={Logo} alt="logo" />
+                  </LogoImage>
                             <h5 style={{ marginBottom: "24px" }}>
                               Welcome back ! Please Login
                             </h5>
@@ -444,7 +445,7 @@ const LogoImage = styled.div`
   display: flex;
   justify-content: center;
   justify-items: center;
-  margin: 2rem;
+  margin:6px;
 `;
 const MainDiv = styled.div`
   align-items: center;

@@ -288,6 +288,7 @@ const Head = styled.div`
   padding:2px;
   border-radius: 72px;
   margin: 5px;
+  
   a {
     text-align: center;
     text-decoration: none;
@@ -368,6 +369,10 @@ const Login = styled.div`
     text-decoration: none;
     color:#ffa500;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+
+  p{
+    font-size: 30px;
   }
 `;
 const Heading = styled.div`
