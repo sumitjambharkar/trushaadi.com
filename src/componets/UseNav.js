@@ -13,14 +13,19 @@ import Avatar from '@mui/material/Avatar';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import HttpsIcon from '@mui/icons-material/Https';
 import SettingsIcon from '@mui/icons-material/Settings';
+import Setting from './setting/Setting';
+import DeleteUser from './setting/DeleteUser'
+import Loginn from './Loginn';
 
 
 const UseNav = () => {
   const [show, setShow] = useState('')
-  
+
   const user = useSelector(selectUser)
+
   const dispatch = useDispatch()
   const history = useHistory()
+  
   useEffect(() => {
     auth.onAuthStateChanged(userAuth=>{
       if(userAuth){
@@ -47,6 +52,7 @@ const UseNav = () => {
     auth.signOut()
     history.push('/')
   }
+  
   return (
     <>
     <Header>
@@ -60,13 +66,14 @@ const UseNav = () => {
         !user ? 
         <>
         <Link to="/about">About</Link>
-        <Link to="/signup">Register</Link>
-        <Link to="/login">Login</Link>
+        <Link><span style={{position:'absolute',opacity:0}}><Loginn/></span>Register</Link>
+        <Link><span style={{position:'absolute',opacity:0}}><Loginn/></span>Login</Link>
         </>
         :
         <>
         <Link to="/">MATCHES</Link>
         <Link to="/my-profile">ACCOUNT</Link>
+        <Link to="/chat">CHAT</Link>
         </>
         } 
         
@@ -74,7 +81,7 @@ const UseNav = () => {
         <Avtars>
           {
             ! user ? 
-            <Link to="/">Help</Link>
+            <a href="https://api.whatsapp.com/send?phone=8898699492&amp;text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202.">Help »</a>
             :
             <>
             <Link className='name' onClick={()=>setShow(!show)}>{user.displayName}</Link>
@@ -83,14 +90,15 @@ const UseNav = () => {
             <ArrowDropDownIcon/>
             </Link>
             {show ? 
-            <Dash>
+            <Dash>   
             <li to="/my-profile"><AccountCircleIcon/><Link to="/my-profile">My Profile</Link></li>
             <li onClick={handalLogout}><LogoutIcon/><Link>Logout</Link></li>
-            <li ><SettingsIcon/>Settings</li>
-            <li ><HttpsIcon/>Privancy</li>
+            <li style={{display:"flex",cursor:'pointer'}}><SettingsIcon/><Setting/></li>
+            <li style={{display:"flex",cursor:'pointer'}}><HttpsIcon/><DeleteUser/></li>
            </Dash>
            : ""
             }
+           
             </>
           }
         </Avtars>
@@ -147,7 +155,7 @@ const Avtars = styled.div`
   }
   @media (max-width:500px) {
     .name {
-      display: none;
+      display:none;
     }
   }
 `
@@ -163,7 +171,8 @@ position:absolute;
 width:340px;
 height:115px;
 padding-top:16px;
-margin-left:-100px;
+margin-left: -145px;
+margin-top: 8px;
 > li {
     width: 149px;
     margin: 10px;

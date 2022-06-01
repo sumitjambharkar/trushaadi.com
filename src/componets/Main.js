@@ -45,9 +45,9 @@ const Main = () => {
 
                 <Title>
                 <Link>
+                <span><Loginn/></span>
                    {ele.name}
                 </Link>
-                <Loginn/>
                 </Title>
               </SingDiv>
             </React.Fragment>
@@ -111,7 +111,6 @@ const Title = styled.p`
   color: #00bcd5;
   font-size: 24px;
   font-weight: 400;
- 
   > a {
     text-decoration:none;
     text-align:center;
@@ -134,10 +133,13 @@ const Title = styled.p`
     transition:0.5s ;
   }
   > a:hover::before{
-    width: 70%;
+    width:70%;
     border-bottom: 3px solid #000;  
   }
- 
+  > a > span {
+    position: absolute;
+    opacity: 0;
+  }
   `
 const Span = styled.p`
   text-align:center;

@@ -183,6 +183,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 2px;
 width:247px;
 background-color:white;
 `
+
 const NavBar = styled.div`
 display: flex;
 padding: 8px;

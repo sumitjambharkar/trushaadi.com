@@ -2,15 +2,17 @@ import React, {useState } from "react";
 import styled from "styled-components";
 import Mobile from "../image/back.jpeg";
 import Shaadi from '../image/photo.jpg'
-import Logoo from '../image/logo13.png'
+import Logoo from '../image/2logo2.png'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import Loginn from "./Loginn";
+import { db } from "./firebase";
 
 
 
 const Header = () => {
 
+  
   const [user, setUser] = useState("");
   const [data, setData] = useState({
     gender: "",
@@ -22,6 +24,14 @@ const Header = () => {
 
   const handalSubmit = async (e) => {
     e.preventDefault();
+    db.collection("count").add({
+      gender: "",
+      minimum: "",
+      maximum: "",
+      caste: "",
+      mother_tounge: ""
+
+    })
     setData({
       gender: "",
       minimum: "",
@@ -141,6 +151,7 @@ const Header = () => {
     value = e.target.value;
     setData({ ...data, [name]: value });
   };
+  
   return (
     <>
       <Head>
@@ -168,12 +179,8 @@ const Header = () => {
               rbit.com</h1> */}
           </Logo>
           {!user ? (
-            <Login>
-              
-                {/* <Link to="/login">Login</Link> */}
-                <p ><Loginn/></p>
-                {/* <button><LoginAndSign/></button> */}
-                
+            <Login>       
+                <p><Loginn/></p>     
             </Login>
           ) : (
             <Login>
@@ -190,7 +197,7 @@ const Header = () => {
         <Heading>
           <h1>Trusted Matrimony & Matchmaking Service</h1>
         </Heading>
-        <form method="post">
+        <form method="post" onSubmit={handalSubmit}>
           <Nav>
             <Look>
               <h1>I'm looking for a</h1>
@@ -244,9 +251,8 @@ const Header = () => {
             </Mother>
             <Let>
               <h1>.</h1>
-              <Link to="/signup">
-                <Button type="submit" color="error">Lest Go</Button>
-              </Link>
+                <Button type="submit">Lest Go</Button>
+                <span style={{opacity:0,position:"absolute",marginLeft:"-120px",marginTop:"-5px"}}><Loginn>Lets Go</Loginn></span>
             </Let>
           </Nav>
         </form>
@@ -557,9 +563,9 @@ const Let = styled.div`
   > a {
     text-decoration:none;  
   }
-  >a  Button {
+  > Button {
     width: 150px;
-    background-color:#FFA500;
+    background:linear-gradient(#ffcd0d,#fc06f9);
     height:32px;
     position: relative;
     overflow: hidden;

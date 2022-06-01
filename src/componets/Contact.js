@@ -3,6 +3,7 @@ import UseNav from './UseNav';
 import Footer from './Footer';
 import styled from 'styled-components';
 import { db } from './firebase';
+import { toast } from 'react-toastify';
 
 
 
@@ -20,17 +21,22 @@ const Contact = () => {
         value = e.target.value
         setinput({...input,[name]:value})
     }
+    const [err ,setErr] = useState("")
     const submitForm =(e) =>{
         e.preventDefault()
         const {name,email,message} = input
         if(!name || !email || ! message){
-            alert("please Field")
+            setErr("please fill out field")
         }
-        db.collection("contact_query").add({
-          input
-        })
-        alert("submit")
+        else {
+            db.collection("contact_query").add({
+                input
+            })
+            toast.success("submit")
+            setErr("")
+        }
         setinput("")
+        
     }
   return (
     <>
@@ -56,8 +62,9 @@ const Contact = () => {
             <h4><a href='tel:+44 7405094232'>+44 7405094232</a></h4>
         </Address>
         <FeedBack>
+            <p style={{textAlign:"center",color:"red"}}>{err}</p>
             <span>Fill form for enquiry or concern.</span>
-            < input autoComplete='off' required onChange={inputFeild} value={input.name} name="name" placeholder='Enter Your Name'/>
+            < input onChange={inputFeild} value={input.name} name="name" placeholder='Enter Your Name'/>
             < input onChange={inputFeild} value={input.email} name="email" placeholder='Enter Your Email Id'/>
             < input onChange={inputFeild} value={input.number} name='number'  placeholder='Enter Your Mobile No'/>
             < input onChange={inputFeild} value={input.subject} name="subject" placeholder='Enter Subject'/>

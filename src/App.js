@@ -60,7 +60,10 @@ function App() {
           <Home/>
         </Route> :
         <>
-        {user.email === "xyz@gmail.com" || user.email === "abc@gmail.com" || user.email === "ssjambharkar@gmail.com" ? <Route exact path="/"><HomeSection/></Route> :<Route exact path="/"><PayHome/></Route> }
+        {/* {user.email === "shraddha@gmail.com" || user.email === "abc@gmail.com" || user.email === "ssjambharkar@gmail.com" ? <Route exact path="/"><HomeSection/></Route> :<Route exact path="/"><PayHome/></Route> } */}
+        <Route exact path="/">
+          <HomeSection/>
+        </Route>
         <Route exact path="/view/:Id">
         <View/>
       </Route>

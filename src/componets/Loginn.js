@@ -15,7 +15,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { login } from "./userSlice";
-import Logo from '../image/log1.png'
+import Logo from '../image/1logo1.png'
 
 const style = {
   position: "absolute",
@@ -52,6 +52,7 @@ const Loginn = () => {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [showUnderLine, setShowUnderLine] = useState(false)
 
   const handleClose = () => {
     setOpen(false);
@@ -153,20 +154,28 @@ const Loginn = () => {
     auth.sendPasswordResetEmail(forgotEmail)
     .then(function () {
       toast.success("Please check your email...")
-      setTimeout(() => {
       history.push('/')
-      },1000);
     }).catch(function (e) {
       toast.error("email not found")
         console.log(e)
     }) 
     
+ }
+ const handleMouseEnter = e => {
+  e.target.style.border = "1px solid #FFA500"
+  e.target.style.borderRadius = "24px"
+  setShowUnderLine(true)
+}
+const handleMouseLeave = e => {
+  e.target.style.border = "none"
+  setShowUnderLine(false)
 }
   
   return (
     
-    <div>
-      <Button style={{ color: "#FFA500" }} onClick={handleOpen}>
+    <div >
+      <Button style={{height:"40px",width:"80px" ,color: "#FFA500",position:"absolute",textTransform: 'capitalize',fontSize: "18px",
+        padding:"0 20px" }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleOpen}>
         Login
       </Button>
       <Modal
@@ -192,7 +201,7 @@ const Loginn = () => {
                               </Link>
                             </div>
                             <LogoImage>
-                    <img style={{ width: "60px",height:"60px" }} src={Logo} alt="logo" />
+                    <img className="App-logo" src={Logo} alt="logo" />
                   </LogoImage>
                             <h5 style={{ marginBottom: "24px" }}>
                               Welcome back ! Please Login
@@ -446,6 +455,26 @@ const LogoImage = styled.div`
   justify-content: center;
   justify-items: center;
   margin:6px;
+
+  .App-logo {
+
+width:65px;
+margin-bottom: 15px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+.App-logo {
+  animation: App-logo-spin infinite 1s linear;
+}
+}
+@keyframes App-logo-spin {
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(360deg);
+}
+}
 `;
 const MainDiv = styled.div`
   align-items: center;

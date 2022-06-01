@@ -74,9 +74,9 @@ const HomeSection = () => {
             null :
             <Card>
             <Avatar src={doc.data.image} sx={{width:224,height:250}} variant="square"/>
-            <span style={{textTransform: 'capitalize'}}>{doc.data.displayName}</span>
-            <span style={{textTransform: 'capitalize'}}>{doc.data.gender}</span>
-            <span>{calculate_age(new Date(doc.data.birth))}</span>
+            <span style={{textTransform: 'capitalize',fontWeight:600}}>{doc.data.displayName}</span>
+            <span style={{textTransform: 'capitalize',fontFamily:'emoji'}}>{doc.data.gender}</span>
+            <span style={{fontFamily:'cursive'}}>{calculate_age(new Date(doc.data.birth))}</span>
             <Button><Link to={`/view/${doc.id}`}>Send Message</Link></Button>
             </Card>
             }
@@ -112,6 +112,11 @@ margin:6px;
 box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 2px;
 width:247px;
 background-color:white;
+height: 390px;
+:hover {
+  border:0.2px solid #FFA500;
+  
+}
 > button {
 padding: 4px;
 background-color:#FFA500;

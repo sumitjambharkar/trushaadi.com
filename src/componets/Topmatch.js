@@ -91,7 +91,7 @@ const Topmatch = () => {
           </Tamplte>
           <Button>
             <button>
-              <Link to="/connect-match">Connect with match</Link>
+              <Link to="/">Connect with match</Link>
             </button>
           </Button>
         </Card>

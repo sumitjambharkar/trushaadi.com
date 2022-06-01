@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState } from "react";
+import React, {useEffect, useState } from "react";
 import styled from "styled-components";
 import Footer from "./Footer";
 import UseNav from "./UseNav";
@@ -26,7 +26,7 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 const MyProfile = () => {
   const [img ,setImag ] = useState('')
-  console.log(img)
+  
   const [userDetails, setUserDetails] = useState([]);
   const [userFirst, setUserFirst] = useState([]);
   const [userSecand, setUserSecand] = useState([]);
@@ -39,6 +39,7 @@ const MyProfile = () => {
   const [openFo, setOpenFo] = useState()
   const [number, setNumber] = useState()
   const [userN, setUserN] = useState()
+
  
   
   useEffect(()=>{
@@ -76,7 +77,7 @@ const MyProfile = () => {
   let x = userDetails.birth
   let date = new Date(x)
   let dateMDY = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
-  console.log(dateMDY);
+
   
   const [data, setdata] = useState({
     gender:userDetails.gender,
@@ -254,7 +255,7 @@ const MyProfile = () => {
             <hr></hr>
 
             <li>{calculate_age(new Date(userDetails.birth))} Yrs</li>
-            <li>5.2</li>
+            <li>{userFirst.height}</li>
             <li>indain</li>
             <li>{userDetails.number}
             <Button onClick={()=>setNumber(userDetails.number)}>

@@ -5,6 +5,7 @@ import { db } from "./firebase"
 import { Button } from '@mui/material';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Loginn from './Loginn'
 AOS.init();
 
 const Story = () => {
@@ -51,7 +52,7 @@ const Story = () => {
             </StorySection>
             <SectionButton>
                 <span>Your story is waiting to happen!</span>
-                <Button data-aos="zoom-in-down" data-aos-duration="1500"><Link to='/signup'>Get Started</Link></Button>
+                <Button data-aos="zoom-in-down" data-aos-duration="1500"><Link><span style={{position:'absolute',opacity:0}}><Loginn/></span>Get Started</Link></Button>
             </SectionButton>
         </>
     )
