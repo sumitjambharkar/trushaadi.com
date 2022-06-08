@@ -25,7 +25,7 @@ const Story = () => {
             <Title>
                 <h2>Matrimony Service with Millions of Success Stories</h2>
             </Title>
-            <StorySection>
+            <StorySection className='container'>
                 {data.map((ele,i) => {
                     return (
                         <React.Fragment key={i}>
@@ -76,7 +76,7 @@ const StorySection = styled.div`
 
 const StoryDiv = styled.div`
    width:330px;
-   height:320px;
+   height:380px;
    margin: 24px;
    padding:4px;
    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -88,7 +88,7 @@ const StoryImage = styled.div`
    > img {
        
        width: 320px;
-       height: 250px;
+       height:285px;
        position: relative;
        overflow: hidden !important;
        
@@ -98,7 +98,7 @@ const StoryImage = styled.div`
        content: '';
        position: absolute;
        width: 293px;
-       height: 227px;
+       height:260px;
        margin: 12px;
        background: #0008;
        z-index: 1;
@@ -121,6 +121,7 @@ const StoryDetails = styled.div`
   height:250px;
   
   >h3{
+    margin-top: 15px;
     font-size: 22px;
     line-height: 22px;
     text-align:center;
@@ -148,6 +149,7 @@ const SectionButton = styled.div`
    flex-wrap:wrap;
    align-items:center;
    margin-top:36px;
+  
    >span {
        font-size:24px;
        padding:28px;
@@ -167,6 +169,9 @@ const SectionButton = styled.div`
    > Button a {
        text-decoration:none;
        color:white;
+   }
+   @media (max-width:575px) {
+    padding-bottom:20px;
    }
   
    `

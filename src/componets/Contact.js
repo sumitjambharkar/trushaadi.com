@@ -47,13 +47,13 @@ const Contact = () => {
     </Head>
     <Feed>
         <Address>
-            <button>TruShaadi</button>
+            <button>Marriageorbit</button>
             <span>Address</span>
             <h4>001, Kenwood Apartment,
             <br></br> Lokhandwala Complex,
             <br></br> Andheri West, Mumbai -400 053</h4>
             <span>Email Id</span>
-            <h4><a href ="mailto:trushaadi@gmail.com">trushaadi@gmail.com</a></h4>
+            <h4><a href ="mailto:marriageorbit@gmail.com">marriageorbit@gmail.com</a></h4>
             <span>Contact No</span>
             <h4><a href='tel:9833188536'>+91 98331 88536</a></h4>
             <span>Telephone No</span>

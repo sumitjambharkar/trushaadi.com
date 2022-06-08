@@ -9,7 +9,7 @@ const Sitemap = () => {
     <>
     <UseNav/>
     <p></p>
-    <h2 style={{textAlign:"center"}}>TruShaadi Location</h2>
+    <h2 style={{textAlign:"center"}}>Marriageorbit Location</h2>
     <p></p>
     <SiteLocation className='container'>
     <Map>
@@ -17,13 +17,13 @@ const Sitemap = () => {
     </Map>
     <Location>
         <h4>Mumbai Andheri (West)</h4>
-        <span>TruShaadi</span>
+        <span>Marriageorbit</span>
         <p></p>
         <span>Address</span>
         <h4>001, Kenwood Apartment,<br></br> Lokhandwala Complex,<br></br>
              Andheri West, Mumbai -400 053</h4>
         <span>Email Id</span>
-        <h4><a href ="mailto:trushaadi@gmail.com">trushaadi@gmail.com</a></h4>
+        <h4><a href ="mailto:marriageorbit@gmail.com">marriageorbit@gmail.com</a></h4>
         <span>Contact No</span>
         <h4><a href='tel:9833188536'>+91 98331 88536</a></h4>
         <span>Telephone No</span>

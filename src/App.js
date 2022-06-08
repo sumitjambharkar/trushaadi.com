@@ -53,7 +53,7 @@ function App() {
     <>
     <Router>
       <ScrollToTop/>
-    <ToastContainer theme="colored" position="top-right"/>
+    <ToastContainer  theme="colored" position="top-center"/>
     <Switch>
          {!user ?
         <Route exact path="/">

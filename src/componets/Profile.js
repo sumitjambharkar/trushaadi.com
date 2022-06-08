@@ -51,14 +51,14 @@ const Profile = () => {
   return (
     <>
     <Header>
-        <h1>Trushaddi.com</h1>
+        <h1>marriageorbit.com</h1>
     </Header>
     <CreateSection>
         <Card>
-         <Form>
+         <Form onSubmit={submitForm}>
              <h1>Let's Create Your Profile Now</h1>
              <label>City you live in *</label>
-             <select autoComplete='off' required name='city'   onChange={handalChange} value={data.city}>
+             <select  name='city'   onChange={handalChange} value={data.city}>
                  <option >Select</option>
                  {city.map((ele)=>{
                      return <option >{ele}</option>
@@ -99,7 +99,7 @@ const Profile = () => {
                     return  <option >{ele}</option>
                 })}
              </select>
-             <button type='submit' onClick={submitForm}><Link to="/profile/step/2">Continue</Link></button>
+             <button type='submit' ><Link to="/profile/step/2">Continue</Link></button>
              
          </Form>
         </Card>
@@ -165,7 +165,8 @@ flex-direction:column;
     padding:5px;
     border:1px solid #FFA500;
     outline:none;
-    height: 40px;
+    height:35px;
+    font-size: 14px;
 }
 >button {
     margin-top:8px;

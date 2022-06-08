@@ -22,11 +22,11 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 360,
+  width: 320,
   bgcolor: "background.paper",
-  border: "1px solid #000",
   boxShadow: 24,
-  p: 4,
+  paddingLeft:2,
+  paddingRight:2,
 };
 
 const Loginn = () => {
@@ -45,6 +45,7 @@ const Loginn = () => {
 
   const [dataName, setDataName] = useState({
     displayName: "",
+    profile:"",
     email: "",
     number: "",
     birth: "",
@@ -113,7 +114,7 @@ const Loginn = () => {
 
   const handalSign = async (e) => {
     e.preventDefault();
-    const { email, displayName, birth, number, password, gender } = dataName;
+    const { email, displayName, birth, number, password, gender,profile } = dataName;
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
         email,
@@ -126,7 +127,7 @@ const Loginn = () => {
         phoneNumber: user.number,
         isOnline: true,
       });
-      await createUserCollecton(user, { displayName, birth, number, gender });
+      await createUserCollecton(user, { displayName, birth, number, gender,profile });
       dispatch(
         login({
           uid: user.uid,
@@ -174,7 +175,7 @@ const handleMouseLeave = e => {
   return (
     
     <div >
-      <Button style={{height:"40px",width:"80px" ,color: "#FFA500",position:"absolute",textTransform: 'capitalize',fontSize: "18px",
+      <Button style={{height:"40px",width:"80px" ,color: "#FFA500",textTransform: 'capitalize',fontSize: "18px",
         padding:"0 20px" }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleOpen}>
         Login
       </Button>
@@ -214,6 +215,7 @@ const handleMouseLeave = e => {
                                 name="email"
                                 required
                                 autoComplete="off"
+                                placeholder="Email Id"
                                 type="email"
                                 value={data.email}
                                 onChange={handalChange}
@@ -228,12 +230,13 @@ const handleMouseLeave = e => {
                                 name="password"
                                 required
                                 autoComplete="off"
+                                placeholder="Password"
                                 type={showPassword ? "text" : "password"}
                                 value={data.password}
                                 onChange={handalChange}
                               />
                               <Button
-                                style={{ marginLeft: "-55px", color: "black" }}
+                                style={{ marginLeft: "-60px", color: "black" }}
                               >
                                 {showPassword ? (
                                   <Visibility onClick={handleClick} />
@@ -299,10 +302,27 @@ const handleMouseLeave = e => {
                               <CloseIcon />
                             </Link>
                           </div>
-                          <h5 style={{ marginBottom: "4px" }}>
+                          <h5 style={{ marginBottom: "10px" }}>
                             Let's set up your account,<br></br> while we find
                             Matches for you!
                           </h5>
+                          <Label>
+                            <label>Profile for</label>
+                          </Label>
+                          <select
+                            autoComplete="off"
+                            required
+                            name="profile"
+                            onChange={handalChangeSign}
+                            value={dataName.profile}
+                          >
+                            <option>Select</option>
+                            <option>Son</option>
+                            <option>Self</option>
+                            <option>Doughter</option>
+                            <option>Sister</option>
+                            <option>Brother</option>
+                          </select>
                           <Label>
                             <label>Full Name</label>
                           </Label>
@@ -312,6 +332,7 @@ const handleMouseLeave = e => {
                               type="text"
                               required
                               autoComplete="off"
+                              placeholder="Full Name"
                               value={dataName.displayName}
                               onChange={handalChangeSign}
                             />
@@ -352,6 +373,7 @@ const handleMouseLeave = e => {
                               type="number"
                               required
                               autoComplete="off"
+                              placeholder="Mobile No"
                               value={dataName.number}
                               onChange={handalChangeSign}
                             />
@@ -365,6 +387,7 @@ const handleMouseLeave = e => {
                               type="email"
                               required
                               autoComplete="off"
+                              placeholder="Email Id"
                               value={dataName.email}
                               onChange={handalChangeSign}
                             />
@@ -379,11 +402,12 @@ const handleMouseLeave = e => {
                               type={showPassword ? "text" : "password"}
                               required
                               autoComplete="off"
+                              placeholder="Password"
                               value={dataName.password}
                               onChange={handalChangeSign}
                             />
                             <Button
-                              style={{ marginLeft: "-55px", color: "black" }}
+                              style={{ marginLeft: "-60px", color: "black" }}
                             >
                               {showPassword ? (
                                 <Visibility onClick={handleClick} />
@@ -477,34 +501,41 @@ to {
 }
 `;
 const MainDiv = styled.div`
-  align-items: center;
+    align-items: center;
+    margin-left: 10px;
+    /* display: flex;
+    justify-content: center;
+    flex-direction: column; */
   div > a {
     text-decoration: none;
     color: black;
   }
   > select {
     width: 270px;
-    height: 40px;
+    height:35px;
     margin-bottom: 8px;
-    padding: 5px;
+    padding-left: 5px;
     border: 1px solid #ffa500;
     outline: none;
+    font-size:14px;
   }
 `;
 
 const Label = styled.div`
   > label {
-    font-size: 16px;
+    font-size:16px;
     font-weight: 400;
-    margin: 4px;
+   
   }
 `;
 const Input = styled.div`
   > input {
     width: 270px;
-    height: 40px;
+    height:35px;
     border: 1px solid #ffa500;
     border-radius: 2px;
+    font-size:14px;
+    padding-left: 5px;
   }
   > input:focus {
     outline: none;
@@ -552,7 +583,7 @@ flex-direction: column;
 > input {
     padding:6px;
     width: 270px;
-    height: 40px;
+    height:35px;
     border: 1px solid #FFA500;
     border-radius: 2px;
 }
@@ -561,7 +592,7 @@ flex-direction: column;
 }
 > button {
     width: 270px;
-    height: 40px;
+    height:35px;
     margin-top: 8px;
     background-color:#FFA500;
     border: 1px solid #FFA500;

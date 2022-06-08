@@ -32,7 +32,7 @@ const Footer = () => {
         <h1>
           © 1996-2022 Marriageorbit.com, The World's Leading Matchmaking Service™
         </h1>
-        <h1>Created By Sumit Jambharkar</h1>
+        <h1>Created By Smart Deal And Investment</h1>
         </FooterDiv>
     </>
   )
@@ -40,6 +40,7 @@ const Footer = () => {
 
 export default Footer;
 const FooterSection = styled.div`
+ overflow: hidden;
   background-color:#2e2e2e;
   display: flex;
   justify-content:space-around;

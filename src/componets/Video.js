@@ -1,11 +1,24 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import UseNav from "./UseNav";
 import Footer from "./Footer";
+import {db} from './firebase'
 
 
 const Video = () => {
+
+  const [video, setVideo] = useState([])
+
+  useEffect(() => {
+    db.collection("videos").onSnapshot((snapshot)=>{
+      setVideo(snapshot.docs.map((doc)=>({
+          id : doc.id,
+          data : doc.data()
+      })))
+  })
+  }, [])
+  
 
   return (
     <>
@@ -24,18 +37,12 @@ const Video = () => {
         
           
             <>
-              <Box>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/WZRua05_WHI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </Box>
-              <Box>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/95qPaIqLK8A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </Box>
-              <Box>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/L_GgJZbPZus" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </Box>
-              <Box>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/jczNUPS1cMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </Box>
+              {video.map((doc)=>(
+                <Box>
+                <iframe width="560" height="315" src={doc.data.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </Box>
+              ))}
+              
             </>
          
      

@@ -30,11 +30,13 @@ export const createUserCollecton =async(user,additionalData)=>{
     const {number} = additionalData;
     const {birth} = additionalData;
     const {gender} = additionalData;
+    const {profile} = additionalData;
 
     try{
       userRef.set({
         email,
         displayName,
+        profile,
         birth,
         number,
         createdAt :new Date(),

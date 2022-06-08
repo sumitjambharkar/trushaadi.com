@@ -44,13 +44,20 @@ const Steptwo = () => {
   return (
     <>
     <Header>
-        <h1>Trushaddi.com</h1>
+        <h1>marriageorbit.com</h1>
     </Header>
     <CreateSection>
         <Card>
          <Form>
              <h1>Just a few questions your about.</h1>
              <label>Your Religion</label>
+             <select name='religion'  onChange={handalChange} value={data.religion}>
+             <option >Select</option>
+                 {religion.map((ele)=>{
+                     return <option >{ele}</option>
+                 })}
+             </select>
+             <label>Sub Community</label>
              <select name='religion'  onChange={handalChange} value={data.religion}>
              <option >Select</option>
                  {religion.map((ele)=>{
@@ -143,7 +150,8 @@ flex-direction:column;
     padding:5px;
     border:1px solid #FFA500;
     outline:none;
-    height: 40px;
+    height:35px;
+    font-size:14px;
 }
 >button {
     margin-top:8px;

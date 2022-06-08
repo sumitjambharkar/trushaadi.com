@@ -23,5 +23,5 @@ export default Home;
 
 const Section = styled.div`
 @media (max-width:500px) {
-  display: none;
+  
 }`
