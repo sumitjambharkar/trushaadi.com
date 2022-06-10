@@ -20,7 +20,18 @@ import { getDoc, doc, updateDoc } from "firebase/firestore";
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
-
+const style = {
+  position: "absolute",
+  textAlign:"center",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 300,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  paddingLeft:2,
+  paddingRight:2,
+};
 
 
 
@@ -179,17 +190,7 @@ const MyProfile = () => {
 
     return Math.abs(age_dt.getUTCFullYear() - 1970);
   }
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
+
 
   useEffect(() => {
     auth.onAuthStateChanged((userAuth) => {
@@ -307,12 +308,12 @@ const MyProfile = () => {
               <First>
                 <li>{userDetails.gender}</li>
                 <li>{dateMDY}</li>
-                <li>{userFirst.maritalStatus}</li>
-                <li>{userSecand.religion}</li>
-                <li>{userSecand.tounge}</li>
-                <li>{userSecand.tounge}</li>
+                <li>sss</li>
+                <li>sss</li>
+                <li>sss</li>
+                <li>sss</li>
               </First>
-              <First>
+              <>
               <Button onClick={()=>setOpen(userDetails.gender,userDetails.birth,userFirst.maritalStatus,userSecand.religion,userSecand.tounge)}>
                   <EditIcon />
                   Edit
@@ -341,7 +342,7 @@ const MyProfile = () => {
                     </Typography>
                   </Box>
                 </Modal>
-              </First>
+              </>
             </Agent>
           </Boxs>
           
@@ -358,7 +359,7 @@ const MyProfile = () => {
                 <li>{userSecand.collage}</li>
                 <li>{userSecand.work}</li>
               </First>
-              <First>
+              <>
               <Button onClick={()=>setOpenF(userSecand.qaulification,userSecand.collage,userSecand.work)}>
                   <EditIcon />
                   Edit
@@ -383,7 +384,7 @@ const MyProfile = () => {
                     </Typography>
                   </Box>
                 </Modal>
-              </First>
+              </>
             </Agent>
           </Boxs>
           <Boxs>
@@ -397,7 +398,7 @@ const MyProfile = () => {
                 <li>{userFirst.family}</li>
                 <li>Not Specified</li>
               </First>
-              <First>
+              <>
               <Button onClick={()=>setOpenS(userDetails.gender,userDetails.birth)}>
                   <EditIcon />
                   Edit
@@ -421,7 +422,7 @@ const MyProfile = () => {
                     </Typography>
                   </Box>
                 </Modal>
-              </First>
+              </>
             </Agent>
           </Boxs>
           <Boxs>
@@ -435,7 +436,7 @@ const MyProfile = () => {
                 <li>{userFirst.city}</li>
                 <li>{userFirst.state}</li>
               </First>
-              <First>
+              <>
               <Button onClick={()=>setOpenT(userDetails.gender,userDetails.birth)}>
                   <EditIcon />
                   Edit
@@ -459,7 +460,7 @@ const MyProfile = () => {
                     </Typography>
                   </Box>
                 </Modal>
-              </First>
+              </>
             </Agent>
           </Boxs>
           <Boxs>
@@ -474,7 +475,7 @@ const MyProfile = () => {
                 <li>{userFirst.diet}</li>
                 <li>{userFirst.height}</li>
               </First>
-              <First>
+              <>
               <Button onClick={()=>setOpenFo(userFirst.diet,userFirst.height)}>
                   <EditIcon />
                   Edit
@@ -498,7 +499,7 @@ const MyProfile = () => {
                     </Typography>
                   </Box>
                 </Modal>
-              </First>
+              </>
             </Agent>
           </Boxs>
         </Details>
@@ -595,7 +596,7 @@ const Agent = styled.div`
   }
 `;
 const First = styled.div`
-  padding-left: 48px;
+  
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -604,6 +605,7 @@ const First = styled.div`
     font-size: 13px;
     color: #666;
     margin:6px;
+    width: 100px;
   }
 `;
 

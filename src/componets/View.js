@@ -92,6 +92,7 @@ const View = () => {
       <AllDetails>
         <Details className='container'>
           <h1>Details of Profile</h1>
+          
           <Box>
             <h3>About</h3>
             <span>I am currently living in uk. I am a smart and dynamic girl who respects her culture very much. I belong to a simple marathi family.</span>
@@ -169,6 +170,7 @@ const View = () => {
           </Box>
         </Details>
       </AllDetails> 
+
       <Footer />
     </>
   )
@@ -239,7 +241,7 @@ background-color:#ebdcdc;`
 const Details = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
 background-color:white;
-width:65%;
+width: 70%;
 >h1 {
   font-size: 1.8rem;
     font-weight: bold;
@@ -271,5 +273,6 @@ margin:4px;
   list-style:none;
   font-size: 15px;
   color: #666;
+  width: 120px;
 }
 `
