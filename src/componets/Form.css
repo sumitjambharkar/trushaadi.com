@@ -19,7 +19,7 @@ a{
     display: block;
 }
 
- select{
+ .sel{
     width: 90%;
     height: 35px !important;
     outline: none;

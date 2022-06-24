@@ -119,12 +119,10 @@ const Form = () => {
             <div class="col-md-3 col-6 spc">
                 <div >
                     <label className='change'>I'm looking for a</label>
-                    <select>
+                    <select className='sel'>
                         <option>Women</option>
                         <option>Men</option>
                     </select>
-                   
-
                 </div>
             </div>
             
@@ -133,7 +131,7 @@ const Form = () => {
                 <label className='change'>Aged</label>
               <div class="row">
                   <div class="col-6 spc">
-                      <select>
+                      <select className='sel'>
                       <option>Select</option>
                           {array.map((ele)=>(
                             <option>{ele}</option>
@@ -141,9 +139,8 @@ const Form = () => {
                       </select>
                   </div>
 
-
                   <div class="col-6 spc">
-                    <select>
+                    <select className='sel'>
                     <option>Select</option>
                           {array.map((ele)=>(
                             <option>{ele}</option>
@@ -157,14 +154,12 @@ const Form = () => {
             <div class="col-md-2 col-6 spc">
                 <div >
                     <label className='change'>of religion</label>
-                    <select>
+                    <select className='sel'>
                         <option>Select</option>
                         {caste.map(ele=>(
                             <option>{ele}</option>
                         ))}
                     </select>
-                   
-
                 </div>
             </div>
 
@@ -173,14 +168,12 @@ const Form = () => {
             <div class="col-md-3 col-6">
                 <div >
                     <label className='change'>and mother tongue</label>
-                    <select>
+                    <select className='sel'>
                         <option>Select</option>
                         {motherTounge.map(ele=>(
                             <option>{ele}</option>
                         ))}
                     </select>
-                   
-
                 </div>
             </div>
 

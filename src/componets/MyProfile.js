@@ -329,13 +329,13 @@ const MyProfile = () => {
                       Basic Information
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
+                    <input style={{ margin: "3px", width: "100%"}} placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
                     <br></br>
-                    <input type="date" name="birth" value={data.birth} onChange={handalChange}/> <br></br>
-                    <input placeholder="MaritalStatus" type="text" name="maritalStatus" value={data.maritalStatus} onChange={handalChange}/> <br></br>
-                    <input placeholder="Religion" type="text" name="religion" value={data.religion} onChange={handalChange}/> <br></br>
-                    <input placeholder="Caste" type="text" name="caste" value={data.tounge} onChange={handalChange}/> <br></br>
-                    <input placeholder="MotherTounge" type="text" name="tounge" value={data.tounge} onChange={handalChange}/>
+                    <input style={{ margin: "3px", width: "100%"}} type="date" name="birth" value={data.birth} onChange={handalChange}/> <br></br>
+                    <input style={{ margin: "3px", width: "100%"}} placeholder="MaritalStatus" type="text" name="maritalStatus" value={data.maritalStatus} onChange={handalChange}/> <br></br>
+                    <input style={{ margin: "3px", width: "100%"}} placeholder="Religion" type="text" name="religion" value={data.religion} onChange={handalChange}/> <br></br>
+                    <input style={{ margin: "3px", width: "100%"}} placeholder="Caste" type="text" name="caste" value={data.tounge} onChange={handalChange}/> <br></br>
+                    <input style={{ margin: "3px", width: "100%"}} placeholder="MotherTounge" type="text" name="tounge" value={data.tounge} onChange={handalChange}/>
                      <br></br>
                      <Button onClick={update}>Update</Button>
                      <Button onClick={()=>setOpen(false)}>Close</Button>
@@ -414,8 +414,8 @@ const MyProfile = () => {
                       Basic Information
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
-                     <input type="date" name="birth" value={data.birth} onChange={handalChange}/>
+                    <input style={{ margin: "3px", width: "100%"}} placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
+                     <input style={{ margin: "3px", width: "100%"}} type="date" name="birth" value={data.birth} onChange={handalChange}/>
                      <br></br>
                      <Button onClick={updateS}>Update</Button>
                      <Button onClick={()=>setOpenS(false)}>Close</Button>
@@ -452,8 +452,8 @@ const MyProfile = () => {
                       Basic Information
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input placeholder="City you live in" type="text" name="city" value={data.city} onChange={handalChange}/>
-                     <input placeholder="State" type="text" name="state" value={data.state} onChange={handalChange}/>
+                    <input style={{ margin: "3px", width: "100%"}} placeholder="City you live in" type="text" name="city" value={data.city} onChange={handalChange}/>
+                     <input style={{ margin: "3px", width: "100%"}} placeholder="State" type="text" name="state" value={data.state} onChange={handalChange}/>
                      <br></br>
                      <Button onClick={updateT}>Update</Button>
                      <Button onClick={()=>setOpenT(false)}>Close</Button>

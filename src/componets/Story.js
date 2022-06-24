@@ -75,7 +75,7 @@ const StorySection = styled.div`
    flex-wrap:wrap;`
 
 const StoryDiv = styled.div`
-   width:330px;
+   width:320px;
    height:380px;
    margin: 24px;
    padding:4px;
@@ -87,7 +87,7 @@ const StoryDiv = styled.div`
 const StoryImage = styled.div`
    > img {
        
-       width: 320px;
+       width: 312px;
        height:285px;
        position: relative;
        overflow: hidden !important;
@@ -97,7 +97,7 @@ const StoryImage = styled.div`
    span{
        content: '';
        position: absolute;
-       width: 293px;
+       width: 286px;
        height:260px;
        margin: 12px;
        background: #0008;
