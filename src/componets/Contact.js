@@ -51,7 +51,7 @@ const Contact = () => {
             <span>Address</span>
             <h4>001, Kenwood Apartment,
             <br></br> Lokhandwala Complex,
-            <br></br> Andheri West, Mumbai -400 053</h4>
+            <br></br> Andheri West, Mumbai - 400 053</h4>
             <span>Email Id</span>
             <h4><a href ="mailto:marriageorbit@gmail.com">marriageorbit@gmail.com</a></h4>
             <span>Contact No</span>

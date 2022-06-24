@@ -1,7 +1,7 @@
 import React, {useState } from "react";
 import styled from "styled-components";
 import Shaadi from '../image/photo.jpg'
-import Logoo from '../image/2logo2.png'
+import Logoo from '../image/nl.png'
 import Loginn from "./Loginn";
 import Form from "./Form";
 

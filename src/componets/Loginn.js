@@ -15,7 +15,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { login } from "./userSlice";
-import Logo from '../image/1logo1.png';
+import Logo from '../image/nl.png'
 
 const style = {
   position: "absolute",
