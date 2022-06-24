@@ -34,18 +34,24 @@ const Video = () => {
         </h1>
       </Welcome>
       <Videos className="container">
-        
+        <div className="row">
+          
+       
           
             <>
               {video.map((doc)=>(
+                <div className="col-md-4">
                 <Box>
-                <iframe width="560" height="315" src={doc.data.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <iframe width="100%" height="315" src={doc.data.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               
                 </Box>
+                </div>
               ))}
               
             </>
          
-     
+          </div>
       </Videos>
       <Footer/>
     </>
@@ -85,12 +91,10 @@ const Welcome = styled.div`
 const Videos = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 8px 8px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  
 `;
 const Box = styled.div`
-  width: 500px;
+  width:100%;
   margin: 4px;
   text-align: center;
 `;

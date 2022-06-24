@@ -56,12 +56,12 @@ const UseNav = () => {
   return (
     <>
     <Header>
-     <h1>Marriageorbit.com</h1>
-     <h6>Free Membership</h6>
+     <h3>Marriageorbit.com</h3>
+     <p>Free Membership</p>
     </Header>
     <NavBar>
         <Nav>
-        <Link to="/">HOME</Link>
+        <Link to="/">Home</Link>
         {
         !user ? 
         <>
@@ -71,9 +71,9 @@ const UseNav = () => {
         </>
         :
         <>
-        <Link to="/">MATCHES</Link>
-        <Link to="/my-profile">ACCOUNT</Link>
-        <Link to="/chat">CHAT</Link>
+        <Link to="/">Matches</Link>
+        <Link to="/my-profile">Account</Link>
+        <Link to="/chat">Chat</Link>
         </>
         } 
         

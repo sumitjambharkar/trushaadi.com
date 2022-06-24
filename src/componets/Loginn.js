@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword,sendPasswordResetEmail} from "firebase/auth";
 import { auth, createUserCollecton } from "./firebase";
 import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -15,7 +15,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { login } from "./userSlice";
-import Logo from '../image/1logo1.png'
+import Logo from '../image/1logo1.png';
 
 const style = {
   position: "absolute",
@@ -152,14 +152,15 @@ const Loginn = () => {
 
   const sendEmail =async(e)=>{
     e.preventDefault()
-    auth.sendPasswordResetEmail(forgotEmail)
-    .then(function () {
-      toast.success("Please check your email...")
+    sendPasswordResetEmail(auth,forgotEmail)
+    .then(res=>{
+      toast.success("Please check your email...",res)
       history.push('/')
-    }).catch(function (e) {
-      toast.error("email not found")
-        console.log(e)
-    }) 
+    })
+    .catch(err=>{
+      toast.error("email not found",err)
+    })
+    
     
  }
  const handleMouseEnter = e => {

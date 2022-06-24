@@ -17,6 +17,7 @@ const Profile = () => {
     })
 
         const submitForm = (e)=>{
+            console.log(data);
             e.preventDefault() 
             const {city,family,maritalStatus,diet,height,state} = data
             auth.onAuthStateChanged(user=>{
@@ -46,7 +47,7 @@ const Profile = () => {
                    6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,6.0,7.0,7.1 ]
     const city = ['Mumbai','Delhi','Chennai','Bangalore','Hyderabad','Pune','Kochi','Kolkata']
 
-    const state = ["Andhra Pradesh","Arunachal Pradesh","Assam"	,"Bihar"	,"Chhattisgarh"	,"Goa"	,"Gujarat"	,"Haryana","Himachal ","Jammu and Kashmir"	,"Jharkhand","Karnataka"	,"Kerala",	"Madhya Pradesh",	"Maharashtra",	"Manipur","Meghalaya"	,"Nagaland",	"Odisha",	"Punjab","Rajasthan"	,"Sikkim",	"Tamil Nadu",	"Telangana"	,"Tripura",	"Uttar Pradesh",	"Uttarakhand",	"West Bengal"]
+    const state = ["Andhra Pradesh","Arunachal Pradesh","Assam"	,"Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal ","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Nagaland",	"Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal"]
            
   return (
     <>
@@ -55,7 +56,7 @@ const Profile = () => {
     </Header>
     <CreateSection>
         <Card>
-         <Form onSubmit={submitForm}>
+         <Form>
              <h1>Let's Create Your Profile Now</h1>
              <label>City you live in *</label>
              <select  name='city'   onChange={handalChange} value={data.city}>
@@ -99,7 +100,7 @@ const Profile = () => {
                     return  <option >{ele}</option>
                 })}
              </select>
-             <button type='submit' ><Link to="/profile/step/2">Continue</Link></button>
+             <button onClick={submitForm} ><Link to="/profile/step/2">Continue</Link></button>
              
          </Form>
         </Card>

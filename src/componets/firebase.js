@@ -5,13 +5,13 @@ import { getStorage } from "firebase/storage";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDIn8gpgu0XueI1rXTpyspikvIt2kJSK7M",
-  authDomain: "whatsapp-3f1d8.firebaseapp.com",
-  databaseURL: "https://whatsapp-3f1d8-default-rtdb.firebaseio.com",
-  projectId: "whatsapp-3f1d8",
-  storageBucket: "whatsapp-3f1d8.appspot.com",
-  messagingSenderId: "74010948707",
-  appId: "1:74010948707:web:ff772c7aa2425e3cd73456"
+  apiKey: "AIzaSyBWlKemtlMnJRcQIJA3cjxL8PunlZE26Vg",
+  authDomain: "marriage-d7c53.firebaseapp.com",
+  databaseURL: "https://marriage-d7c53-default-rtdb.firebaseio.com",
+  projectId: "marriage-d7c53",
+  storageBucket: "marriage-d7c53.appspot.com",
+  messagingSenderId: "775736086267",
+  appId: "1:775736086267:web:b6f74777501621c6286a5e"
 };
 
 // Initialize Firebase

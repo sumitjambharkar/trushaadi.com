@@ -267,12 +267,12 @@ display:flex;
 justify-content:space-around;
 `
 const First = styled.div`
-padding-left:48px;
+padding-left:8px;
 margin:4px;
 > li {
   list-style:none;
   font-size: 15px;
   color: #666;
-  width: 120px;
+  width: 100px;
 }
 `

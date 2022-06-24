@@ -76,11 +76,11 @@ const Topmatch = () => {
                 <>
                   <GusetBox>
                     <img style={{ width: "120px" }} src={ele.image} alt="" />
-                    <diV style={{ padding: "8px" }}>
+                    <div style={{ padding: "8px" }}>
                       <p style={{ fontWeight: "bold" }}>{ele.name}</p>
                       <p>{ele.age} Yrs</p>
                       <p>{ele.live}</p>
-                    </diV>
+                    </div>
                     <ThemeProvider theme={innerTheme}>
                       <Checkbox defaultChecked />
                     </ThemeProvider>

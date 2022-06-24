@@ -22,7 +22,7 @@ const CoupleDetails = () => {
     <>
       <UseNav/>
       <Details className="container">
-        <Link to="/">Featured Success Stories</Link>
+        <Link to={`/couple/${personId}`}>Featured Success Stories</Link>
         <Link to="/video">Videos Stories</Link>
         <Link to="/tellus">Tell Us Your Story</Link>
       </Details>
@@ -31,15 +31,22 @@ const CoupleDetails = () => {
         <p>This is where we celebrate Shaadi.com Success Stories.</p>
       </Welcome>
       <Head className="container">
+        <div className="row">
+        <div className="col-md-4">
+          <p></p>
         <h1>{data.name}</h1>
         <p>{data.date}</p>
+        <p></p>
         <img
           src={data.image}
           alt=""
         />
+        <p></p>
+        </div>
         <p>
          {data.desc}
         </p>
+        </div>
       </Head>
       <Footer/>
     </>
@@ -54,6 +61,7 @@ const Details = styled.div`
   justify-content: start;
   margin-top: 24px;
   a {
+    
     color: black;
     text-decoration: none;
     padding: 16px;
@@ -89,7 +97,7 @@ const Head = styled.div`
     color: gray;
   }
   > img {
-    padding: 24px;
+    width: 100%;
     align-items: center;
   }
 `;
