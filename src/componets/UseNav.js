@@ -57,7 +57,7 @@ const UseNav = () => {
     <>
     <Header>
      <h3>Marriageorbit.com</h3>
-     <p>Free Membership</p>
+     <p style={{paddingLeft:"15px"}}>Free Membership</p>
     </Header>
     <NavBar>
         <Nav>
