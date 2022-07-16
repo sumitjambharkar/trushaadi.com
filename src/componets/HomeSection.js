@@ -69,12 +69,12 @@ const HomeSection = () => {
       <h3 style={{textAlign:"center",padding:"30px",backgroundColor:" #eee"}}>Members Looking For Me 418</h3>
     
     <Container>
-    <SearchBar><input type="search" placeholder="Enter email to search"/>
+    <SearchBar><input type="search" placeholder="search"/>
     <button type="submit">Search</button>
     </SearchBar>
     </Container>
  
-      <Section>
+      <Section className='container'>
      <SectionFiltter>
        <Filtter>
        <Fil>
@@ -184,7 +184,7 @@ export default HomeSection;
 const Section = styled.div`
 display:flex;
 width:100%;
-overflow
+overflow:hidden;
 `
 
 const SectionFiltter = styled.div`
@@ -202,6 +202,7 @@ padding:1%;
 
 @media(max-width: 768px){
   width:60%;
+}
 `
 
 const Filtter = styled.div`

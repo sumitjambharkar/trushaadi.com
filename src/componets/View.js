@@ -87,8 +87,6 @@ const View = () => {
           </ImageDetails>
         </ImageSection>
       </ProfileSection>
-      <ProfileSection>
-      </ProfileSection>
       <AllDetails>
         <Details className='container'>
           <h1>Details of Profile</h1>
@@ -181,7 +179,7 @@ export default View;
 const ProfileSection = styled.div`
 display:flex;
 justify-content:center;
-background-color:#ebdcdc;`
+background-color:white;`
 const ImageSection = styled.div`
 display: flex;
 justify-content:center;
@@ -189,7 +187,7 @@ flex-wrap:wrap;
 `
 const CardImage = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-background-color:white;
+background-color:#eee;
 padding:12px;
 margin:12px;
 > img {
@@ -201,7 +199,7 @@ width:450px;
 margin-top:28px;
 padding:12px;
 padding-right: 80px;
-background-color:white;
+background-color:#eee;
 > h3 {
   font-size: 1.2rem;
     font-weight: bold;
@@ -237,10 +235,10 @@ const AllDetails = styled.div`
 display:flex;
 justify-content:start;
 padding:30px;
-background-color:#ebdcdc;`
+background-color:white;`
 const Details = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-background-color:white;
+background-color:#eee;
 width: 70%;
 >h1 {
   font-size: 1.8rem;
