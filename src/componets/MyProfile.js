@@ -8,7 +8,6 @@ import { login, logout } from "./userSlice";
 import { selectUser } from "./userSlice";
 import EditIcon from "@mui/icons-material/Edit";
 import Tooltip from "@mui/material/Tooltip";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -37,26 +36,18 @@ const style = {
 
 const MyProfile = () => {
   const [img ,setImag ] = useState('')
-  
   const [userDetails, setUserDetails] = useState([]);
   const [userFirst, setUserFirst] = useState([]);
   const [userSecand, setUserSecand] = useState([]);
   var user = useSelector(selectUser);
+  const [num,setNum] = useState(false)
   const dispatch = useDispatch();
-  const [open, setOpen] = useState();
-  const [openF, setOpenF] = useState()
-  const [openS, setOpenS] = useState()
-  const [openT, setOpenT] = useState()
-  const [openFo, setOpenFo] = useState()
   const [number, setNumber] = useState()
   const [userN, setUserN] = useState()
 
  
   
   useEffect(()=>{
-    // db.collection("users").doc(user.uid).onSnapshot(snapshot=>{
-    //   setUserN(snapshot.doc.data())
-    // })
     getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
       if (docSnap.exists) {
         setUserN(docSnap.data());
@@ -89,6 +80,15 @@ const MyProfile = () => {
   let date = new Date(x)
   let dateMDY = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
 
+  const updateNum =(e)=> {
+    e.preventDefault();
+    db.collection("users").doc(user.uid).update({
+      number
+    })
+    setNum(false)
+    toast.success("update Success")
+  }
+
   
   const [data, setdata] = useState({
     gender:userDetails.gender,
@@ -104,85 +104,6 @@ const MyProfile = () => {
     
     
   })
-  const [first, setfirst] = useState({
-    height:userFirst.height,
-    diet:userFirst.diet
-  })
-  let name, value
-  const handalChange = (e) => {
-    name = e.target.name
-    value = e.target.value
-    setdata({ ...data, [name]: value })
-    setfirst({...first,[name]:value})
-  }
-  const updateNumber = (e) =>{
-    e.preventDefault();
-    db.collection("users").doc(user.uid).update({
-      number:data.number
-    })
-    toast.success("update Success")
-    setTimeout(()=>{
-      window.location.reload(false);
-    },1000);
-  }
-  const update = (e)=>{
-    e.preventDefault();
-    console.log();
-    db.collection("users").doc(user.uid).update({
-      birth:data.birth,
-      gender:data.gender,
-      religion:data.religion,
-      tounge:data.tounge,
-      maritalStatus:data.maritalStatus
-    })
-    toast.success("update Success")
-    setTimeout(()=>{
-      window.location.reload(false);
-    },1000);
-    
-  }
-  const updateF = (e)=>{
-    e.preventDefault();
-    console.log();
-    db.collection("users").doc(user.uid).collection("userdata2").update({
-     collage:data.collage,
-     qaulification:data.qaulification,
-     work:data.worK
-      
-    })
-    toast.success("update Success")
-    
-  }
-  const updateS = (e)=>{
-    e.preventDefault();
-    console.log();
-    db.collection("users").doc(user.uid).update({
-      birth:data.birth,
-      gender:data.gender,
-    })
-    toast.success("update Success")
-    
-  }
-  const updateT = (e)=>{
-    e.preventDefault();
-    console.log();
-    db.collection("users").doc(user.uid).update({
-      birth:data.birth,
-      gender:data.gender,
-    })
-    toast.success("update Success")
-    
-  }
-  const updateFo = (e)=>{
-    e.preventDefault();
-    console.log();
-    db.collection("users").doc(user.uid).collection("userdata1").doc(user.uid).update({
-      diet:first.diet,
-      height:first.height,
-    })
-    toast.success("update Success")
-    
-  }
 
   function calculate_age(dob) {
     var diff_ms = Date.now() - dob.getTime();
@@ -208,9 +129,9 @@ const MyProfile = () => {
     });
     if (user.uid) {
       db.collection("users")
-        .doc(user.uid)
-        .get()
-        .then((snapshot) => setUserDetails(snapshot.data()));
+        .doc(user.uid).onSnapshot((snapshot) => {
+          setUserDetails(snapshot.data());
+      });
       db.collection("users")
         .doc(user.uid)
         .collection("userdata1")
@@ -241,7 +162,7 @@ const MyProfile = () => {
       <ProfileSection>
         <ImageSection>
           <CardImage>
-          <Avatar src={userDetails.image}   sx={{width:200,height:230}} variant="square"/>
+          <Avatar src={userDetails.image}   sx={{width:200,height:230,backgroundColor:"#eee",border:"1px solid #ccc",color:"#ccc"}} variant="square"/>
           <label htmlFor="icon-button-file">
         <Input onChange={(e)=>setImag(e.target.files[0])} accept="image/*" id="icon-button-file" type="file" />
         <IconButton style={{display:"flex",fontWeight:"500",color:"white",border:"#FFA500",backgroundColor: "#FFA500",borderRadius:"1px"}} aria-label="upload picture" component="span">
@@ -258,252 +179,95 @@ const MyProfile = () => {
             <li>{calculate_age(new Date(userDetails.birth))} Yrs</li>
             <li>{userFirst.height}</li>
             <li>indain</li>
-            <li>{userDetails.number}
-            <Button onClick={()=>setNumber(userDetails.number)}>
+            <li>{userDetails.number}<Button onClick={()=>setNum(true)}>
               <Tooltip title="Edit"><EditIcon />
               </Tooltip>
             </Button></li>
-            <Modal
-                  open={number}
-                  onClose={setNumber}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                      Mobile No
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input placeholder="Mobile No." type="number" name="number" value={data.number} onChange={handalChange}/>
-                     <br></br>
-                     <Button onClick={updateNumber}>Update</Button>
-                     <Button onClick={()=>setNumber(false)}>Close</Button>
-                    </Typography>
-                  </Box>
-                </Modal>
+            {num ? <li><input type="number" value={number} onChange={(e)=>setNumber(e.target.value)}/><Button onClick={updateNum}>Update</Button></li> : null}
           </ImageDetails>
         </ImageSection>
       </ProfileSection>
       <AllDetails>
-        <Details>
-          <Boxs>
-            <h3>About Us</h3>
-            <Divs>
-              <span>
-                {userDetails.about}
-              </span>
-            </Divs>
-          </Boxs>
-          <Boxs>
+        <Details className='container'>
+          <h1>Details of Profile</h1>
+          
+          <Box>
+            <h3>About</h3>
+            <span>I am currently living in uk. I am a smart and dynamic girl who respects her culture very much. I belong to a simple marathi family.</span>
+          </Box>
+          <Box>
             <h3>Basic Info</h3>
             <Agent>
               <First>
                 <li>Gender</li>
+                <li>gh</li>
+              </First>
+              <First>
                 <li>Date Of Birth</li>
-                <li>MaritalStatus</li>
+                <li>dr</li>
+              </First>
+            </Agent>
+            <Agent>
+            <First>
                 <li>Religion</li>
-                <li>Caste</li>
-                <li>Mother Tongue</li>
+                <li>jk</li>
               </First>
               <First>
-                <li>{userDetails.gender}</li>
-                <li>{dateMDY}</li>
-                <li>sss</li>
-                <li>sss</li>
-                <li>sss</li>
-                <li>sss</li>
+                <li>Mother Tounge</li>
+                <li>x</li>
               </First>
-              <>
-              <Button onClick={()=>setOpen(userDetails.gender,userDetails.birth,userFirst.maritalStatus,userSecand.religion,userSecand.tounge)}>
-                  <EditIcon />
-                  Edit
-                </Button>
-                <Modal
-                  open={open}
-                  onClose={setOpen}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                      Basic Information
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input style={{ margin: "3px", width: "100%"}} placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
-                    <br></br>
-                    <input style={{ margin: "3px", width: "100%"}} type="date" name="birth" value={data.birth} onChange={handalChange}/> <br></br>
-                    <input style={{ margin: "3px", width: "100%"}} placeholder="MaritalStatus" type="text" name="maritalStatus" value={data.maritalStatus} onChange={handalChange}/> <br></br>
-                    <input style={{ margin: "3px", width: "100%"}} placeholder="Religion" type="text" name="religion" value={data.religion} onChange={handalChange}/> <br></br>
-                    <input style={{ margin: "3px", width: "100%"}} placeholder="Caste" type="text" name="caste" value={data.tounge} onChange={handalChange}/> <br></br>
-                    <input style={{ margin: "3px", width: "100%"}} placeholder="MotherTounge" type="text" name="tounge" value={data.tounge} onChange={handalChange}/>
-                     <br></br>
-                     <Button onClick={update}>Update</Button>
-                     <Button onClick={()=>setOpen(false)}>Close</Button>
-                    </Typography>
-                  </Box>
-                </Modal>
-              </>
             </Agent>
-          </Boxs>
-          
-          <Boxs>
-            <h3>Education & Career</h3>
-            <Agent>
-              <First>
-                <li>Qualification</li>
-                <li>University Of Collage</li>
-                <li>Working With</li>
-              </First>
-              <First>
-                <li>{userSecand.qaulification}</li>
-                <li>{userSecand.collage}</li>
-                <li>{userSecand.work}</li>
-              </First>
-              <>
-              <Button onClick={()=>setOpenF(userSecand.qaulification,userSecand.collage,userSecand.work)}>
-                  <EditIcon />
-                  Edit
-                </Button>
-                <Modal
-                  open={openF}
-                  onClose={setOpenF}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                      Basic Information
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input placeholder="Qualification" type="text" name="qaulification" value={data.qaulification} onChange={handalChange}/>
-                     <input placeholder="University" type="text" name="collage" value={data.collage} onChange={handalChange}/>
-                     <input placeholder="Work" type="text" name="work" value={data.work} onChange={handalChange}/>
-                     <br></br>
-                     <Button onClick={updateF}>Update</Button>
-                     <Button onClick={()=>setOpenF(false)}>Close</Button>
-                    </Typography>
-                  </Box>
-                </Modal>
-              </>
-            </Agent>
-          </Boxs>
-          <Boxs>
-            <h3>Family Details</h3>
-            <Agent>
-              <First>
-                <li>Live with your family</li>
-                <li>Family Members</li>
-              </First>
-              <First>
-                <li>{userFirst.family}</li>
-                <li>Not Specified</li>
-              </First>
-              <>
-              <Button onClick={()=>setOpenS(userDetails.gender,userDetails.birth)}>
-                  <EditIcon />
-                  Edit
-                </Button>
-                <Modal
-                  open={openS}
-                  onClose={setOpenS}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                      Basic Information
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input style={{ margin: "3px", width: "100%"}} placeholder="Gender" type="text" name="gender" value={data.gender} onChange={handalChange}/>
-                     <input style={{ margin: "3px", width: "100%"}} type="date" name="birth" value={data.birth} onChange={handalChange}/>
-                     <br></br>
-                     <Button onClick={updateS}>Update</Button>
-                     <Button onClick={()=>setOpenS(false)}>Close</Button>
-                    </Typography>
-                  </Box>
-                </Modal>
-              </>
-            </Agent>
-          </Boxs>
-          <Boxs>
-            <h3>Location</h3>
-            <Agent>
-              <First>
-                <li>City you live in</li>
-                <li>State</li>
-              </First>
-              <First>
-                <li>{userFirst.city}</li>
-                <li>{userFirst.state}</li>
-              </First>
-              <>
-              <Button onClick={()=>setOpenT(userDetails.gender,userDetails.birth)}>
-                  <EditIcon />
-                  Edit
-                </Button>
-                <Modal
-                  open={openT}
-                  onClose={setOpenT}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                      Basic Information
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input style={{ margin: "3px", width: "100%"}} placeholder="City you live in" type="text" name="city" value={data.city} onChange={handalChange}/>
-                     <input style={{ margin: "3px", width: "100%"}} placeholder="State" type="text" name="state" value={data.state} onChange={handalChange}/>
-                     <br></br>
-                     <Button onClick={updateT}>Update</Button>
-                     <Button onClick={()=>setOpenT(false)}>Close</Button>
-                    </Typography>
-                  </Box>
-                </Modal>
-              </>
-            </Agent>
-          </Boxs>
-          <Boxs>
-
-            <h3>Lifestyle and Intrests</h3>
+          </Box>
+          <Box><h3>Lifestyle and Intrests</h3>
             <Agent>
               <First>
                 <li>Eating Habit</li>
-                <li>Height</li>
+                <li>g</li>
               </First>
               <First>
-                <li>{userFirst.diet}</li>
-                <li>{userFirst.height}</li>
+                <li>Height</li>
+                <li>x</li>
               </First>
-              <>
-              <Button onClick={()=>setOpenFo(userFirst.diet,userFirst.height)}>
-                  <EditIcon />
-                  Edit
-                </Button>
-                <Modal
-                  open={openFo}
-                  onClose={setOpenFo}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                      Basic Information
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <input placeholder="Eating Habit" type="text" name="diet" value={first.diet} onChange={handalChange}/>
-                     <input placeholder="Height" type="text" name="height" value={first.height} onChange={handalChange}/>
-                     <br></br>
-                     <Button onClick={updateFo}>Update</Button>
-                     <Button onClick={()=>setOpenFo(false)}>Close</Button>
-                    </Typography>
-                  </Box>
-                </Modal>
-              </>
             </Agent>
-          </Boxs>
+          </Box>
+          <Box><h3>Education and profession</h3>
+            <Agent>
+              <First>
+                <li>Qaulification</li>
+                <li>x</li>
+              </First>
+              <First>
+                <li>University</li>
+                <li>x</li>
+              </First>
+            </Agent>
+          </Box>
+          <Box><h3>Family Details</h3>
+            <Agent>
+              <First>
+                <li>Live in Family</li>
+                <li>f</li>
+              </First>
+              <First>
+                <li>Members</li>
+                <li>Not Specified</li>
+              </First>
+            </Agent>
+          </Box>
+          <Box><h3>Location</h3>
+            <Agent>
+              <First>
+                <li>Live in</li>
+                <li>xx</li>
+              </First>
+              <First>
+                <li>State</li>
+                <li>xcc</li>
+              </First>
+            </Agent>
+          </Box>
         </Details>
-      </AllDetails>
+      </AllDetails> 
       <Footer />
     </>
   );
@@ -512,10 +276,9 @@ const MyProfile = () => {
 export default MyProfile;
 
 const ProfileSection = styled.div`
-  margin-top: 30px;
+  margin-top:4px;
   display: flex;
   justify-content: center;
-  background-color: #5c5959;
 `;
 const ImageSection = styled.div`
   display: flex;
@@ -533,12 +296,13 @@ const CardImage = styled.div`
   }
 `;
 const ImageDetails = styled.div`
-  background-color: #5c5959;
+  border:1px solid #ccc;
+  background-color: #eee;
   margin: 12px;
   width: 450px;
   padding: 12px;
   padding-right: 80px;
-  color: white;
+  color:black;
   > li {
     list-style: none;
     margin: 6px;
@@ -547,65 +311,54 @@ const ImageDetails = styled.div`
     margin-left: 24px;
   }
   > li Button {
-    color:white;
+    color:black;
   }
   @media (max-width: 600px) {
     width: 230px;
   }
 `;
 const AllDetails = styled.div`
-  display: flex;
-  justify-content: center;
-  padding:30px;
-`;
+display:flex;
+justify-content:start;
+padding:30px;
+background-color:white;`
 const Details = styled.div`
-  background-color: white;
-  width:70%;
-  @media (max-width: 600px) {
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+background-color:#eee;
+width: 70%;
+>h1 {
+  font-size: 1.8rem;
+    font-weight: bold;
+    font-family: auto;
+    color:#FFA500;
+    margin-top: 15px;
+}
+@media (max-width:600px) {
     width:100%;
   }
-  > h1 {
-    text-align: center;
-  }
-`;
-const Boxs = styled.div`
-  padding: 24px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  > h3 {
-    font-size: 18px;
-    color: #ffa500;
-    margin-bottom: 10px;
-  }
-`;
-const Divs = styled.div`
-  display: flex;
-  justify-content: space-between;
-  > span {
-    font-size: 15px;
-    color: #666;
-  }
-`;
+> h1 {
+  text-align:center;
+}`
 
 const Agent = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  Button {
-    color:gray;
-  }
-`;
+display:flex;
+justify-content:space-around;
+`
 const First = styled.div`
-  
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  > li {
-    list-style: none;
-    font-size: 13px;
-    color: #666;
-    margin:6px;
-    width: 100px;
-  }
-`;
-
+padding-left:8px;
+margin:4px;
+> li {
+  list-style:none;
+  font-size: 15px;
+  color: #666;
+  width: 100px;
+}
+`
+const Box = styled.div`
+padding:24px;
+>h3 {
+  font-size: 1rem;
+    font-weight: 600;
+    font-family: auto;
+}
+`
