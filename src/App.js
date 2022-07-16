@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect } from "react";
-import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom";
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import CoupleDetails from './componets/CoupleDetails';
 import Video from './componets/Video';
 import Tellus from './componets/Tellus';
@@ -27,6 +27,7 @@ import BuySub from './componets/BuySub';
 import PayHome from './componets/PayHome';
 import Chat from './componets/chat/Chat';
 import PrivateRoute from './PrivateRoute';
+import SearchPage from './componets/SearchPage';
 
 function App() {
   const user = useSelector(selectUser)
@@ -103,6 +104,10 @@ function App() {
       <Route exact path="/chat">
         <Chat/>
       </Route>
+      <Route exact path="/search">
+        <SearchPage/>
+      </Route>
+      
          
         </>
          }
