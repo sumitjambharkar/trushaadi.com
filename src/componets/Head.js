@@ -21,6 +21,7 @@ const Header = () => {
         </Navbar>
         <Heading>
           <h1>Trusted Matrimony & Matchmaking Service</h1>
+          <p>Let's Start New Journey</p>
         </Heading>
        <Form/>
       </Head>

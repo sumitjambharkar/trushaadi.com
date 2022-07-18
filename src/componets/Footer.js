@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import SmsIcon from '@mui/icons-material/Sms';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 const Footer = () => {
   return (
@@ -14,8 +18,17 @@ const Footer = () => {
           {/* <a><SmsIcon style={{color:"#fff",fontSize:40}}/></a> */}
            <h2>Marriageorbit.com</h2>
            <hr/>
-           <p>Mere Jeevan Sathi</p>
-          </FirstDiv>
+           <strong>Let's Start New Journey </strong>
+           <p></p>
+           <ul>
+            <li><a><FacebookIcon/></a></li>
+           <li><a><InstagramIcon/></a></li>
+           <li><a><TwitterIcon/></a></li>
+           <li><a><YouTubeIcon/></a></li>
+           </ul>
+           </FirstDiv>
+          
+
           <SecandDiv data-aos="zoom-out-up" data-aos-duration="1500">
           <h2>About Us</h2>
           <hr/>
@@ -110,6 +123,43 @@ color:white;
   align-items: center;
   background-color: red;
 }
+>ul{
+  display: flex;
+  margin-left: -40px;
+}
+>ul li{
+  margin:5px;
+}
+>ul li a{
+	width: 40px;
+	height: 40px;
+  color: #ffa500;
+	float: left;
+	background: #ccc;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	border: 1px solid #ffa500;
+	transition: 0.5s;
+}
+> a > MuiSvgIcon-root{
+  color:red;
+}
+
+>ul li:nth-child(1) a :hover{
+  color: #0047fd;
+}
+
+>ul li:nth-child(2) a :hover{
+  color: #fd00a7;
+}
+>ul li:nth-child(3) a :hover{
+  color: #00fafd;
+}
+
+>ul li:nth-child(4) a :hover{
+  color: #fd0000;
+}
   `
 const SecandDiv = styled.div`
 padding-top:20px;
@@ -139,7 +189,6 @@ color:white;
     font-weight: 400;
   }
   >p > a {
-    
     color:#FFA500;
     padding-bottom:6px;
     display: block;
@@ -147,6 +196,6 @@ color:white;
     transition: 0.5s;
   }
   >p > a:hover{
-    transform: translate(25px);
+    transform: translate(15px);
   }
   `

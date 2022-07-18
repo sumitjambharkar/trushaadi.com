@@ -200,21 +200,25 @@ const MyProfile = () => {
             <Agent>
               <First>
                 <li>Gender</li>
-                <li>gh</li>
+                <li>mail</li>
+                <li><input type="text"/><Button>Update</Button></li>
               </First>
               <First>
                 <li>Date Of Birth</li>
-                <li>dr</li>
+                <li>11/02/1998</li>
+                <li><input type="date"/><Button>Update</Button></li>
               </First>
             </Agent>
             <Agent>
             <First>
                 <li>Religion</li>
-                <li>jk</li>
+                <li>Hindu</li>
+                <li><input type="text"/><Button>Update</Button></li>
               </First>
               <First>
                 <li>Mother Tounge</li>
-                <li>x</li>
+                <li>Marathi</li>
+                <li><input type="text"/><Button>Update</Button></li>
               </First>
             </Agent>
           </Box>
@@ -222,11 +226,13 @@ const MyProfile = () => {
             <Agent>
               <First>
                 <li>Eating Habit</li>
-                <li>g</li>
+                <li>Veg</li>
+                <li><input type="text"/><Button>Update</Button></li>
               </First>
               <First>
                 <li>Height</li>
-                <li>x</li>
+                <li>165 cm</li>
+                <li><input type="text"/><Button>Update</Button></li>
               </First>
             </Agent>
           </Box>
@@ -234,11 +240,13 @@ const MyProfile = () => {
             <Agent>
               <First>
                 <li>Qaulification</li>
-                <li>x</li>
+                <li>b com</li>
+                <li><input type="text"/><Button>Update</Button></li>
               </First>
               <First>
                 <li>University</li>
-                <li>x</li>
+                <li>Mumbai</li>
+                <li><input type="text"/><Button>Update</Button></li>
               </First>
             </Agent>
           </Box>
@@ -246,11 +254,13 @@ const MyProfile = () => {
             <Agent>
               <First>
                 <li>Live in Family</li>
-                <li>f</li>
+                <li>yes</li>
+                <li><input type="text"/><Button>Update</Button></li>
               </First>
               <First>
                 <li>Members</li>
                 <li>Not Specified</li>
+                <li><input type="text"/><Button>Update</Button></li>
               </First>
             </Agent>
           </Box>
@@ -258,11 +268,13 @@ const MyProfile = () => {
             <Agent>
               <First>
                 <li>Live in</li>
-                <li>xx</li>
+                <li>Mumbai</li>
+                <li><input type="text"/><Button>Update</Button></li>
               </First>
               <First>
                 <li>State</li>
-                <li>xcc</li>
+                <li>maharashtra</li>
+                <li><input type="text"/><Button>Update</Button></li>
               </First>
             </Agent>
           </Box>
