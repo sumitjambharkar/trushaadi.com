@@ -19,6 +19,7 @@ import { getDoc, doc, updateDoc } from "firebase/firestore";
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
+
 const style = {
   position: "absolute",
   textAlign:"center",
@@ -41,10 +42,12 @@ const MyProfile = () => {
   const [userSecand, setUserSecand] = useState([]);
   var user = useSelector(selectUser);
   const [num,setNum] = useState(false)
+  const [birth,setBirth] =useState(false)
   const dispatch = useDispatch();
   const [number, setNumber] = useState()
   const [userN, setUserN] = useState()
-
+  const [ k ,setK] = useState([])
+  console.log(k);
  
   
   useEffect(()=>{
@@ -89,21 +92,9 @@ const MyProfile = () => {
     toast.success("update Success")
   }
 
-  
-  const [data, setdata] = useState({
-    gender:userDetails.gender,
-    displayName:userDetails.displayName,
-    maritalStatus:userFirst.maritalStatus,
-    birth : userDetails.birth,
-    number : userDetails.number,
-    religion:userSecand.religion,
-    tounge:userSecand.tounge,
-    collage:userSecand.collage,
-    qaulification:userSecand.qaulification,
-    worK:userSecand.work,
-    
-    
-  })
+  const updateBirth =()=> {
+    setBirth(false)
+  }
 
   function calculate_age(dob) {
     var diff_ms = Date.now() - dob.getTime();
@@ -132,6 +123,9 @@ const MyProfile = () => {
         .doc(user.uid).onSnapshot((snapshot) => {
           setUserDetails(snapshot.data());
       });
+      db.collection("users").doc(user.uid).collection("userdata1").onSnapshot((snapshot)=>(
+        setK(snapshot.data())
+      ))
       db.collection("users")
         .doc(user.uid)
         .collection("userdata1")
@@ -200,17 +194,18 @@ const MyProfile = () => {
             <Agent>
               <First>
                 <li>Gender</li>
-                <li>gh</li>
+                <li>Female</li>
               </First>
               <First>
                 <li>Date Of Birth</li>
-                <li>dr</li>
+                {!birth ? <li>11/02/1994<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setBirth(true)} />
+              </Tooltip></li> :  <li><input type="date"/><Button onClick={updateBirth}>Update</Button></li> }
               </First>
             </Agent>
             <Agent>
             <First>
                 <li>Religion</li>
-                <li>jk</li>
+                <li>shiv galli andheri west mumbai brandra</li>
               </First>
               <First>
                 <li>Mother Tounge</li>
@@ -335,6 +330,7 @@ width: 70%;
 }
 @media (max-width:600px) {
     width:100%;
+    padding:0;
   }
 > h1 {
   text-align:center;
@@ -342,16 +338,20 @@ width: 70%;
 
 const Agent = styled.div`
 display:flex;
-justify-content:space-around;
+width: 100%;
 `
 const First = styled.div`
+display: flex;
+justify-content: center;
+width: 50%;
 padding-left:8px;
 margin:4px;
 > li {
   list-style:none;
   font-size: 15px;
   color: #666;
-  width: 100px;
+  width: 30%;
+  
 }
 `
 const Box = styled.div`
@@ -362,3 +362,4 @@ padding:24px;
     font-family: auto;
 }
 `
+
