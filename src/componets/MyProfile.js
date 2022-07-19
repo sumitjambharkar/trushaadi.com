@@ -41,13 +41,14 @@ const MyProfile = () => {
   const [userFirst, setUserFirst] = useState([]);
   const [userSecand, setUserSecand] = useState([]);
   var user = useSelector(selectUser);
+  // if else Start
   const [num,setNum] = useState(false)
-  const [birth,setBirth] =useState(false)
+  const [data ,setData] = useState({birth:"",food:"",height:"",qaulification:"",university:"",family:"",members:"",location:"",state:""})
+  const [show ,setShow] = useState(false)
+  // if else Close 
   const dispatch = useDispatch();
   const [number, setNumber] = useState()
   const [userN, setUserN] = useState()
-  const [ k ,setK] = useState([])
-  console.log(k);
  
   
   useEffect(()=>{
@@ -91,11 +92,12 @@ const MyProfile = () => {
     setNum(false)
     toast.success("update Success")
   }
-
-  const updateBirth =()=> {
-    setBirth(false)
+  const updateData = ()=> {
+    console.log(data);
+    setData({...data})
+    setShow(false)
   }
-
+  
   function calculate_age(dob) {
     var diff_ms = Date.now() - dob.getTime();
     var age_dt = new Date(diff_ms);
@@ -123,9 +125,6 @@ const MyProfile = () => {
         .doc(user.uid).onSnapshot((snapshot) => {
           setUserDetails(snapshot.data());
       });
-      db.collection("users").doc(user.uid).collection("userdata1").onSnapshot((snapshot)=>(
-        setK(snapshot.data())
-      ))
       db.collection("users")
         .doc(user.uid)
         .collection("userdata1")
@@ -143,7 +142,7 @@ const MyProfile = () => {
           querySnapshot.forEach((doc) => {
             setUserSecand(doc.data());
           });
-        });
+        })
     }
   }, [user.uid]);
   const Input = styled('input')({
@@ -177,7 +176,7 @@ const MyProfile = () => {
               <Tooltip title="Edit"><EditIcon />
               </Tooltip>
             </Button></li>
-            {num ? <li><input type="number" value={number} onChange={(e)=>setNumber(e.target.value)}/><Button onClick={updateNum}>Update</Button></li> : null}
+            {num ? <li><input type="number" value={number} defaultValue={userDetails.number} onChange={(e)=>setNumber(e.target.value)}/><Button onClick={updateNum}>Update</Button></li> : null}
           </ImageDetails>
         </ImageSection>
       </ProfileSection>
@@ -198,20 +197,18 @@ const MyProfile = () => {
               </First>
               <First>
                 <li>Date Of Birth</li>
-                {!birth ? <li>11/02/1994<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setBirth(true)} />
-              </Tooltip></li> :  <li><input type="date"/><Button onClick={updateBirth}>Update</Button></li> }
+                {!show ? <li>{userDetails.birth}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
+              </Tooltip></li> :  <li><input value={data.birth} defaultValue={userDetails.birth} onChange={(e)=>setData(e.target.value)}  type="date"/></li> }
               </First>
             </Agent>
             <Agent>
             <First>
                 <li>Religion</li>
-                <li>Hindu</li>
-                <li><input type="text"/><Button>Update</Button></li>
+                <li>{userSecand.religion}</li>
               </First>
               <First>
                 <li>Mother Tounge</li>
-                <li>Marathi</li>
-                <li><input type="text"/><Button>Update</Button></li>
+                <li>{userSecand.tounge}</li>
               </First>
             </Agent>
           </Box>
@@ -219,13 +216,13 @@ const MyProfile = () => {
             <Agent>
               <First>
                 <li>Eating Habit</li>
-                <li>Veg</li>
-                <li><input type="text"/><Button>Update</Button></li>
+                {!show ? <li>{userFirst.diet}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
+              </Tooltip></li> :  <li><input defaultValue={userFirst.diet} value={data.food} onChange={(e)=>setData(e.target.value)} type="text"/></li> }
               </First>
               <First>
                 <li>Height</li>
-                <li>165 cm</li>
-                <li><input type="text"/><Button>Update</Button></li>
+                {!show ? <li>{userFirst.height}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
+              </Tooltip></li> :  <li><input value={data.height} onChange={(e)=>setData(e.target.value)} defaultValue={userFirst.height} type="text"/></li> }
               </First>
             </Agent>
           </Box>
@@ -233,13 +230,13 @@ const MyProfile = () => {
             <Agent>
               <First>
                 <li>Qaulification</li>
-                <li>b com</li>
-                <li><input type="text"/><Button>Update</Button></li>
+                {!show ? <li>{userSecand.qaulification}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
+              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={userSecand.qaulification} type="text"/></li> }
               </First>
               <First>
                 <li>University</li>
-                <li>Mumbai</li>
-                <li><input type="text"/><Button>Update</Button></li>
+                {!show ? <li>{userSecand.collage}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
+              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={userSecand.collage} type="text"/></li> }
               </First>
             </Agent>
           </Box>
@@ -247,13 +244,13 @@ const MyProfile = () => {
             <Agent>
               <First>
                 <li>Live in Family</li>
-                <li>yes</li>
-                <li><input type="text"/><Button>Update</Button></li>
+                {!show ? <li>{userFirst.family}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
+              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={userFirst.family} type="text"/></li> }
               </First>
               <First>
                 <li>Members</li>
-                <li>Not Specified</li>
-                <li><input type="text"/><Button>Update</Button></li>
+                {!show ? <li>No required<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
+              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={"No Required"} type="text"/></li> }
               </First>
             </Agent>
           </Box>
@@ -261,15 +258,18 @@ const MyProfile = () => {
             <Agent>
               <First>
                 <li>Live in</li>
-                <li>Mumbai</li>
-                <li><input type="text"/><Button>Update</Button></li>
+                {!show ? <li>{userFirst.city}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
+              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={userFirst.city} type="text"/></li> }
               </First>
               <First>
                 <li>State</li>
-                <li>maharashtra</li>
-                <li><input type="text"/><Button>Update</Button></li>
+                {!show ? <li >{userFirst.state}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon  />
+              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={userFirst.state} type="text"/></li> }
               </First>
             </Agent>
+          </Box>
+          <Box style={{display:"flex",justifyContent:"center"}}>
+            <button style={{padding:"6px",backgroundColor:"#FFA500",width:250,borderColor:"#FFA500"}} onClick={updateData}>Update</button>
           </Box>
         </Details>
       </AllDetails> 
