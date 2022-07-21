@@ -18,8 +18,8 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
-
-
+import images from "../image/bg-border.png";
+import './MyProfile.css'
 const style = {
   position: "absolute",
   textAlign:"center",
@@ -171,7 +171,7 @@ const MyProfile = () => {
 
             <li>{calculate_age(new Date(userDetails.birth))} Yrs</li>
             <li>{userFirst.height}</li>
-            <li>indain</li>
+            <li>Indian</li>
             <li>{userDetails.number}<Button onClick={()=>setNum(true)}>
               <Tooltip title="Edit"><EditIcon />
               </Tooltip>
@@ -180,99 +180,244 @@ const MyProfile = () => {
           </ImageDetails>
         </ImageSection>
       </ProfileSection>
-      <AllDetails>
-        <Details className='container'>
-          <h1>Details of Profile</h1>
-          
-          <Box>
-            <h3>About</h3>
-            <span>I am currently living in uk. I am a smart and dynamic girl who respects her culture very much. I belong to a simple marathi family.</span>
-          </Box>
-          <Box>
-            <h3>Basic Info</h3>
-            <Agent>
-              <First>
-                <li>Gender</li>
-                <li>Female</li>
-              </First>
-              <First>
-                <li>Date Of Birth</li>
-                {!show ? <li>{userDetails.birth}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
-              </Tooltip></li> :  <li><input value={data.birth} defaultValue={userDetails.birth} onChange={(e)=>setData(e.target.value)}  type="date"/></li> }
-              </First>
-            </Agent>
-            <Agent>
-            <First>
-                <li>Religion</li>
-                <li>{userSecand.religion}</li>
-              </First>
-              <First>
-                <li>Mother Tounge</li>
-                <li>{userSecand.tounge}</li>
-              </First>
-            </Agent>
-          </Box>
-          <Box><h3>Lifestyle and Intrests</h3>
-            <Agent>
-              <First>
-                <li>Eating Habit</li>
-                {!show ? <li>{userFirst.diet}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
-              </Tooltip></li> :  <li><input defaultValue={userFirst.diet} value={data.food} onChange={(e)=>setData(e.target.value)} type="text"/></li> }
-              </First>
-              <First>
-                <li>Height</li>
-                {!show ? <li>{userFirst.height}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
-              </Tooltip></li> :  <li><input value={data.height} onChange={(e)=>setData(e.target.value)} defaultValue={userFirst.height} type="text"/></li> }
-              </First>
-            </Agent>
-          </Box>
-          <Box><h3>Education and profession</h3>
-            <Agent>
-              <First>
-                <li>Qaulification</li>
-                {!show ? <li>{userSecand.qaulification}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
-              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={userSecand.qaulification} type="text"/></li> }
-              </First>
-              <First>
-                <li>University</li>
-                {!show ? <li>{userSecand.collage}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
-              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={userSecand.collage} type="text"/></li> }
-              </First>
-            </Agent>
-          </Box>
-          <Box><h3>Family Details</h3>
-            <Agent>
-              <First>
-                <li>Live in Family</li>
-                {!show ? <li>{userFirst.family}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
-              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={userFirst.family} type="text"/></li> }
-              </First>
-              <First>
-                <li>Members</li>
-                {!show ? <li>No required<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
-              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={"No Required"} type="text"/></li> }
-              </First>
-            </Agent>
-          </Box>
-          <Box><h3>Location</h3>
-            <Agent>
-              <First>
-                <li>Live in</li>
-                {!show ? <li>{userFirst.city}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon onClick={()=>setShow(true)} />
-              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={userFirst.city} type="text"/></li> }
-              </First>
-              <First>
-                <li>State</li>
-                {!show ? <li >{userFirst.state}<Tooltip style={{marginLeft:"4px"}} title="Edit"><EditIcon  />
-              </Tooltip></li> :  <li><input value={data.birth} onChange={(e)=>setData(e.target.value)} defaultValue={userFirst.state} type="text"/></li> }
-              </First>
-            </Agent>
-          </Box>
-          <Box style={{display:"flex",justifyContent:"center"}}>
-            <button style={{padding:"6px",backgroundColor:"#FFA500",width:250,borderColor:"#FFA500"}} onClick={updateData}>Update</button>
-          </Box>
-        </Details>
-      </AllDetails> 
+     
+      
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section1">
+                    <h1>Details Of Profile</h1>
+                    <img src="fancyline.png"></img>
+                </div>
+                <div class="section2">
+                    <strong>About</strong>
+                    <p>I am currently living in uk. I am a smart and dynamic girl who respects her culture very much.
+                        I belong to a simple marathi family.</p>
+                    <hr></hr>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="entire">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="first">
+                        <strong>Basic Info</strong>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>Gender</li>
+                       {/* <li>Female</li>  */}
+                        <li><input/></li>
+                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>Date Of Birth</li>
+                        <li><input/></li>
+                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="first">
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>Religion</li>
+                        <li><input/></li>
+                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>Mother Tounge</li>
+                        <li><input/></li>
+                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+            <hr></hr>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="first">
+                        <strong>Lifestyle And Intrests</strong>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>Eating Habbit</li>
+                        <li><input/></li>
+                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>Height</li>
+                        <li><input/></li>
+                        <li> <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+            <hr></hr>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="first">
+                        <strong>Education and profession</strong>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>Qualification</li>
+                        <li><input/></li>
+                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>University</li>
+                        <li><input/></li>
+                        <li> <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <hr></hr>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="first">
+                        <strong>Family Details</strong>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>Live With Family</li>
+                        <li><input/></li>
+                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>Members</li>
+                        <li><input/></li>
+                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <hr></hr>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="first">
+                        <strong>Location</strong>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>Live In </li>
+                        <li><input/></li>
+                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="info">
+                        <li>State</li>
+                        <li><input/></li>
+                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        </li>
+                    </div>
+
+
+
+                </div>
+
+                <div class="col-md-12">
+                    <div class="update">
+                        <button>Update</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
       <Footer />
     </>
   );

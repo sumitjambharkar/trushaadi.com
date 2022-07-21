@@ -244,3 +244,77 @@ input[type=checkbox], input[type=radio] {
   padding: 5px;
   margin-bottom: 20px;
 }
+
+.image img{
+margin-top: 30px;
+  width:400px;
+}
+
+.heads h1{
+  text-align: center;
+  color: #FFA500;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.sectiontxt p{
+  color: #666;
+}
+
+.sc-efBctP button{
+  border: 1px solid #FFA500!important;
+  border-radius: 24px;
+}
+
+
+.sc-efBctP button:hover{
+background-color: #fff;
+color: #FFA500;
+box-shadow: 0 0 5px #FFA500;
+}
+.fancy img{
+  width:300px;
+ 
+}
+.fancy{
+  text-align: center;
+  margin-top: -50px;
+}
+
+.fancy2{
+  text-align: center;
+}
+
+.fancy2 img{
+  width:300px;
+}
+
+.fNyxXt ul li {
+cursor: pointer;
+}
+
+
+.fNyxXt ul li:hover{
+border-radius: 50%;
+  box-shadow: 0 0 3px #fff;
+}
+
+.css-1pqm26d-MuiAvatar-img{
+border-radius: 5px;
+}
+
+.dikqEi{
+  border-radius: 5px;
+  padding: 5px;
+}
+.logoS img{
+  width: 200px;
+}
+
+.dikqEi button a:hover{
+  color: #FFA500!important;
+}
+
+.kkQrUm p{
+  margin-top:12px;
+}
