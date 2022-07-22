@@ -5,6 +5,7 @@ import secand from '../image/call3.png';
 import third from '../image/call.png';
 import { Link } from "react-router-dom";
 import Loginn from './Loginn';
+import images from "../image/bg-border.png";
 
 const Main = () => {
   const array = [
@@ -28,6 +29,7 @@ const Main = () => {
     <>
     <MainContainer>
       <h1 style={{ textAlign: "center", marginTop: "2rem", color: "#FFA500", fontWeight: "500" }}>Find your Special Someone</h1>
+      <div class="fancy2"><img src={images}/></div>
       <Selection>
         {array.map((ele,i) => {
           return (

@@ -6,6 +6,7 @@ import { Button } from '@mui/material';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Loginn from './Loginn'
+import images from "../image/bg-border.png";
 AOS.init();
 
 const Story = () => {
@@ -24,6 +25,7 @@ const Story = () => {
         <>
             <Title>
                 <h2>Matrimony Service with Millions of Success Stories</h2>
+                <div class="fancy"><img src={images}/></div>
             </Title>
             <StorySection className='container'>
                 {data.map((ele,i) => {
@@ -41,7 +43,7 @@ const Story = () => {
                                     <p></p>
                                     <h3>{ele.data.name}</h3>
                                     <p>
-                                        {" "}<Link to={`/couple/${ele.id}`}>...Read more</Link>
+                                        {" "}<Link to={`/couple/${ele.id}`}>Read More</Link>
                                     </p>
                                 </StoryDetails>
                             </StoryDiv>
@@ -50,10 +52,7 @@ const Story = () => {
                     )
                 })}
             </StorySection>
-            <SectionButton>
-                <span>Your story is waiting to happen!</span>
-                <Button data-aos="zoom-in-down" data-aos-duration="1500"><Link><span style={{position:'absolute',opacity:0}}><Loginn/></span>Get Started</Link></Button>
-            </SectionButton>
+
         </>
     )
 
@@ -78,6 +77,7 @@ const StoryDiv = styled.div`
    width:320px;
    height:380px;
    margin: 24px;
+   border-radius:15px;
    padding:4px;
    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
@@ -90,6 +90,7 @@ const StoryImage = styled.div`
        width: 312px;
        height:285px;
        position: relative;
+       border-radius:15px;
        overflow: hidden !important;
        
    }
@@ -134,45 +135,20 @@ const StoryDetails = styled.div`
     text-align:center;
     margin:4px;
    }
+   
    >p >a {
        text-decoration:none;
        text-align:center;
-       
+       color: #FFA500;
+       border:1px solid #FFA500;
+       padding:7px;
+       border-radius:10px;    
+   }
+   >p >a:hover{
+    
+    background-color:#FFA500;
+    color:#fff;
    }`
 
-const SectionButton = styled.div`
-   background-color:#FFA500;
-   display:flex;
-   min-height: 113px;
-   justify-content:center;
-   justify-items:center;
-   flex-wrap:wrap;
-   align-items:center;
-   margin-top:36px;
-  
-   >span {
-       font-size:24px;
-       padding:28px;
-       color:white;
-   }
-   >Button {
-    font-size:24px;
-    color:white;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding:6px;
-    border:2px solid white;
-    border-radius:4px;
 
-   }
-
-   > Button a {
-       text-decoration:none;
-       color:white;
-   }
-   @media (max-width:575px) {
-    padding-bottom:20px;
-   }
-  
-   `
 export default Story;

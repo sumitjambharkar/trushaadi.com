@@ -245,6 +245,7 @@ input[type=checkbox], input[type=radio] {
   margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
 .con{
   width:"100%";
   min-height: 500px;
@@ -323,4 +324,145 @@ input[type="file"]{
     margin: 0 auto;
   }
 
+=======
+<<<<<<< HEAD
+.card1{
+  width: "100%";
+  min-height: 600px;
+  background: red;
+}
+
+.card{
+  width: "100%";
+  height: 425px;
+  background: #fff;
+  border-radius: 0 30px 0 30px;
+  padding: 15px;
+}
+.card:hover{
+  box-shadow: 0 0 5px;
+}
+
+.card p {
+   font-size: 12px;
+   text-align: center;
+   margin-top: -28px;
+   color: #fff;
+   background-color: gray;
+   width: 140px;
+   padding: 2px 0;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.card strong{
+  text-align: center;
+  font-size: 18px;
+}
+
+.card strong span{
+  font-size: 28px;
+  color: #ffa500;
+}
+
+.card span{
+  text-align: center;
+  font-size: 40px;
+}
+
+.card ul li{
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
+.card a{
+  text-align: center;
+  padding: 5px 0;
+  margin: 0 45px;
+  background-color: #ffa500;
+  border-radius: 15px;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.card a:hover{
+  background: #ccc;
+}
+
+.ca h2{
+  color: #fff;
+=======
+.image img{
+margin-top: 30px;
+  width:400px;
+}
+
+.heads h1{
+  text-align: center;
+  color: #FFA500;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.sectiontxt p{
+  color: #666;
+}
+
+.sc-efBctP button{
+  border: 1px solid #FFA500!important;
+  border-radius: 24px;
+}
+
+
+.sc-efBctP button:hover{
+background-color: #fff;
+color: #FFA500;
+box-shadow: 0 0 5px #FFA500;
+}
+.fancy img{
+  width:300px;
+ 
+}
+.fancy{
+  text-align: center;
+  margin-top: -50px;
+}
+
+.fancy2{
+  text-align: center;
+}
+
+.fancy2 img{
+  width:300px;
+}
+
+.fNyxXt ul li {
+cursor: pointer;
+}
+
+
+.fNyxXt ul li:hover{
+border-radius: 50%;
+  box-shadow: 0 0 3px #fff;
+}
+
+.css-1pqm26d-MuiAvatar-img{
+border-radius: 5px;
+}
+
+.dikqEi{
+  border-radius: 5px;
+  padding: 5px;
+}
+.logoS img{
+  width: 200px;
+}
+
+.dikqEi button a:hover{
+  color: #FFA500!important;
+}
+
+.kkQrUm p{
+  margin-top:12px;
+>>>>>>> e5b676688aca64fb1b689b528736956abf6d7d97
+>>>>>>> a9ae8bd70ff8c46d04dec21ad049f5e345aadb4d
 }

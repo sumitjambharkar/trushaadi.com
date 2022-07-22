@@ -6,7 +6,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-
+import images2 from "../image/logos.png";
 const Footer = () => {
   return (
     <>
@@ -16,9 +16,9 @@ const Footer = () => {
 </a>
           <FirstDiv data-aos="zoom-in-right" data-aos-duration="1500">
           {/* <a><SmsIcon style={{color:"#fff",fontSize:40}}/></a> */}
-           <h2>Marriageorbit.com</h2>
+          <div class="logoS"><img src={images2}/></div>
            <hr/>
-           <strong>Let's Start New Journey </strong>
+           <strong>Let's Start New Journey With India's <br></br>matrimonial and matchmaking services.</strong>
            <p></p>
            <ul>
             <li><a target="blank" href='https://www.facebook.com/profile.php?id=100081940505377'><FacebookIcon/></a></li>
@@ -47,7 +47,7 @@ const Footer = () => {
       </FooterSection>
        <FooterDiv>
         <h1>
-          © 1996-2022 Marriageorbit.com, The World's Leading Matchmaking Service™
+          © 1996-2022 Marriageorbit.com | The World's Leading Matchmaking Service™
         </h1>
         <h1>Created By Smart Deal And Investment</h1>
         </FooterDiv>

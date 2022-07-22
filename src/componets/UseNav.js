@@ -16,6 +16,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import Setting from './setting/Setting';
 import DeleteUser from './setting/DeleteUser'
 import Loginn from './Loginn';
+import images2 from "../image/logos.png";
 
 
 const UseNav = () => {
@@ -56,7 +57,7 @@ const UseNav = () => {
   return (
     <>
     <Header>
-     <h3>Marriageorbit.com</h3>
+    <div class="logoS"><img src={images2}/></div>
      <p style={{paddingLeft:"15px"}}>Free Membership</p>
     </Header>
     <NavBar>

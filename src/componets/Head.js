@@ -4,6 +4,7 @@ import Shaadi from '../image/photo.jpg'
 import Logoo from '../image/nl.png'
 import Loginn from "./Loginn";
 import Form from "./Form";
+import images1 from "../image/bg-border.png";
 
 const Header = () => {
   
@@ -62,6 +63,7 @@ const Navbar = styled.div`
   justify-content: space-around;
   position: relative;
   padding-top:20px;
+  background-color:#00000061;
   position:static;
   @media (max-width:500px) {
     
@@ -128,11 +130,13 @@ const Login = styled.div`
     font-size: 20px;
     text-decoration: none;
     color:#ffa500;
+    border:1px solid #fff;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   }
 
   p{
     font-size: 30px;
+   
   }
 `;
 const Heading = styled.div`
