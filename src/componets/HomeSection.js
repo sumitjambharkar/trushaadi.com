@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import {login,logout} from './userSlice';
 import { auth } from './firebase';
 import Slider from '@mui/material/Slider';
+import Navbar from '../componets/Nav/Navbar'
 
 const HomeSection = () => {
 
@@ -65,7 +66,8 @@ const HomeSection = () => {
   
   return (
     <>
-     <UseNav/>
+     {/* <UseNav/> */}
+     <Navbar/>
       <h3 style={{textAlign:"center",padding:"30px",backgroundColor:" #eee"}}>Members Looking For Me 418</h3>
     
     <Container>

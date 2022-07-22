@@ -75,6 +75,7 @@ const UseNav = () => {
         <Link to="/my-profile">Account</Link>
         <Link to="/chat">Chat</Link>
         <Link to="/search">Search</Link>
+        <Link to="/MyPhoto">My Photo</Link>
         </>
         } 
         
@@ -131,12 +132,11 @@ const Nav = styled.div`
     padding: 15px;
     font-size: 14px;
     line-height:50px;
-    font-weight:600;
-    
-
+    font-weight:600;  
 }
 @media (max-width:500px) {
-  a {padding:5px;
+  a {padding:3px;
+    font-size: 10px;
   }
 }`
 const Avtars = styled.div`
