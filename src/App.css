@@ -236,7 +236,7 @@ select{
 input[type=checkbox], input[type=radio] {
   box-sizing: border-box;
   padding: 0;
-  margin-top:20px;
+ 
 }
 
 .se{
@@ -317,4 +317,16 @@ border-radius: 5px;
 
 .kkQrUm p{
   margin-top:12px;
+}
+
+
+.css-4lnck5 {
+  margin:12px!important;
+}
+
+.descrip p{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
 }

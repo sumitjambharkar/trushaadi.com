@@ -42,9 +42,11 @@ const Story = () => {
                                 <StoryDetails data-aos="flip-up" data-aos-duration="1800">
                                     <p></p>
                                     <h3>{ele.data.name}</h3>
+                                    <div class="descrip"><p>{ele.data.desc}</p></div>
                                     <p>
                                         {" "}<Link to={`/couple/${ele.id}`}>Read More</Link>
                                     </p>
+
                                 </StoryDetails>
                             </StoryDiv>
 
@@ -75,7 +77,7 @@ const StorySection = styled.div`
 
 const StoryDiv = styled.div`
    width:320px;
-   height:380px;
+   height:430px;
    margin: 24px;
    border-radius:15px;
    padding:4px;
