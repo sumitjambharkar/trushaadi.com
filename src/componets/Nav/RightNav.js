@@ -150,6 +150,7 @@ const Drop = styled.div`
    display:flex;
   width:300px;
   margin-left:-134px;
+  z-index:1;
   height:100px;
   background-color:#fff;
   box-shadow: 5px 5px 5px #0008;
