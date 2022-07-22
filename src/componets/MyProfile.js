@@ -183,6 +183,7 @@ const MyProfile = () => {
      
       
     <div class="container">
+      <div class="bg-colr">
         <div class="row">
             <div class="col-md-12">
                 <div class="section1">
@@ -415,6 +416,7 @@ const MyProfile = () => {
             </div>
 
         </div>
+        </div>
     </div>
 
 
@@ -517,4 +519,3 @@ padding:24px;
     font-family: auto;
 }
 `
-

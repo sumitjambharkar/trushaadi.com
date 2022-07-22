@@ -14,7 +14,7 @@ a{
 
 .container{
     width: 70%;
-    background-color: #eee;
+    
 }
 
 .section1 img{
@@ -92,9 +92,17 @@ border: 1px solid #FFA500;;
     width: 150px;}
 
 
-    input{
+    .info input{
     border: 1px solid #c2c2c2;
         width: 186px;
         height: 36px;
         outline: none;
     }
+
+
+    .bg-colr{
+
+        background-color: #eee;
+
+    }
+ 
