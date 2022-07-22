@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import UseNav from "./UseNav";
 import Footer from "./Footer";
 import {db} from './firebase'
 
@@ -22,7 +21,6 @@ const Video = () => {
 
   return (
     <>
-      <UseNav/>
       <Details className="container">
         <Link to="/">Featured Success Stories</Link>
         <Link to="/video">Videos Stories</Link>

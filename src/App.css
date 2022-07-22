@@ -245,7 +245,6 @@ input[type=checkbox], input[type=radio] {
   margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
 .con{
   width:"100%";
   min-height: 500px;
@@ -274,10 +273,7 @@ input[type=checkbox], input[type=radio] {
 
 .text strong{
  color: #fff;
-}
-strong{
-  font-size: 18px;
-    color: #fff;
+ font-size: 18px;
 }
 .textta p{
   color: #fff;
@@ -324,8 +320,7 @@ input[type="file"]{
     margin: 0 auto;
   }
 
-=======
-<<<<<<< HEAD
+}
 .card1{
   width: "100%";
   min-height: 600px;
@@ -390,7 +385,7 @@ input[type="file"]{
 
 .ca h2{
   color: #fff;
-=======
+}
 .image img{
 margin-top: 30px;
   width:400px;
@@ -463,6 +458,4 @@ border-radius: 5px;
 
 .kkQrUm p{
   margin-top:12px;
->>>>>>> e5b676688aca64fb1b689b528736956abf6d7d97
->>>>>>> a9ae8bd70ff8c46d04dec21ad049f5e345aadb4d
 }

@@ -1,12 +1,10 @@
 import React from 'react'
-import UseNav from './UseNav';
 import styled from 'styled-components';
 import Footer from './Footer';
 
 const Policy = () => {
   return (
     <>
-    <UseNav/>
     <Section className='container'>
     <h1>PRIVACY POLICY</h1>
     <p>In Anmolrishte.com we are committed to protecting and respecting the privacy of our members & partners. We do collect the personal information and process personal data in accordance to the highest-quality and with the highest level of integrity in dealing with our members and partners. The Policy is designed to assist you in understanding how we collect, use and safeguard the personal information you provide to us and to assist you in making informed decisions when using our site and our products and services. This statement will be continuously assessed against new technologies, business practices and our customers' needs.</p>

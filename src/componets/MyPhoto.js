@@ -1,11 +1,10 @@
-import UseNav from './UseNav'
+
 import Footer from './Footer'
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 function MyPhoto() {
   return (
       <>
-      <UseNav/>
         <div className="con">
           <div className='container cono'>
             <div className='row'>
