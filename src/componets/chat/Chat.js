@@ -20,7 +20,8 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import User from "./User";
 import MessageForm from "./MessageForm";
 import Message from "./Message";
-import UseNav from "../UseNav";
+import Header from "../Herder";
+import Navbar from "../Nav/Navbar";
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -114,7 +115,8 @@ const Home = () => {
   };
   return (
     <>
-    <UseNav/>
+    <Header/>
+    <Navbar/>
     <HomeContainer>
       <UserContainer>
         <ScrollToBottom>

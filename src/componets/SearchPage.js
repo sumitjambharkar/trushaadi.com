@@ -1,12 +1,11 @@
 import React from 'react'
 import "../App.css"
-import UseNav from './UseNav'
 import Footer from './Footer'
 
 const SearchPage = () => {
   return (
     <>
-    <UseNav/>
+    
     <div className='container se mt-4'>
     <div className='row mt-3'>
       <div className='label col-md-3 sm-12'>

@@ -1,7 +1,6 @@
 import React, {useEffect, useState } from "react";
 import styled from "styled-components";
 import Footer from "./Footer";
-import UseNav from "./UseNav";
 import { db, auth} from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "./userSlice";
@@ -20,6 +19,9 @@ import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import images from "../image/bg-border.png";
 import './MyProfile.css'
+import Navbar from "./Nav/Navbar";
+import Header from "./Herder";
+
 const style = {
   position: "absolute",
   textAlign:"center",
@@ -151,7 +153,8 @@ const MyProfile = () => {
 
   return (
     <>
-      <UseNav />
+    <Header/>
+      <Navbar/>
       <ProfileSection>
         <ImageSection>
           <CardImage>

@@ -245,6 +245,147 @@ input[type=checkbox], input[type=radio] {
   margin-bottom: 20px;
 }
 
+.con{
+  width:"100%";
+  min-height: 500px;
+  background: url(./image/bg.png);
+  background-size: cover;
+}
+.ro{
+  width:"90%";
+}
+.photo {
+   background: #fff5;
+   width:"100%";
+   min-height:300px;
+}
+.img{
+  width:200px;
+  height: 200px;
+  background: #fff;
+  border: 2px solid #ffa500;
+}
+.text{
+  width:"100%";
+  height: auto;
+  text-align: center;
+}
+
+.text strong{
+ color: #fff;
+ font-size: 18px;
+}
+.textta p{
+  color: #fff;
+  padding: 10px;
+  border-bottom: 2px solid #ffa500;
+  overflow: hidden;
+  width: "100%";
+
+}
+
+.textt {
+  height: 40px;
+  width: "95%";
+  margin: 0 auto;
+  background: #ffa500;
+  outline: none;
+  border: 1px solid #fff;
+  z-index: 1;
+  line-height: 40px;
+  position: relative;
+}
+input[type="file"]{
+  height: 40px;
+  position: absolute;
+  margin: 0 auto;
+  background: #ffa500;
+  outline: none;
+  border: 1px solid #fff;
+  opacity: 0;
+  left: 0;
+  overflow: hidden;
+}
+.cono{
+  width: "100%";
+  overflow: hidden;
+}
+@media(max-width:768px){
+  .img{
+   width: "80%";
+   margin: 0 auto;
+  }
+
+  .photo{
+    margin: 0 auto;
+  }
+
+}
+.card1{
+  width: "100%";
+  min-height: 600px;
+  background: red;
+}
+
+.card{
+  width: "100%";
+  height: 425px;
+  background: #fff;
+  border-radius: 0 30px 0 30px;
+  padding: 15px;
+}
+.card:hover{
+  box-shadow: 0 0 5px;
+}
+
+.card p {
+   font-size: 12px;
+   text-align: center;
+   margin-top: -28px;
+   color: #fff;
+   background-color: gray;
+   width: 140px;
+   padding: 2px 0;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.card strong{
+  text-align: center;
+  font-size: 18px;
+}
+
+.card strong span{
+  font-size: 28px;
+  color: #ffa500;
+}
+
+.card span{
+  text-align: center;
+  font-size: 40px;
+}
+
+.card ul li{
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
+.card a{
+  text-align: center;
+  padding: 5px 0;
+  margin: 0 45px;
+  background-color: #ffa500;
+  border-radius: 15px;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.card a:hover{
+  background: #ccc;
+}
+
+.ca h2{
+  color: #fff;
+}
 .image img{
 margin-top: 30px;
   width:400px;
@@ -318,8 +459,6 @@ border-radius: 5px;
 .kkQrUm p{
   margin-top:12px;
 }
-
-
 .css-4lnck5 {
   margin:12px!important;
 }
@@ -330,3 +469,4 @@ border-radius: 5px;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
 }
+

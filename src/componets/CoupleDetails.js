@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-import UseNav from "./UseNav";
 import { useParams } from "react-router-dom";
 import { db } from "./firebase";
 
@@ -20,7 +19,6 @@ const CoupleDetails = () => {
 
   return (
     <>
-      <UseNav/>
       <Details className="container">
         <Link to={`/couple/${personId}`}>Featured Success Stories</Link>
         <Link to="/video">Videos Stories</Link>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import UseNav from './UseNav';
+
 import Footer from './Footer';
 import styled from 'styled-components';
 import { db } from './firebase';
@@ -40,7 +40,6 @@ const Contact = () => {
     }
   return (
     <>
-    <UseNav/>
     <Head>
         <h3>Contact Us</h3>
         <h5>contact us if you have any query or concern.</h5>

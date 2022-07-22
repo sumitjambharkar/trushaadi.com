@@ -5,8 +5,6 @@ import Story from './Story';
 import Main from './Main';
 import Footer from './Footer';
 import styled from '@emotion/styled';
-import Navbar from './Nav/Navbar';
-
 
 const Home = () => {
   return (

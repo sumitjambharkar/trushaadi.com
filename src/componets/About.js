@@ -2,12 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import AboutImage from '../image/download.jpg';
 import Footer from './Footer';
-import UseNav from './UseNav';
 
 const About = () => {
   return (
     <>
-    <UseNav/>
     <AboutSection className='container'>
      <h1>About Us</h1>
      <Image>

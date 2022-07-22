@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Footer from './Footer';
-import UseNav from './UseNav';
+
 
 
 const Sitemap = () => {
   return (
     <>
-    <UseNav/>
+
     <p></p>
     <h2 style={{textAlign:"center"}}>Marriageorbit Location</h2>
     <p></p>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Footer from './Footer';
-import UseNav from './UseNav';
 import { useParams } from 'react-router-dom';
 import { db } from './firebase';
 import { Link } from 'react-router-dom';
@@ -60,7 +59,6 @@ const View = () => {
   }, [Id])
   return (
     <>
-      <UseNav />
       <ProfileSection>
         <ImageSection>
           <CardImage>

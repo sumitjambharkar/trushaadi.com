@@ -6,7 +6,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import { db } from './firebase'
 import { Link } from 'react-router-dom'
 import MessageScreen from './MessageScreen';
-import UseNav from './UseNav';
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
 
@@ -29,7 +28,6 @@ function Chats() {
 
   return (
     <>
-    <UseNav/>
       <Chat>
         <ContactSideBar>
           {room.map((doc) => {

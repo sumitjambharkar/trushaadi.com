@@ -21,10 +21,10 @@ const Footer = () => {
            <strong>Let's Start New Journey With India's <br></br>matrimonial and matchmaking services.</strong>
            <p></p>
            <ul>
-            <li><a><FacebookIcon/></a></li>
-           <li><a><InstagramIcon/></a></li>
-           <li><a><TwitterIcon/></a></li>
-           <li><a><YouTubeIcon/></a></li>
+            <li><a target="blank" href='https://www.facebook.com/profile.php?id=100081940505377'><FacebookIcon/></a></li>
+           <li><a target="blank" href='https://www.instagram.com/marriageorbit/'><InstagramIcon/></a></li>
+           <li><a href=''><TwitterIcon/></a></li>
+           <li><a target="blank" href='https://www.youtube.com/channel/UC24wskR9nDHv8jnz2apRY0w'><YouTubeIcon/></a></li>
            </ul>
            </FirstDiv>
           
@@ -42,7 +42,6 @@ const Footer = () => {
           <p><Link to="/">Terms of Use »</Link></p>
           <p><Link to="/privacy-policy">Privacy Policy »</Link></p>
           <p><a href="https://api.whatsapp.com/send?phone=9833188536&amp;text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." target="_blank">Help »</a></p>
-          <p><Link to="/contact">Contact Us »</Link></p>
 
           </ThirdDiv>
       </FooterSection>
@@ -100,6 +99,7 @@ flex-wrap:wrap;
 const FirstDiv = styled.div`
 padding-top:20px;
 color:white;
+
   > h2 {
     font-size: 24px;
     font-family: inherit;
@@ -133,7 +133,7 @@ color:white;
 >ul li a{
 	width: 40px;
 	height: 40px;
-  color: #ffa500;
+  color: #fff;
 	float: left;
 	background: #ccc;
 	text-align: center;

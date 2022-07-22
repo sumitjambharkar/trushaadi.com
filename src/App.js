@@ -28,6 +28,7 @@ import PayHome from './componets/PayHome';
 import Chat from './componets/chat/Chat';
 import PrivateRoute from './PrivateRoute';
 import SearchPage from './componets/SearchPage';
+import MyPhoto from './componets/MyPhoto';
 
 function App() {
   const user = useSelector(selectUser)
@@ -106,6 +107,9 @@ function App() {
       </Route>
       <Route exact path="/search">
         <SearchPage/>
+      </Route>
+      <Route exact path="/MyPhoto">
+        <MyPhoto/>
       </Route>
       
          
