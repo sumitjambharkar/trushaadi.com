@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { db } from './firebase';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@mui/material';
-
+import images from "../image/bg-border.png";
 
 
 
@@ -90,11 +90,11 @@ const View = () => {
       <AllDetails>
         <Details className='container'>
           <h1>Details of Profile</h1>
-          
+          <div class="fancy2"><img src={images}/></div>
           <Box>
             <h3>About</h3>
             <span>I am currently living in uk. I am a smart and dynamic girl who respects her culture very much. I belong to a simple marathi family.</span>
-          </Box>
+          </Box><hr></hr>
           <Box>
             <h3>Basic Info</h3>
             <Agent>
@@ -117,7 +117,9 @@ const View = () => {
                 <li>{personDataSecand.tounge}</li>
               </First>
             </Agent>
+         
           </Box>
+          <hr></hr>
           <Box><h3>Lifestyle and Intrests</h3>
             <Agent>
               <First>
@@ -129,7 +131,9 @@ const View = () => {
                 <li>{personDataFirst.height}</li>
               </First>
             </Agent>
+           
           </Box>
+          <hr></hr>
           <Box><h3>Education and profession</h3>
             <Agent>
               <First>
@@ -141,7 +145,9 @@ const View = () => {
                 <li>{personDataSecand.collage}</li>
               </First>
             </Agent>
+            
           </Box>
+          <hr></hr>
           <Box><h3>Family Details</h3>
             <Agent>
               <First>
@@ -154,6 +160,7 @@ const View = () => {
               </First>
             </Agent>
           </Box>
+          <hr></hr>
           <Box><h3>Location</h3>
             <Agent>
               <First>
@@ -166,6 +173,7 @@ const View = () => {
               </First>
             </Agent>
           </Box>
+          <hr></hr>
         </Details>
       </AllDetails> 
 

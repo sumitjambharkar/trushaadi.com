@@ -176,7 +176,7 @@ const handleMouseLeave = e => {
   return (
     
     <div >
-      <Button style={{height:"40px",width:"80px" ,color: "#FFA500",textTransform: 'capitalize',fontSize: "18px",
+      <Button style={{height:"40px",width:"80px" ,color: "#FFA500",border:"1px solid #FFA500",borderradius: '24px',textTransform: 'capitalize',fontSize: "18px",
         padding:"0 20px" }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleOpen}>
         Login
       </Button>
