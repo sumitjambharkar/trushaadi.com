@@ -76,6 +76,7 @@ const UseNav = () => {
         <Link to="/my-profile">Account</Link>
         <Link to="/chat">Chat</Link>
         <Link to="/search">Search</Link>
+        <Link to="/Filter">Filter</Link>
         </>
         } 
         

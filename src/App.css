@@ -245,7 +245,6 @@ input[type=checkbox], input[type=radio] {
   margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
 .card1{
   width: "100%";
   min-height: 600px;
@@ -310,10 +309,10 @@ input[type=checkbox], input[type=radio] {
 
 .ca h2{
   color: #fff;
-=======
+}
 .image img{
 margin-top: 30px;
-  width:400px;
+  width:400px; 
 }
 
 .heads h1{
@@ -383,5 +382,5 @@ border-radius: 5px;
 
 .kkQrUm p{
   margin-top:12px;
->>>>>>> e5b676688aca64fb1b689b528736956abf6d7d97
+
 }
