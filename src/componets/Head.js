@@ -144,6 +144,10 @@ const Heading = styled.div`
   margin-top:310px;
   position: relative;
   color:#FFA500;
+  >  p{
+    font-size:40px;
+    font-family: TypoUpright BT;
+  }
   @media (max-width:995px) {
     h1 {
       font-size:24px;

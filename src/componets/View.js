@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Footer from './Footer';
-import UseNav from './UseNav';
 import { useParams } from 'react-router-dom';
 import { db } from './firebase';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@mui/material';
 import images from "../image/bg-border.png";
-
+import Header from './Header';
+import Navbar from './Nav/Navbar';
 
 
 
@@ -60,7 +60,8 @@ const View = () => {
   }, [Id])
   return (
     <>
-      <UseNav />
+    <Header/>
+      <Navbar/>
       <ProfileSection>
         <ImageSection>
           <CardImage>

@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import AboutImage from '../image/download.jpg';
 import Footer from './Footer';
-import UseNav from './UseNav';
-
+import Header from './Header';
+import Navbar from './Nav/Navbar';
 const About = () => {
   return (
     <>
-    <UseNav/>
+    <Header/>
+      <Navbar/>
     <AboutSection className='container'>
      <h1>About Us</h1>
      <Image>

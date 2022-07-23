@@ -2,7 +2,6 @@ import React, { useState,useEffect } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import Footer from './Footer';
-import UseNav from './UseNav';
 import { db } from './firebase';
 import { Avatar, Container } from '@mui/material';
 import { useSelector } from "react-redux";
@@ -12,6 +11,8 @@ import { useDispatch } from 'react-redux';
 import {login,logout} from './userSlice';
 import { auth } from './firebase';
 import Slider from '@mui/material/Slider';
+import Navbar from '../componets/Nav/Navbar';
+import Header from './Header';
 
 const HomeSection = () => {
 
@@ -65,7 +66,8 @@ const HomeSection = () => {
   
   return (
     <>
-     <UseNav/>
+     <Header/>
+     <Navbar/>
       <h3 style={{textAlign:"center",padding:"30px",backgroundColor:" #eee"}}>Members Looking For Me 418</h3>
     
     <Container>

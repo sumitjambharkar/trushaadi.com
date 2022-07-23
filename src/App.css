@@ -236,7 +236,7 @@ select{
 input[type=checkbox], input[type=radio] {
   box-sizing: border-box;
   padding: 0;
-  margin-top:20px;
+ 
 }
 
 .se{
@@ -245,6 +245,82 @@ input[type=checkbox], input[type=radio] {
   margin-bottom: 20px;
 }
 
+.con{
+  width:"100%";
+  min-height: 500px;
+  background: url(./image/bg.png);
+  background-size: cover;
+}
+.ro{
+  width:"90%";
+}
+.photo {
+   background: #fff5;
+   width:"100%";
+   min-height:300px;
+}
+.img{
+  width:200px;
+  height: 200px;
+  background: #fff;
+  border: 2px solid #ffa500;
+}
+.text{
+  width:"100%";
+  height: auto;
+  text-align: center;
+}
+
+.text strong{
+ color: #fff;
+ font-size: 18px;
+}
+.textta p{
+  color: #fff;
+  padding: 10px;
+  border-bottom: 2px solid #ffa500;
+  overflow: hidden;
+  width: "100%";
+
+}
+
+.textt {
+  height: 40px;
+  width: "95%";
+  margin: 0 auto;
+  background: #ffa500;
+  outline: none;
+  border: 1px solid #fff;
+  z-index: 1;
+  line-height: 40px;
+  position: relative;
+}
+input[type="file"]{
+  height: 40px;
+  position: absolute;
+  margin: 0 auto;
+  background: #ffa500;
+  outline: none;
+  border: 1px solid #fff;
+  opacity: 0;
+  left: 0;
+  overflow: hidden;
+}
+.cono{
+  width: "100%";
+  overflow: hidden;
+}
+@media(max-width:768px){
+  .img{
+   width: "80%";
+   margin: 0 auto;
+  }
+
+  .photo{
+    margin: 0 auto;
+  }
+
+}
 .card1{
   width: "100%";
   min-height: 600px;
@@ -382,5 +458,25 @@ border-radius: 5px;
 
 .kkQrUm p{
   margin-top:12px;
+}
+.css-4lnck5 {
+  margin:12px!important;
+}
+
+.descrip p{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+
+.para{
+  margin-top:20%;
+}
+
+
+.imageabt img{
+
+width: 100%;
 
 }
