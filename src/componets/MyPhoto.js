@@ -1,10 +1,14 @@
 
 import Footer from './Footer'
 import UploadFileIcon from '@mui/icons-material/UploadFile';
+import Header from './Header';
+import Navbar from './Nav/Navbar';
 
 function MyPhoto() {
   return (
       <>
+      <Header/>
+      <Navbar/>
         <div className="con">
           <div className='container cono'>
             <div className='row'>

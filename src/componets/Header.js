@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import images2 from "../image/logos.png";
 
-const Herder = () => {
+const Header = () => {
   return (
     <>
     <Head>
@@ -13,7 +13,7 @@ const Herder = () => {
   )
 }
 
-export default Herder;
+export default Header;
 const Head = styled.div`
 display:flex;
 justify-content:space-around;

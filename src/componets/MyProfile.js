@@ -20,7 +20,7 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import images from "../image/bg-border.png";
 import './MyProfile.css'
 import Navbar from "./Nav/Navbar";
-import Header from "./Herder";
+import Header from "./Header";
 
 const style = {
   position: "absolute",
@@ -185,7 +185,7 @@ const MyProfile = () => {
       </ProfileSection>
      
       
-    <div class="container">
+    <div class="container" style={{display:'flex',justifyContent:'center'}}>
       <div class="bg-colr">
         <div class="row">
             <div class="col-md-12">

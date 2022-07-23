@@ -13,13 +13,14 @@ const Abouts = ()=> {
 return (
 
     <>
-    
+   
 <div class="heads"><h1>About Us</h1></div>
 <div class="fancy2"><img src={images1}/></div>
+ <br></br>
  <div class="container">
 <div class="row">
 <div class="col-md-6">
-<div class="image">
+<div class="imageabt">
     <img src={images}/>
 </div>
 </div>

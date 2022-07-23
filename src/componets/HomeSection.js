@@ -12,7 +12,7 @@ import {login,logout} from './userSlice';
 import { auth } from './firebase';
 import Slider from '@mui/material/Slider';
 import Navbar from '../componets/Nav/Navbar';
-import Header from './Herder';
+import Header from './Header';
 
 const HomeSection = () => {
 

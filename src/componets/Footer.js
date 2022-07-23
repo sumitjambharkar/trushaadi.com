@@ -18,7 +18,7 @@ const Footer = () => {
           {/* <a><SmsIcon style={{color:"#fff",fontSize:40}}/></a> */}
           <div class="logoS"><img src={images2}/></div>
            <hr/>
-           <strong>Let's Start New Journey With India's <br></br>matrimonial and matchmaking services.</strong>
+           <strong>Let's Start New Journey With India's <br></br>matrimonial and matchmaking service.</strong>
            <p></p>
            <ul>
             <li><a target="blank" href='https://www.facebook.com/profile.php?id=100081940505377'><FacebookIcon/></a></li>

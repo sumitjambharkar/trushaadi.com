@@ -1,11 +1,13 @@
 import React from 'react'
 import "../App.css"
 import Footer from './Footer'
-
+import Header from './Header';
+import Navbar from './Nav/Navbar';
 const SearchPage = () => {
   return (
     <>
-    
+       <Header/>
+      <Navbar/>
     <div className='container se mt-4'>
     <div className='row mt-3'>
       <div className='label col-md-3 sm-12'>

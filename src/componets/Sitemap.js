@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import Footer from './Footer';
-
+import Header from './Header';
+import Navbar from './Nav/Navbar';
 
 
 const Sitemap = () => {
   return (
     <>
-
+  <Header/>
+      <Navbar/>
     <p></p>
     <h2 style={{textAlign:"center"}}>Marriageorbit Location</h2>
     <p></p>

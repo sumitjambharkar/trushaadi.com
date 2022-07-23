@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import { useParams } from "react-router-dom";
 import { db } from "./firebase";
-
+import Navbar from "./Nav/Navbar";
+import Header from './Header';
 
 const CoupleDetails = () => {
   const {personId} = useParams()
@@ -19,6 +20,8 @@ const CoupleDetails = () => {
 
   return (
     <>
+    <Header/>
+    <Navbar/>
       <Details className="container">
         <Link to={`/couple/${personId}`}>Featured Success Stories</Link>
         <Link to="/video">Videos Stories</Link>
@@ -30,7 +33,7 @@ const CoupleDetails = () => {
       </Welcome>
       <Head className="container">
         <div className="row">
-        <div className="col-md-4">
+        <div className="col-md-6">
           <p></p>
         <h1>{data.name}</h1>
         <p>{data.date}</p>
@@ -41,9 +44,15 @@ const CoupleDetails = () => {
         />
         <p></p>
         </div>
-        <p>
+        
+<div class="col-md-6">
+<div class="para">
+<p>
          {data.desc}
         </p>
+</div>
+</div>
+
         </div>
       </Head>
       <Footer/>

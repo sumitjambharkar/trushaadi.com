@@ -20,7 +20,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import User from "./User";
 import MessageForm from "./MessageForm";
 import Message from "./Message";
-import Header from "../Herder";
+import Header from "../Header";
 import Navbar from "../Nav/Navbar";
 
 const Home = () => {
