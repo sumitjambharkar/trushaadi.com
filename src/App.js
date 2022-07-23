@@ -30,6 +30,8 @@ import PrivateRoute from './PrivateRoute';
 import SearchPage from './componets/SearchPage';
 import MyPhoto from './componets/MyPhoto';
 
+import Filter from './componets/Filter'
+
 function App() {
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
@@ -55,7 +57,7 @@ function App() {
     <>
     <Router>
       <ScrollToTop/>
-    <ToastContainer  theme="colored" position="top-center"/>
+      <ToastContainer  theme="colored" position="top-center"/>
     <Switch>
          {!user ?
         <Route exact path="/">
@@ -108,13 +110,17 @@ function App() {
       <Route exact path="/search">
         <SearchPage/>
       </Route>
+
+      <Route exact path="/Filter">
+        <Filter/>
+        </Route>
       <Route exact path="/MyPhoto">
         <MyPhoto/>
       </Route>
-      
-         
-        </>
-         }
+
+      </>
+          }
+  
           <Route exact path="/couple/:personId">
             <CoupleDetails/>
           </Route>
@@ -139,7 +145,6 @@ function App() {
           <Route exact path="/sitemap">
             <Sitemap/>
           </Route>
-          
         </Switch>
     </Router>
     </>

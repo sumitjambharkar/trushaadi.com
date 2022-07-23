@@ -18,6 +18,7 @@ import { getDoc, doc, updateDoc } from "firebase/firestore";
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import images from "../image/bg-border.png";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import './MyProfile.css'
 import Navbar from "./Nav/Navbar";
 import Header from "./Header";
@@ -45,7 +46,7 @@ const MyProfile = () => {
   var user = useSelector(selectUser);
   // if else Start
   const [num,setNum] = useState(false)
-  const [data ,setData] = useState({birth:"",food:"",height:"",qaulification:"",university:"",family:"",members:"",location:"",state:""})
+  const [data ,setData] = useState({marital:"",birth:"",diet:"",work:"",qaulification:"",collage:"",family:"",members:"",city:"",state:""})
   const [show ,setShow] = useState(false)
   // if else Close 
   const dispatch = useDispatch();
@@ -94,10 +95,52 @@ const MyProfile = () => {
     setNum(false)
     toast.success("update Success")
   }
-  const updateData = ()=> {
-    console.log(data);
-    setData({...data})
-    setShow(false)
+
+  const handleChange = (e) => {
+    setData({...data,[e.target.name]:e.target.value})
+
+  }
+  const firstUpdate = () => {
+    db.collection("users").doc(user.uid).update({birth:data.birth})
+
+  }
+  const secondUpdate = ()=> {
+    db.collection("users").doc(user.uid).collection("userdata1").update({
+      city:data.city,
+      state:data.state,
+      diet:data.diet,
+      family:data.family,
+      height: data.height,
+      maritalStatus:data.marital,
+      
+    })
+
+  }
+  const thirdUpdate = () => {
+    db.collection("users").doc(user.uid).collection("userdata2").update({
+      collage:data.collage,
+      qaulification:data.qaulification,
+      religion:data.religion,
+      tounge:data.tounge,
+      work:data.work,
+
+    })
+
+  }
+  const updateDataAll = ()=> {
+    console.log({...data});
+    // setTimeout(() => {
+    //   firstUpdate()
+    // }, )
+    setTimeout(() => {
+       secondUpdate()
+    }, )
+    // setTimeout(() => {
+    //   thirdUpdate()
+    // }, )
+    setTimeout(() => {
+      setShow(false)
+    }, )
   }
   
   function calculate_age(dob) {
@@ -214,21 +257,39 @@ const MyProfile = () => {
 
                 <div class="col-md-6">
                     <div class="info">
-                        <li>Gender</li>
-                       {/* <li>Female</li>  */}
-                        <li><input/></li>
-                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                    <li>Date Of Birth</li>
+                        {!show? 
+                       <>
+                       <li>{dateMDY}</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
-
+                       </>
+                        : 
+                       <>
+                       <li><input name="birth" type="date" value={data.birth} onChange={handleChange}/></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
                     </div>
 
                 </div>
                 <div class="col-md-6">
                     <div class="info">
-                        <li>Date Of Birth</li>
-                        <li><input/></li>
-                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        <li>Marrired Status</li>
+                        {!show? 
+                       <>
+                       <li>{userFirst.maritalStatus}</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
+                       </>
+                        : 
+                       <>
+                       <li><input name="marital" value={data.marital} onChange={handleChange}/></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
                     </div>
 
 
@@ -250,9 +311,19 @@ const MyProfile = () => {
                 <div class="col-md-6">
                     <div class="info">
                         <li>Religion</li>
-                        <li><input/></li>
-                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        {!show? 
+                       <>
+                       <li>{userSecand.religion}</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
+                       </>
+                        : 
+                       <>
+                       <li><input  name="religion" value={data.religion} onChange={handleChange}/></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
 
                     </div>
 
@@ -260,9 +331,19 @@ const MyProfile = () => {
                 <div class="col-md-6">
                     <div class="info">
                         <li>Mother Tounge</li>
-                        <li><input/></li>
-                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        {!show? 
+                       <>
+                       <li>{userSecand.tounge}</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
+                       </>
+                        : 
+                       <>
+                       <li><input name="tounge" value={data.tounge} onChange={handleChange} /></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
                     </div>
 
 
@@ -285,19 +366,39 @@ const MyProfile = () => {
                 <div class="col-md-6">
                     <div class="info">
                         <li>Eating Habbit</li>
-                        <li><input/></li>
-                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        {!show? 
+                       <>
+                       <li>{userFirst.diet}</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
+                       </>
+                        : 
+                       <>
+                       <li><input name="diet" value={data.diet} onChange={handleChange}/></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
 
                     </div>
 
                 </div>
                 <div class="col-md-6">
                     <div class="info">
-                        <li>Height</li>
-                        <li><input/></li>
-                        <li> <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        <li>Work</li>
+                        {!show? 
+                       <>
+                       <li>{userSecand.work}</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
+                       </>
+                        : 
+                       <>
+                       <li><input name="work" value={data.work} onChange={handleChange}/></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
                     </div>
 
 
@@ -320,10 +421,19 @@ const MyProfile = () => {
                 <div class="col-md-6">
                     <div class="info">
                         <li>Qualification</li>
-                        <li><input/></li>
-                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        {!show? 
+                       <>
+                       <li>{userSecand.qaulification}</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
-
+                       </>
+                        : 
+                       <>
+                       <li><input name="qaulification" value={data.qaulification} onChange={handleChange}/></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
 
                     </div>
 
@@ -331,9 +441,19 @@ const MyProfile = () => {
                 <div class="col-md-6">
                     <div class="info">
                         <li>University</li>
-                        <li><input/></li>
-                        <li> <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        {!show? 
+                       <>
+                       <li>{userSecand.collage}</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
+                       </>
+                        : 
+                       <>
+                       <li><input name="collage" value={data.collage} onChange={handleChange}/></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
                     </div>
 
 
@@ -355,9 +475,19 @@ const MyProfile = () => {
                 <div class="col-md-6">
                     <div class="info">
                         <li>Live With Family</li>
-                        <li><input/></li>
-                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        {!show? 
+                       <>
+                       <li>{userFirst.family}</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
+                       </>
+                        : 
+                       <>
+                       <li><input name="family" value={data.family} onChange={handleChange}/></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
 
                     </div>
 
@@ -365,9 +495,19 @@ const MyProfile = () => {
                 <div class="col-md-6">
                     <div class="info">
                         <li>Members</li>
-                        <li><input/></li>
-                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        {!show? 
+                       <>
+                       <li>No Required</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
+                       </>
+                        : 
+                       <>
+                       <li><input name="members" value={data.members} onChange={handleChange}/></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
 
                     </div>
 
@@ -390,9 +530,19 @@ const MyProfile = () => {
                 <div class="col-md-6">
                     <div class="info">
                         <li>Live In </li>
-                        <li><input/></li>
-                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        {!show? 
+                       <>
+                       <li>{userFirst.city}</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
+                       </>
+                        : 
+                       <>
+                       <li><input name="city" value={data.city} onChange={handleChange}/></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
 
 
                     </div>
@@ -401,9 +551,19 @@ const MyProfile = () => {
                 <div class="col-md-6">
                     <div class="info">
                         <li>State</li>
-                        <li><input/></li>
-                        <li><button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
+                        {!show? 
+                       <>
+                       <li>{userFirst.state}</li>
+                        <li><button onClick={()=>setShow(true)}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></button>
                         </li>
+                       </>
+                        : 
+                       <>
+                       <li><input name="state" value={data.state} onChange={handleChange}/></li>
+                        <li><button><img src="https://img.icons8.com/windows/30/000000/assessments.png"/></button>
+                        </li>
+                       </>
+                       }
                     </div>
 
 
@@ -412,7 +572,7 @@ const MyProfile = () => {
 
                 <div class="col-md-12">
                     <div class="update">
-                        <button>Update</button>
+                        <button onClick={updateDataAll}>Update</button>
                     </div>
                 </div>
 

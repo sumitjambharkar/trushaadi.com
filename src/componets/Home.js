@@ -5,6 +5,7 @@ import Story from './Story';
 import Main from './Main';
 import Footer from './Footer';
 import styled from '@emotion/styled';
+import Filter from './Filter';
 
 const Home = () => {
   return (
