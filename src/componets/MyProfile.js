@@ -228,7 +228,7 @@ const MyProfile = () => {
       </ProfileSection>
      
       
-    <div class="container" style={{display:'flex',justifyContent:'center'}}>
+    <div class="container" style={{justifyContent:'center'}}>
       <div class="bg-colr">
         <div class="row">
             <div class="col-md-12">
