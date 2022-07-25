@@ -22,6 +22,8 @@ import MessageForm from "./MessageForm";
 import Message from "./Message";
 import Header from "../Header";
 import Navbar from "../Nav/Navbar";
+import {Helmet} from "react-helmet";
+
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -115,6 +117,11 @@ const Home = () => {
   };
   return (
     <>
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>Chat</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
     <Header/>
     <Navbar/>
     <HomeContainer>

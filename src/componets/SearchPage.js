@@ -3,9 +3,15 @@ import "../App.css"
 import Footer from './Footer'
 import Header from './Header';
 import Navbar from './Nav/Navbar';
+import {Helmet} from "react-helmet";
 const SearchPage = () => {
   return (
     <>
+    <Helmet>
+            <meta charSet="utf-8" />
+            <title>search</title>
+            <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
        <Header/>
       <Navbar/>
     <div className='container se mt-4'>
