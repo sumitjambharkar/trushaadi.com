@@ -68,6 +68,14 @@ const Nav = styled.div`
       background-color: white;
       color: black;
       height: 150px;
+      >li{
+        >span{
+          float: left;
+        }
+        >span a{
+          line-height: 10px;
+        }
+      }
     }
     .name a {
       color:black;
@@ -82,52 +90,52 @@ const Nav = styled.div`
   }
 `;
 
-const Dash = styled.div`
-z-index:1;
-display:flex;
-justify-content:start;
-flex-wrap:wrap;
-background-color:#fff;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-border-radius:2px;
-position:absolute;
-width:340px;
-padding-top:16px;
-margin-left: -145px;
-margin-top: 8px;
-> li {
-    width: 149px;
-    margin: 10px;
-    text-decoration: none;
-    list-style: none;
-    color: gray;
-}
-> li >a {
-  text-decoration: none;
-    list-style: none;
-    color: gray;
-}
-> .MuiSvgIcon-root {
-  width: 20px;
-  color: gray;
-  margin:5px;
-}
-@media (max-width:500px) {
-z-index:1;
-display:flex;
-justify-content:start;
-flex-direction:column;
-flex-wrap:wrap;
-background-color:#fff;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-border-radius:2px;
-position:absolute;
-width:170px;
-height:200px;
-margin-left:-100px;
-}
+// const Dash = styled.div`
+// z-index:1;
+// display:flex;
+// justify-content:start;
+// flex-wrap:wrap;
+// background-color:#fff;
+// box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+// border-radius:2px;
+// position:absolute;
+// width:340px;
+// padding-top:16px;
+// margin-left: -145px;
+// margin-top: 8px;
+// > li {
+//     width: 149px;
+//     margin: 10px;
+//     text-decoration: none;
+//     list-style: none;
+//     color: gray;
+// }
+// > li >a {
+//   text-decoration: none;
+//     list-style: none;
+//     color: gray;
+// }
+// > .MuiSvgIcon-root {
+//   width: 20px;
+//   color: gray;
+//   margin:5px;
+// }
+// @media (max-width:500px) {
+// z-index:1;
+// display:flex;
+// justify-content:start;
+// flex-direction:column;
+// flex-wrap:wrap;
+// background-color:#fff;
+// box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+// border-radius:2px;
+// position:absolute;
+// width:170px;
+// height:200px;
+// margin-left:-100px;
+// }
 
-`
+// `
 const Avtars = styled.div`
 > a {
   color: white;
@@ -253,7 +261,8 @@ const RightNav = ({ open }) => {
        </Avtars>
        
        </li>
-       <li className='name'><Link>Sumit jambharkarhhh</Link></li>
+       <div className='name'>
+       </div>
        </ul>
        </>
       }

@@ -14,7 +14,11 @@ import Slider from '@mui/material/Slider';
 import Navbar from '../componets/Nav/Navbar';
 import Header from './Header';
 
+const loc = ["Andheri","Bandra","Virar","Lokhandwala"]
+
 const HomeSection = () => {
+
+  const [location,setLocation] = useState("")
 
   function calculate_age(dob) { 
     var diff_ms = Date.now() - dob.getTime();
@@ -28,6 +32,10 @@ const HomeSection = () => {
   const [personData, setPersonData] = useState([])
   const [isGender, setIsGender] = useState('')
 
+  const getLocation =(e)=> {
+
+    console.log({...location,[e.target.name]:e.target.value});
+  }
   useEffect(() => {
     auth.onAuthStateChanged(userAuth=>{
       if(userAuth){
@@ -80,11 +88,12 @@ const HomeSection = () => {
      <SectionFiltter>
        <Filtter>
        <Fil>
-       <p>Select Gender</p>
-       <select>
-        <option>male</option>
-        <option>male</option>
-        <option>male</option>
+       <p>Select Location</p>
+       <select name='location' value={location} onChange={getLocation} >
+        <option>Select</option>
+       {loc.map((ele)=>(
+         <option>{ele}</option>
+       ))}
        </select>
 
        <p>Country?</p>

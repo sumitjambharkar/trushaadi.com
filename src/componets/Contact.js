@@ -6,7 +6,7 @@ import { db } from './firebase';
 import { toast } from 'react-toastify';
 import Header from './Header';
 import Navbar from './Nav/Navbar';
-
+import {Helmet} from "react-helmet";
 
 const Contact = () => {
     const [input, setinput] = useState({
@@ -41,6 +41,11 @@ const Contact = () => {
     }
   return (
     <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>contact</title>
+                <link rel="canonical" href="https://https://smartpropdeals.com/" />
+            </Helmet>
       <Header/>
       <Navbar/>
     <Head>
