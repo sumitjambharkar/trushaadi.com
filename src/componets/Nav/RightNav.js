@@ -261,8 +261,8 @@ const RightNav = ({ open }) => {
        </Avtars>
        
        </li>
-       <div className='name'>
-       </div>
+       <li className='name'>
+       </li>
        </ul>
        </>
       }
