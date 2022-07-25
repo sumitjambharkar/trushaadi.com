@@ -62,12 +62,53 @@ const Nav = styled.div`
     }
     li {
       color: #fff;
+      height: 60px;
+      border-bottom: 1px solid #ffa500;
     }
     .name {
       display: block;
       background-color: white;
       color: black;
       height: 150px;
+      padding: 10px;
+    }
+
+    .use{
+      display: inline-grid;
+      width:300px;
+      text-align: center;
+      justify-content: center;
+    >button{
+      height: 32px;
+    margin-top: 10px;
+    line-height: 32px;
+    font-size: 15px;
+    text-align: center;
+    width: 131px;
+    margin-top: 20px;
+    border-radius: 15px;
+    border: 1px solid #ffa500;
+    }
+    }
+
+
+    .user{
+      display: flex;
+      border-bottom: 1px solid #ccc;
+      height: 48px;
+      >span{  
+        display: inline-grid;
+        margin-left: 15px;
+        margin-top: -18px;
+      }
+      >span a{
+        margin-left: -14px;
+        font-size: 16px;
+        margin-top: -70px;
+      }
+      >span p{
+        font-size: 13px;
+      }
     }
     .name a {
       color:black;
@@ -253,7 +294,19 @@ const RightNav = ({ open }) => {
        </Avtars>
        
        </li>
-       <li className='name'><Link>Sumit jambharkarhhh</Link></li>
+       <li className='name'>
+        <div className='user'>
+        <Avatar></Avatar>
+        <span>
+        <p>Welcome</p>
+        <a>babi dalavi babi</a>
+        </span>
+        </div>
+    <div className='use'>
+    <span style={{fontsize:"18px",height:"25px",fontWeight:"bold",marginBottom:"4px"}}>FREE Member</span>
+    <button >Upgrade Now</button>
+    </div>
+       </li>
        </ul>
        </>
       }
