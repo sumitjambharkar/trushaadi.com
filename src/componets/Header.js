@@ -21,4 +21,10 @@ margin:12px;
 > h1 {
     font-family:romon
 }
+@media(max-width: 768px){
+  >p {
+    display: none;
+  }
+}
+
 `

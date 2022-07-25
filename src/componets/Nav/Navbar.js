@@ -8,6 +8,10 @@ const Nav = styled.nav`
   height: 64px;
   border-bottom: 2px solid #f1f1f1;
   padding: 0 20px;
+  @media (max-width: 768px) {
+    height:0px;
+    background-color: white;
+  }
 `
 
 const Navbar = () => {

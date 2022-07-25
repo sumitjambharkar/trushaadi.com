@@ -3,10 +3,16 @@ import Footer from './Footer'
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import Header from './Header';
 import Navbar from './Nav/Navbar';
+import {Helmet} from "react-helmet";
 
 function MyPhoto() {
   return (
       <>
+       <Helmet>
+                <meta charSet="utf-8" />
+                <title>Photo</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
       <Header/>
       <Navbar/>
         <div className="con">

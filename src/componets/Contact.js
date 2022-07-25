@@ -41,13 +41,13 @@ const Contact = () => {
     }
   return (
     <>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>contact</title>
-                <link rel="canonical" href="https://https://smartpropdeals.com/" />
-            </Helmet>
-      <Header/>
-      <Navbar/>
+    {/* <Helmet>
+        <meta charSet="utf-8" />
+        <title>contact</title>
+        <link rel="canonical" href="https://https://smartpropdeals.com/" />
+    </Helmet> */}
+    <Header/>
+    <Navbar/>
     <Head>
         <h3>Contact Us</h3>
         <h5>contact us if you have any query or concern.</h5>
